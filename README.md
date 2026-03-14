@@ -42,14 +42,21 @@ flowchart TD
 ├── RESEARCH_LOOP_PROMPT.md            # Main orchestrator prompt and rules
 ├── agents.md                          # Sub-agent roles and working agreement
 ├── scratchpad.md                      # Working state for the current iteration
+├── mkdocs.yml                         # MkDocs config — builds the browseable book site
+├── requirements-book.txt              # Python deps for building the book
+├── build_book.sh                      # Build script: HTML site and/or PDF
 └── docs/
+    ├── index.md                       # Book landing page (home of the MkDocs site)
     ├── book-outline.md                # High-level book outline
     ├── book_style.md                  # Chapter style guide
     ├── chapter_tracker.md             # Per-section status tracker
     ├── references.md                  # Sources used
     ├── table-of-contents.md           # Full table of contents
-    └── part1/                         # Part I chapter files
-        └── 2.1 I'm in Danger Feedback Loops.md
+    ├── part1/                         # Part I chapter files
+    ├── part2/                         # Part II chapter files
+    ├── part3/                         # Part III chapter files
+    ├── part4/                         # Part IV chapter files
+    └── part5/                         # Part V chapter files
 ```
 
 ## Getting started
@@ -61,6 +68,42 @@ To run the book-writing loop:
 3. The agent reads state, delegates chapters to sub-agents, and writes the book — all in one session.
 
 For the full guide — including how to adapt this repo as a template for **your own book** — see **[RUNNING.md](RUNNING.md)**.
+
+## Reading and publishing the book
+
+Once chapters are drafted you can build a browseable HTML site and a downloadable PDF.
+
+### Install dependencies (once)
+
+```bash
+pip install -r requirements-book.txt
+```
+
+### Build the HTML site
+
+```bash
+./build_book.sh          # outputs to book/
+```
+
+Open `book/index.html` in any browser, or serve it locally:
+
+```bash
+mkdocs serve             # live-reload preview at http://127.0.0.1:8000
+```
+
+### Build the HTML site + PDF in one step
+
+```bash
+./build_book.sh --pdf    # outputs book/  AND  book.pdf
+```
+
+### Build a PDF only (faster, via pandoc)
+
+```bash
+./build_book.sh --pdf-only   # outputs book.pdf only
+```
+
+> The generated `book/` directory and `book.pdf` are excluded from version control via `.gitignore`. Commit the source markdown; build the output locally or in CI.
 
 ## Based on
 

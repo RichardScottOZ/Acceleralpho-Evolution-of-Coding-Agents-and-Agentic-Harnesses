@@ -1,0 +1,7 @@
+# Book publishing dependencies
+# Install with: pip install -r requirements-book.txt
+
+mkdocs>=1.5
+mkdocs-material>=9.4
+mkdocs-with-pdf>=0.9
+weasyprint>=60.0
