@@ -9,7 +9,7 @@ This tracker records the next-smallest publishable units for the book. Completed
 | 1.3 The UX of Autonomy: Streaming, State, and CLI Sovereignty | Drafted and verified | [docs/part1/1.3 The UX of Autonomy.md](part1/1.3%20The%20UX%20of%20Autonomy.md) | Five concept loops: streaming trust, layered progress, state management, CLI sovereignty, UX anti-patterns. Examples 1-11 through 1-17. Mermaid diagram of three-layer progress model. |
 | 2.1 Geoffrey Huntley's "I'm in Danger" Feedback Loops | Drafted and verified | [docs/part1/2.1 I'm in Danger Feedback Loops.md](part1/2.1%20I%27m%20in%20Danger%20Feedback%20Loops.md) | Bootstrap iteration completed; use this as the template for future sections. |
 | 2.2 Recursive Failure: Why Agents Hallucinate in Circles | Drafted | [docs/part1/2.2 Recursive Failure.md](part1/2.2%20Recursive%20Failure.md) | Five failure modes: retry storms, stale context, false-positive completion, context poisoning, metric gaming. |
-| 2.3 The Proverbial Glue: Reliability Engineering for Agentic Loops | Planned | — | Follow 2.1 with harness-level controls and observability. |
+| 2.3 The Proverbial Glue: Reliability Engineering for Agentic Loops | Drafted and verified | [docs/part1/2.3 The Proverbial Glue.md](part1/2.3%20The%20Proverbial%20Glue.md) | Five concept loops: harness layer, circuit breakers, structured observability, checkpoint-and-resume, glue code philosophy. Examples 2-9 through 2-13. |
 
 ## Part II: The Architectural Sovereigns
 

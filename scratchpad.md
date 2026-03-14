@@ -34,11 +34,14 @@
 - [x] Examples 2-4 through 2-8. Mermaid diagrams showing failure classification.
 
 ### 2.3 The Proverbial Glue: Reliability Engineering for Agentic Loops
-- [ ] Draft via sub-agent; cover harness-level controls and observability.
+- [x] Drafted and verified. Five concept loops: harness as reliability layer, circuit breakers and budget caps, structured observability, checkpoint-and-resume, glue code philosophy.
+- [x] Examples 2-9 through 2-13. Mermaid diagrams: harnessed loop architecture, circuit-breaker state machine.
+- [x] All four Python code examples verified from ./src.
+- [x] Maps all five failure modes from 2.2 to specific harness controls.
 
 ## Next orchestrator actions
 
-1. Resume from 2.3 — the only remaining Part I chapter.
+1. Part I is now complete (1.1–2.3).
 2. Delegate Part II chapters (3.1–4.3) to sub-agents.
 3. Continue through Parts III–V.
 4. After all chapters drafted, run a verification pass on code examples.
