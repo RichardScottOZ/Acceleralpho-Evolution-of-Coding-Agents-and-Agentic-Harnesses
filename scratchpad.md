@@ -87,13 +87,18 @@
 - [x] Drafted. Five concept loops: enterprise containment, AWS Bedrock, Azure AI Foundry, containment field, managed vs self-hosted.
 - [x] Examples 6-1 through 6-5.
 
+### 6.2 The Copilot Workspace: Agentifying the Pull Request
+- [x] Drafted and verified. Five concept loops: autocomplete-to-agent evolution, workspace pipeline state machine, PR as unit of work, human-agent code review heuristics, CI feedback loop.
+- [x] Examples 6-6 through 6-10. Three mermaid diagrams. All five Python examples verified.
+- [x] Cross-references Sections 2.3, 4.2, 5.1, 6.1.
+
 ### 4.3 Refactoring the Past: Navigating Legacy C++ via Agentic Threads
 - [x] Drafted via split sub-agent approach. Five concept loops: legacy code problem, why agents fail, archaeological dig, strangler fig, guardrails.
 - [x] Examples 4-15 through 4-19. Closes Part II with retrospective.
 
 ## Next orchestrator actions
 
-1. Parts I and II are complete (1.1–4.3). Part III has 5.1–5.3 and 6.1 complete.
-2. Delegate remaining Part III chapters (6.2–6.3) to sub-agents.
+1. Parts I and II are complete (1.1–4.3). Part III has 5.1–5.3, 6.1, and 6.2 complete.
+2. Delegate remaining Part III chapter (6.3) to sub-agents.
 3. Continue through Parts IV–V (7.1–8.3, 9.1–10.3).
 4. After all chapters drafted, run a verification pass on code examples.
