@@ -30,16 +30,15 @@
 - [x] Created and verified — use as the template for all future chapter sub-agent prompts.
 
 ### 2.2 Recursive Failure: Why Agents Hallucinate in Circles
-- [ ] Draft via sub-agent; reuse the 2.1 loop vocabulary to classify retry storms, stale-context errors, and false-positive completion.
-- [ ] Include one worked example showing how a bad success metric keeps a loop alive.
+- [x] Drafted via sub-agent. Five failure modes: retry storms, stale context, false-positive completion, context poisoning, metric gaming.
+- [x] Examples 2-4 through 2-8. Mermaid diagrams showing failure classification.
 
 ### 2.3 The Proverbial Glue: Reliability Engineering for Agentic Loops
 - [ ] Draft via sub-agent; cover harness-level controls and observability.
 
 ## Next orchestrator actions
 
-1. Select the next chapter to write (recommendation: 1.3 to complete Part I before moving to Part II).
-2. Launch a sub-agent with the chapter-writer prompt template from `RESEARCH_LOOP_PROMPT.md`.
-3. After the sub-agent finishes, update this file and `docs/chapter_tracker.md`.
-4. Commit with `report_progress`.
-5. Repeat for remaining chapters.
+1. Resume from 2.3 — the only remaining Part I chapter.
+2. Delegate Part II chapters (3.1–4.3) to sub-agents.
+3. Continue through Parts III–V.
+4. After all chapters drafted, run a verification pass on code examples.
