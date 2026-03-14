@@ -74,6 +74,11 @@
 - [x] Examples 5-1 through 5-5. Three mermaid diagrams. 4 exercises.
 - [x] Cross-references Sections 2.2, 2.3, and 4.2.
 
+### 5.2 OpenRouter: The Switzerland of the Model Wars
+- [x] Drafted. Five concept loops: fragmentation problem, universal gateway, routing strategies, model-switching agent, economics.
+- [x] Examples 5-6 through 5-10. Three mermaid diagrams. 4 exercises.
+- [x] Cross-references Sections 2.3 and 5.1.
+
 ## Next orchestrator actions
 
 1. Part I is complete (1.1–2.3). Part II has 3.1–3.3, 4.1, and 4.2 complete.
