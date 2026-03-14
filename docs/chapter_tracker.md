@@ -17,8 +17,8 @@ This tracker records the next-smallest publishable units for the book. Completed
 | --- | --- | --- | --- |
 | 3.1 Steve Yegge's Vision: High-Throughput Agentic Environments | Drafted and verified | [docs/part2/3.1 Steve Yegge High-Throughput Agentic Environments.md](part2/3.1%20Steve%20Yegge%20High-Throughput%20Agentic%20Environments.md) | Five concept loops: IDE bottleneck, Gas Town metaphor, bimodal split, high-throughput architecture, agent-readiness metrics. Examples 3-1 through 3-4. Three mermaid diagrams. |
 | 3.2 Beyond RAG: The Infinite Window and Hyper-Context | Drafted and verified | [docs/part2/3.2 Beyond RAG The Infinite Window.md](part2/3.2%20Beyond%20RAG%20The%20Infinite%20Window.md) | Five concept loops: naive RAG failure, context economics, Infinite Window, hyper-context strategies, context pipeline. Examples 3-5 through 3-9. Three mermaid diagrams. Exercises 3-7 through 3-12. |
-| 3.3 Cody and the Evolution of the Context Power Plant | Planned | — | Sourcegraph's context engine. |
-| 4.1 Jordan Hubbard's Threading: LLMs as First-Class OS Citizens | Planned | — | Loom framework. |
+| 3.3 Cody and the Evolution of the Context Power Plant | Drafted and verified | [docs/part2/3.3 Cody and the Context Power Plant.md](part2/3.3%20Cody%20and%20the%20Context%20Power%20Plant.md) | Five concept loops: search-to-engine evolution, triple retrieval, power plant metaphor, engine vs RAG, build your own. Examples 3-10 through 3-14. Four mermaid diagrams. Exercises 3-13 through 3-18. |
+| 4.1 Jordan Hubbard's Threading: LLMs as First-Class OS Citizens | Drafted | [docs/part2/4.1 LLMs as First-Class OS Citizens.md](part2/4.1%20LLMs%20as%20First-Class%20OS%20Citizens.md) | Six concept loops: LLMs as external services, threading metaphor, scheduling/resource management, inter-agent IPC, security/isolation, Loom architecture. Examples 4-1 through 4-7. Six mermaid diagrams. |
 | 4.2 Orchestration vs. Execution: The Loom Framework | Planned | — | Multi-agent orchestration. |
 | 4.3 Refactoring the Past: Navigating Legacy C++ via Agentic Threads | Planned | — | Legacy systems. |
 

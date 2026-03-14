@@ -55,9 +55,17 @@
 - [x] 17 callouts (8 Key idea, 4 Tip, 2 Warning, 3 Pitfall). 6 exercises (3-7 through 3-12).
 - [x] Connects to Section 2.2 (stale context), Section 2.3 (harness layer), Section 3.1 (Gas Town).
 
+### 3.3 Cody and the Evolution of the Context Power Plant
+- [x] Drafted and verified. Five concept loops: search-to-engine evolution, triple retrieval, power plant metaphor, engine vs RAG, build your own.
+- [x] Examples 3-10 through 3-14. Four mermaid diagrams. Exercises 3-13 through 3-18.
+
+### 4.1 Jordan Hubbard's Threading: LLMs as First-Class OS Citizens
+- [x] Drafted. Six concept loops: LLMs as external services, threading metaphor, scheduling/resource management, inter-agent IPC, security/isolation, Loom architecture.
+- [x] Examples 4-1 through 4-7. Six mermaid diagrams.
+
 ## Next orchestrator actions
 
-1. Part I is complete (1.1–2.3). Sections 3.1–3.2 of Part II are complete.
-2. Delegate remaining Part II chapters (3.3, 4.1–4.3) to sub-agents.
-3. Continue through Parts III–V.
+1. Part I is complete (1.1–2.3). Part II has 3.1–3.3 and 4.1 complete.
+2. Delegate remaining Part II chapters (4.2–4.3) to sub-agents.
+3. Continue through Parts III–V (5.1–6.3, 7.1–8.3, 9.1–10.3).
 4. After all chapters drafted, run a verification pass on code examples.
