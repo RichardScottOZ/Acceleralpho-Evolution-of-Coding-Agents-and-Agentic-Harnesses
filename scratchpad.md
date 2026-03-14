@@ -10,8 +10,9 @@
 ## Part I: The Pre-Cambrian Explosion
 
 ### 1.1 The Great IDE Exodus
-- [ ] Draft via sub-agent after 2.1 establishes the core vocabulary.
-- [ ] Cover CLI-first workflow in terms of feedback, checkpoints, and backpressure.
+- [x] Drafted and verified. Defines all core vocabulary terms (tool-calling, backpressure, composability, feedback loop, checkpoint, agent loop, human-in-the-loop, autonomy gradient).
+- [x] Five concept loops: IDE bottleneck, CLI as universal API, composability, autonomy gradient, backpressure and checkpoints.
+- [x] Code examples verified (Example 1-1, 1-5).
 
 ### 1.2 Claude Code: The "Boris" Persona and Systems Inhabitation
 - [ ] Draft via sub-agent with terminal-first workflow examples.
