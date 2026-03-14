@@ -56,10 +56,11 @@ flowchart TD
 
 To run the book-writing loop:
 
-1. Open this repository in GitHub Copilot (web or IDE).
-2. Start a coding agent session.
-3. Point the agent at `RESEARCH_LOOP_PROMPT.md` — it contains the full orchestration instructions.
-4. The agent will read state, delegate chapters to sub-agents, and write the book.
+1. Open this repository on GitHub.
+2. Tag `@copilot` on an issue or PR with: *"Read RESEARCH_LOOP_PROMPT.md and execute the orchestration loop. Write all unwritten chapters by delegating each to a sub-agent."*
+3. The agent reads state, delegates chapters to sub-agents, and writes the book — all in one session.
+
+For the full guide — including how to adapt this repo as a template for **your own book** — see **[RUNNING.md](RUNNING.md)**.
 
 ## Based on
 
