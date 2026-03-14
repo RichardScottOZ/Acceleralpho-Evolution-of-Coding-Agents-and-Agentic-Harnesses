@@ -52,7 +52,7 @@
 - [x] Drafted and verified. Five concept loops: naive RAG failure modes, context economics, Infinite Window architecture, hyper-context strategies, practical context pipeline.
 - [x] Examples 3-5 through 3-9. Three mermaid diagrams: RAG pipeline, RAG vs Infinite Window, hyper-context pipeline layers.
 - [x] All five Python code examples verified from ./src.
-- [x] 12+ callouts (4 Key idea, 3 Tip, 2 Warning, 3 Pitfall). 6 exercises (3-7 through 3-12).
+- [x] 17 callouts (8 Key idea, 4 Tip, 2 Warning, 3 Pitfall). 6 exercises (3-7 through 3-12).
 - [x] Connects to Section 2.2 (stale context), Section 2.3 (harness layer), Section 3.1 (Gas Town).
 
 ## Next orchestrator actions
