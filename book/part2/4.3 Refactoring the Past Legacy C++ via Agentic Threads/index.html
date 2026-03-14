@@ -1,0 +1,3481 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A Strossian future history of the Boris era — the definitive guide to coding agents and agentic harnesses.">
+      
+      
+        <meta name="author" content="Acceleralpho">
+      
+      
+      
+        <link rel="prev" href="../4.2%20Orchestration%20vs%20Execution%20The%20Loom%20Framework/">
+      
+      
+        <link rel="next" href="../../part3/5.1%20Leashing%20the%20Beast%20Tool-Calling%20and%20Sandboxed%20Execution/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>4.3 Refactoring the Past: Legacy C++ via Agentic Threads - Acceleralpho: Evolution of Coding Agents and Agentic Harnesses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#43-refactoring-the-past-navigating-legacy-c-via-agentic-threads" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" class="md-header__button md-logo" aria-label="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Acceleralpho: Evolution of Coding Agents and Agentic Harnesses
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.3 Refactoring the Past: Legacy C++ via Agentic Threads
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../table-of-contents/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Table of Contents
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part1/1.1%20The%20Great%20IDE%20Exodus/" class="md-tabs__link">
+          
+  
+  
+  Part I: The Pre-Cambrian Explosion
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../3.1%20Steve%20Yegge%20High-Throughput%20Agentic%20Environments/" class="md-tabs__link">
+          
+  
+  
+  Part II: The Architectural Sovereigns
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part3/5.1%20Leashing%20the%20Beast%20Tool-Calling%20and%20Sandboxed%20Execution/" class="md-tabs__link">
+          
+  
+  
+  Part III: The Harnesses and the Hyperscalers
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part4/7.1%20DeepSeek%20and%20Qwen%20Shattering%20the%20Western%20Moat/" class="md-tabs__link">
+          
+  
+  
+  Part IV: Global Shifting and Open Frontiers
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part5/9.1%20Self-Healing%20Codebases%20and%20Autonomous%20Bug-Hunting/" class="md-tabs__link">
+          
+  
+  
+  Part V: The Acceleralpho Horizon
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../references/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  References
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" class="md-nav__button md-logo" aria-label="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Acceleralpho: Evolution of Coding Agents and Agentic Harnesses
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../table-of-contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Table of Contents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I: The Pre-Cambrian Explosion
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I: The Pre-Cambrian Explosion
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1: The Terminal is the Universe
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 1: The Terminal is the Universe
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.1%20The%20Great%20IDE%20Exodus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 The Great IDE Exodus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.2%20Claude%20Code%20The%20Boris%20Persona/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Claude Code — The Boris Persona
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.3%20The%20UX%20of%20Autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 The UX of Autonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2: The Ralph Wiggum Loop
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 2: The Ralph Wiggum Loop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.1%20I%27m%20in%20Danger%20Feedback%20Loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 I'm in Danger Feedback Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.2%20Recursive%20Failure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Recursive Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.3%20The%20Proverbial%20Glue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 The Proverbial Glue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II: The Architectural Sovereigns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II: The Architectural Sovereigns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3: Gas Town and the Context Engines
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 3: Gas Town and the Context Engines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1%20Steve%20Yegge%20High-Throughput%20Agentic%20Environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Steve Yegge's Vision: High-Throughput Agentic Environments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.2%20Beyond%20RAG%20The%20Infinite%20Window/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Beyond RAG: The Infinite Window
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.3%20Cody%20and%20the%20Context%20Power%20Plant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Cody and the Context Power Plant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4: Loom — The Agentic Operating System
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 4: Loom — The Agentic Operating System
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.1%20LLMs%20as%20First-Class%20OS%20Citizens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 LLMs as First-Class OS Citizens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.2%20Orchestration%20vs%20Execution%20The%20Loom%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Orchestration vs. Execution: The Loom Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Refactoring the Past: Legacy C++ via Agentic Threads
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Refactoring the Past: Legacy C++ via Agentic Threads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-read-this-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Read This Section
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-1-the-legacy-code-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop 1: The Legacy Code Problem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loop 1: The Legacy Code Problem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-2-why-agents-fail-on-legacy-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop 2: Why Agents Fail on Legacy Code
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loop 2: Why Agents Fail on Legacy Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-3-the-archaeological-dig-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop 3: The Archaeological Dig Pattern
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loop 3: The Archaeological Dig Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-4-incremental-modernization-the-strangler-fig-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop 4: Incremental Modernization — The Strangler Fig Agent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loop 4: Incremental Modernization — The Strangler Fig Agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-5-guardrails-for-legacy-refactoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop 5: Guardrails for Legacy Refactoring
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loop 5: Guardrails for Legacy Refactoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What We Built
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrapping Up
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wrapping Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up-part-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrapping Up Part II
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III: The Harnesses and the Hyperscalers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III: The Harnesses and the Hyperscalers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5: The Harness Wars
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 5: The Harness Wars
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/5.1%20Leashing%20the%20Beast%20Tool-Calling%20and%20Sandboxed%20Execution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/5.2%20OpenRouter%20The%20Switzerland%20of%20the%20Model%20Wars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 OpenRouter: The Switzerland of the Model Wars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/5.3%20OpenCode%20and%20the%20Democratization%20of%20Agentic%20Access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 OpenCode and the Democratization of Agentic Access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6: The Containment Fields
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 6: The Containment Fields
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/6.1%20AWS%20Bedrock%20and%20Azure%20AI%20Foundry%20The%20Enterprise%20Response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 AWS Bedrock and Azure AI Foundry: The Enterprise Response
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/6.2%20The%20Copilot%20Workspace%20Agentifying%20the%20Pull%20Request/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 The Copilot Workspace: Agentifying the Pull Request
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/6.3%20Security%20and%20Governance%20in%20the%20Age%20of%20Shadow%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Security and Governance in the Age of Shadow Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV: Global Shifting and Open Frontiers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV: Global Shifting and Open Frontiers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7: The Dragon in the Machine
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 7: The Dragon in the Machine
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/7.1%20DeepSeek%20and%20Qwen%20Shattering%20the%20Western%20Moat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 DeepSeek and Qwen: Shattering the Western Moat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/7.2%20The%20Efficiency%20Gap%20High-Performance%20Coding%20on%20a%20Budget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 The Efficiency Gap: High-Performance Coding on a Budget
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/7.3%20The%20Geopolitics%20of%20Code%20Generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 The Geopolitics of Code Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8: The Open Source Insurgency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 8: The Open Source Insurgency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/8.1%20Aider%20OpenDevin%20and%20the%20Bazaar%20of%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Aider, OpenDevin, and the Bazaar of Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/8.2%20Local-First%20Running%20Boris%20on%20a%20Mac%20Studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 Local-First: Running Boris on a Mac Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/8.3%20The%20Rise%20of%20the%20Personal%20Agent%20Stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 The Rise of the Personal Agent Stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V: The Acceleralpho Horizon
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V: The Acceleralpho Horizon
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9: The End of the Human in the Loop
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 9: The End of the Human in the Loop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.1%20Self-Healing%20Codebases%20and%20Autonomous%20Bug-Hunting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1 Self-Healing Codebases and Autonomous Bug-Hunting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.2%20The%20Synthetic%20Senior%20Managing%20Intent%20vs%20Managing%20Code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2 The Synthetic Senior: Managing Intent vs. Managing Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.3%20The%20Psychopathology%20of%20AI-Driven%20Technical%20Debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3 The Psychopathology of AI-Driven Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10: The Strossian Singularity
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 10: The Strossian Singularity
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.1%20Vile%20Offspring%20Agents%20Writing%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.1 Vile Offspring: Agents Writing Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.2%20From%20Programmer%20to%20Agent%20Wrangler%20The%20New%20Career%20Path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.2 From Programmer to Agent Wrangler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.3%20Post-Code%20When%20Software%20is%20Grown%20Not%20Written/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.3 Post-Code: When Software is Grown, Not Written
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="43-refactoring-the-past-navigating-legacy-c-via-agentic-threads">4.3 Refactoring the Past: Navigating Legacy C++ via Agentic Threads<a class="headerlink" href="#43-refactoring-the-past-navigating-legacy-c-via-agentic-threads" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Key idea:</strong> The hardest code for an agent to refactor is not the most complex — it is the most <em>implicit</em>. Forty-year-old C++ codebases encode tribal knowledge in preprocessor macros, void-pointer casts, and ownership contracts that exist only in the memories of engineers who left in 2003. Agents that charge in without excavating these contracts don't refactor — they detonate.</p>
+</blockquote>
+<p>Sections 4.1 and 4.2 gave you a threading model and orchestration framework for agents. Now we stress-test both against the hardest real-world problem: legacy C++ that predates the agents, the frameworks, and the language standards. This is survival archaeology — navigating codebases where a misunderstood <code>#define</code> can bring down a telecom switch serving two million subscribers.</p>
+<hr />
+<blockquote>
+<h3 id="how-to-read-this-section">How to Read This Section<a class="headerlink" href="#how-to-read-this-section" title="Permanent link">&para;</a></h3>
+<p>This section contains <strong>six concept loops</strong>. The first half (Loops 1–3) builds the problem and the core pattern:</p>
+<ol>
+<li><strong>The Legacy Code Problem</strong> — Why old C++ is uniquely hostile to agents</li>
+<li><strong>Why Agents Fail on Legacy Code</strong> — Four failure vectors that turn confident agents into liability generators</li>
+<li><strong>The Archaeological Dig Pattern</strong> — The key insight: MAP before you MODIFY</li>
+</ol>
+<p>The second half (Loops 4–6) applies the pattern at scale:</p>
+<ol>
+<li><strong>Loom Weaves for Legacy Refactoring</strong> — Wiring the dig into Section 4.2's orchestration model</li>
+<li><strong>Incremental Trust: The Strangler Fig Agent</strong> — Wrapping legacy modules in safe interfaces</li>
+<li><strong>Measuring Progress Without Breaking Production</strong> — Observability and rollback</li>
+</ol>
+<p><strong>If you work with legacy C++</strong>, read everything. <strong>If you work with other legacy languages</strong>, Loops 1–3 and 6 transfer directly. <strong>If you only have greenfield codebases</strong>, read Loop 3 — the archaeological dig pattern applies whenever implicit contracts lurk beneath the surface.</p>
+</blockquote>
+<p><strong>Why this section matters.</strong> Every Fortune 500 runs critical infrastructure on C++ from 1985–2005. These codebases can't be rewritten. Agentic refactoring is the only path to modernization — but agents that skip the archaeology produce changes that compile, pass tests, and fail catastrophically.</p>
+<p><strong>Deliverable.</strong> The Archaeological Dig pattern for safe agentic refactoring, wired into Loom (Section 4.2), producing multi-agent pipelines that map implicit contracts before modifying a single line.</p>
+<hr />
+<h2 id="loop-1-the-legacy-code-problem">Loop 1: The Legacy Code Problem<a class="headerlink" href="#loop-1-the-legacy-code-problem" title="Permanent link">&para;</a></h2>
+<h3 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">&para;</a></h3>
+<p>We are not talking about modern C++17. We are talking about code written before the C++ standard existed — targeting a specific compiler, treating <code>undefined behavior</code> as a feature, patched by forty engineers over thirty years. Here is what an agent encounters:</p>
+<ul>
+<li><strong>Preprocessor forests.</strong> <code>#define</code> macros rewrite function signatures based on platform flags. The code the agent reads is <em>not</em> what the compiler sees.</li>
+<li><strong>Global mutable state.</strong> <code>extern</code> globals accessed from any translation unit, ordering enforced by convention alone.</li>
+<li><strong>Ownership ambiguity.</strong> Raw <code>new</code>/<code>delete</code>, <code>void*</code> through callbacks, <code>reinterpret_cast</code> stuffing pointers into <code>int</code> fields.</li>
+<li><strong>Implicit protocols.</strong> Call-ordering constraints evidenced only by a 1998 comment: <code>/* init first!! */</code>.</li>
+<li><strong>Build-system archaeology.</strong> Makefiles → Perl scripts → generated headers → macros → preprocessor forests.</li>
+<li><strong>Missing documentation.</strong> Comments in German. Comments describing three-refactors-ago code. No comments.</li>
+</ul>
+<p>An agent trained on GitHub has seen C++ — but mostly <em>modern</em> C++ with tests and clear ownership. Legacy code violates every assumption that training data encodes.</p>
+<h3 id="worked-example">Worked Example<a class="headerlink" href="#worked-example" title="Permanent link">&para;</a></h3>
+<p><strong>Example 4-15. A signal-processing module from a telecom system, circa 1995.</strong></p>
+<p>A signal buffer manager in a telecom switching system. The original spans thousands of lines; we show enough to illustrate the problem.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">/* sigbuf.h - Signal buffer management  (c) 1995 TelSys GmbH</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cm"> * Änderungen nur nach Rücksprache mit Abt. 4! */</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#ifndef _SIGBUF_H_</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#define _SIGBUF_H_</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cp">#ifdef PLATFORM_SOLARIS</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cp">#  define SIG_BUF_SZ  4096</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cp">#  define SIG_ALIGN    __attribute__((aligned(8)))</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="cp">#else</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="cp">#  define SIG_BUF_SZ  2048</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="cp">#  define SIG_ALIGN    </span><span class="cm">/* nothing */</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="cp">#endif</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="cp">#ifdef ENABLE_MULTICAST</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="cp">#  define SIG_FUNC_DECL(name)  int name(void* buf, int len, int mcast_grp)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="cp">#else</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="cp">#  define SIG_FUNC_DECL(name)  int name(void* buf, int len)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="cp">#endif</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">extern</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">g_signal_buf</span><span class="p">[</span><span class="n">SIG_BUF_SZ</span><span class="p">]</span><span class="w"> </span><span class="n">SIG_ALIGN</span><span class="p">;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">extern</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">g_buf_lock</span><span class="p">;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">g_init_done</span><span class="p">;</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="cp">#ifdef __cplusplus</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="cp">#endif</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="n">SIG_FUNC_DECL</span><span class="p">(</span><span class="n">sig_process</span><span class="p">);</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="n">SIG_FUNC_DECL</span><span class="p">(</span><span class="n">sig_forward</span><span class="p">);</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="kt">int</span><span class="w"> </span><span class="nf">sig_init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="kt">void</span><span class="w"> </span><span class="nf">sig_cleanup</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w">   </span><span class="cm">/* DO NOT call from timer ctx! */</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="cm">/* Wer hat das geschrieben?? - K.M. 2003 */</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">sig_alloc_raw</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sz</span><span class="p">);</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="kt">void</span><span class="w">  </span><span class="nf">sig_free_raw</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">);</span><span class="w">  </span><span class="cm">/* p MUST be from sig_alloc_raw */</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="cp">#ifdef __cplusplus</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="p">}</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="cp">#endif</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="cp">#endif </span><span class="cm">/* _SIGBUF_H_ */</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cm">/* sigbuf.c - implementation</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cm"> * NOTE: timer_handler accesses g_signal_buf directly.</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm"> *       See platform/timer.c (DO NOT MOVE without updating ISR)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cm"> */</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;sigbuf.h&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;platform/hw_defs.h&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="kt">char</span><span class="w"> </span><span class="n">g_signal_buf</span><span class="p">[</span><span class="n">SIG_BUF_SZ</span><span class="p">]</span><span class="w"> </span><span class="n">SIG_ALIGN</span><span class="p">;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">g_buf_lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kt">int</span><span class="w"> </span><span class="n">g_init_done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">s_alloc_table</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w">   </span><span class="n">s_alloc_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="kt">int</span><span class="w"> </span><span class="nf">sig_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">g_signal_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">SIG_BUF_SZ</span><span class="p">);</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="n">s_alloc_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="n">g_init_done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="n">g_buf_lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">sig_alloc_raw</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sz</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">sz</span><span class="p">);</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">s_alloc_idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">256</span><span class="p">)</span><span class="w"> </span><span class="n">s_alloc_table</span><span class="p">[</span><span class="n">s_alloc_idx</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w">  </span><span class="cm">/* caller owns... but we track for cleanup */</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="p">}</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="kt">void</span><span class="w"> </span><span class="nf">sig_free_raw</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">s_alloc_idx</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s_alloc_table</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">s_alloc_table</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s_alloc_table</span><span class="p">[</span><span class="o">--</span><span class="n">s_alloc_idx</span><span class="p">];</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="p">}</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="kt">void</span><span class="w"> </span><span class="nf">sig_cleanup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">s_alloc_idx</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">free</span><span class="p">(</span><span class="n">s_alloc_table</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">    </span><span class="n">s_alloc_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="n">g_init_done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="p">}</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="cp">#ifdef ENABLE_MULTICAST</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="kt">int</span><span class="w"> </span><span class="nf">sig_process</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mcast_grp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="cp">#else</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="kt">int</span><span class="w"> </span><span class="n">sig_process</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="cp">#endif</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">g_init_done</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">g_buf_lock</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* spin */</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">    </span><span class="n">g_buf_lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="n">g_signal_buf</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">SIG_BUF_SZ</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">SIG_BUF_SZ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">    </span><span class="cm">/* ... 200 lines of signal processing omitted ... */</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">    </span><span class="n">g_buf_lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="p">}</span>
+</code></pre></div>
+<p>When an agent reads these files, it sees syntax. What it <em>doesn't</em> see:</p>
+<ul>
+<li><code>timer_handler</code> in <code>platform/timer.c</code> reads <code>g_signal_buf</code> directly from an ISR — the <code>volatile int g_buf_lock</code> is a basic spinlock, but the ISR bypasses it entirely, relying on an implicit single-writer protocol.</li>
+<li><code>sig_alloc_raw</code> tracks for bulk cleanup, but some callers also <code>free()</code> directly — dual-ownership that causes double-frees.</li>
+<li><code>SIG_FUNC_DECL</code> gives <code>sig_process</code> a <em>different signature</em> depending on a build flag.</li>
+<li>The German comment means "Changes only after consultation with Department 4!" — a human gate invisible to agents.</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    subgraph "What the agent sees"
+        A[sigbuf.h] --&gt; B[sigbuf.c]
+        B --&gt; C[sig_process]
+        B --&gt; D[sig_alloc_raw / sig_free_raw]
+    end
+    subgraph "What actually exists"
+        F[platform/timer.c — ISR reads g_signal_buf] -.-&gt;|invisible| B
+        G[47 callers of sig_alloc_raw] -.-&gt;|mixed ownership| D
+        H[Makefile.solaris defines ENABLE_MULTICAST] -.-&gt;|changes signatures| A
+        I[hw_defs.h redefines memcpy] -.-&gt;|macro override| B
+    end
+    style F fill:#ff6b6b,stroke:#c92a2a
+    style G fill:#ff6b6b,stroke:#c92a2a
+    style H fill:#ffa94d,stroke:#e8590c
+    style I fill:#ffa94d,stroke:#e8590c</code></pre>
+<blockquote>
+<p><strong>Check-yourself:</strong> Before reading on, list three ways the <code>sig_cleanup</code> function could cause a crash at shutdown. Think about what happens if a caller has already freed a pointer via <code>sig_free_raw</code>, and what happens if the timer ISR fires during cleanup.</p>
+</blockquote>
+<details>
+<summary>Possible answers</summary>
+
+1. **Double-free.** If a caller freed `p` directly via `free()` (bypassing `sig_free_raw`), the pointer stays in `s_alloc_table` and `sig_cleanup` frees it again.
+2. **Use-after-free via ISR.** `timer_handler` may read `g_signal_buf` while `sig_cleanup` sets `g_init_done = 0`.
+3. **Dangling pointer.** Another thread holding a `sig_alloc_raw` pointer has no way to know it was freed.
+</details>
+
+<hr />
+<h2 id="loop-2-why-agents-fail-on-legacy-code">Loop 2: Why Agents Fail on Legacy Code<a class="headerlink" href="#loop-2-why-agents-fail-on-legacy-code" title="Permanent link">&para;</a></h2>
+<h3 id="concept_1">Concept<a class="headerlink" href="#concept_1" title="Permanent link">&para;</a></h3>
+<p>Agents fail on legacy C++ not because they are stupid, but because they are <em>confidently wrong</em>. The failure modes map to Section 2.2's taxonomy, but legacy code amplifies each:</p>
+<p><strong>1. No tests → false-positive completion.</strong> The agent changes code, compiles, reports success. Nothing contradicts its confidence.</p>
+<p><strong>2. Implicit contracts → context poisoning.</strong> Signatures lie. A <code>void*</code> parameter might require a specific allocator, a valid bitmask, and a held lock. The agent's model is poisoned from the start.</p>
+<p><strong>3. Macro soup → reading one program, modifying another.</strong> The preprocessor transforms source into something entirely different before compilation.</p>
+<p><strong>4. Undefined behavior → delayed detonation.</strong> Refactoring introduces UB that works on dev but fails on production with a different compiler or optimization level.</p>
+<blockquote>
+<p><strong>Warning:</strong> These four vectors compound. An agent on macro-obscured code (3) with no tests (1) that misreads an implicit contract (2) can introduce UB (4) that passes every check. This is the <em>default outcome</em> without guardrails.</p>
+</blockquote>
+<h3 id="worked-example_1">Worked Example<a class="headerlink" href="#worked-example_1" title="Permanent link">&para;</a></h3>
+<p><strong>Example 4-16. An agent confidently refactors the signal buffer — and introduces a use-after-free.</strong></p>
+<p>An agent is tasked with "modernizing the memory management in <code>sigbuf.c</code>." It reasons: <em>"The <code>s_alloc_table</code> is a fixed-size array with O(n) scan — I'll replace it with <code>std::unordered_set</code> for O(1) lookup. Safe, mechanical modernization."</em> The agent produces:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">/* sigbuf_modernized.c - agent-refactored version */</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;sigbuf.h&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_set&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstring&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="kt">char</span><span class="w"> </span><span class="n">g_signal_buf</span><span class="p">[</span><span class="n">SIG_BUF_SZ</span><span class="p">]</span><span class="w"> </span><span class="n">SIG_ALIGN</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">g_buf_lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="kt">int</span><span class="w"> </span><span class="n">g_init_done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">*&gt;*</span><span class="w"> </span><span class="n">s_alloc_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="kt">int</span><span class="w"> </span><span class="nf">sig_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">memset</span><span class="p">(</span><span class="n">g_signal_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">SIG_BUF_SZ</span><span class="p">);</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">s_alloc_set</span><span class="p">;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="n">s_alloc_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">*&gt;</span><span class="p">();</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="n">g_init_done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="n">g_buf_lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="p">}</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">sig_alloc_raw</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sz</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">malloc</span><span class="p">(</span><span class="n">sz</span><span class="p">);</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">s_alloc_set</span><span class="p">)</span><span class="w"> </span><span class="n">s_alloc_set</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="p">}</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="kt">void</span><span class="w"> </span><span class="nf">sig_free_raw</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s_alloc_set</span><span class="p">)</span><span class="w"> </span><span class="n">s_alloc_set</span><span class="o">-&gt;</span><span class="n">erase</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="p">}</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="kt">void</span><span class="w"> </span><span class="nf">sig_cleanup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s_alloc_set</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">*</span><span class="n">s_alloc_set</span><span class="p">)</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="n">s_alloc_set</span><span class="p">;</span><span class="w">  </span><span class="n">s_alloc_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="n">g_init_done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="p">}</span>
+</code></pre></div>
+<p>Here is what actually happens in production:</p>
+<ol>
+<li>
+<p><strong><code>extern "C"</code> ABI is broken.</strong> The original functions are declared with <code>extern "C"</code> linkage. The agent's implementation file now compiles as C++ (required for <code>std::unordered_set</code>), but without preserving the <code>extern "C"</code> wrapper around the function definitions, the compiled symbols use C++ name mangling. C translation units linking against these symbols get linker errors — or silently link to stale object files.</p>
+</li>
+<li>
+<p><strong>The timer ISR now races with C++ containers.</strong> The original <code>s_alloc_table</code> was a plain C array. Now, if any ISR-adjacent code path touches <code>s_alloc_set</code>, the <code>std::unordered_set</code> — which is not interrupt-safe — will corrupt its internal state.</p>
+</li>
+<li>
+<p><strong>Shutdown semantics changed.</strong> Legacy callers sometimes call <code>free()</code> directly instead of <code>sig_free_raw()</code>. The original code "managed" this by calling <code>sig_cleanup</code> before stale callers could trigger issues. The agent's version sets <code>s_alloc_set = nullptr</code> after cleanup, so any late <code>sig_free_raw</code> call dereferences null instead of the old benign no-op on the static array.</p>
+</li>
+</ol>
+<pre class="mermaid"><code>graph LR
+    subgraph "Agent's model"
+        A1[alloc] --&gt;|track| B1[set]
+        C1[free_raw] --&gt;|remove| B1
+        D1[cleanup] --&gt;|free all| B1
+        E1[Clean ✓]
+        style E1 fill:#51cf66,stroke:#2b8a3e
+    end
+    subgraph "Actual behavior"
+        A2[alloc] --&gt;|track| B2[set]
+        C2[Legacy free] --&gt;|still in set!| B2
+        D2[cleanup: double-free 💥] --&gt;B2
+        F2[ISR races container 💥] --&gt; B2
+        G2[Late call: nullptr 💥] --&gt; B2
+        style D2 fill:#ff6b6b,stroke:#c92a2a
+        style F2 fill:#ff6b6b,stroke:#c92a2a
+        style G2 fill:#ff6b6b,stroke:#c92a2a
+    end</code></pre>
+<blockquote>
+<p><strong>Pitfall:</strong> The agent's refactoring is <em>locally correct</em>. A senior developer reviewing only <code>sigbuf_modernized.c</code> would approve it. The bugs are <em>relational</em> — they exist in gaps between files. Context (Section 3.2) is a survival requirement.</p>
+<p><strong>Check-yourself:</strong> The agent's reasoning was plausible at every step. At which point in its chain of thought should a guardrail have intervened? What information would that guardrail need?</p>
+</blockquote>
+<details>
+<summary>Possible answers</summary>
+
+The guardrail should have intervened *before the agent wrote any code*:
+
+1. **Linkage check** — callers include C translation units requiring `extern "C"`.
+2. **ISR check** — `sigbuf.h` symbols are accessed from interrupt context.
+3. **Caller audit** — some callers `free()` directly, bypassing `sig_free_raw`.
+4. **Shutdown trace** — `sig_free_raw` can be called after `sig_cleanup`.
+
+Every check is a *mapping* operation, not a modification — the core insight of Loop 3.
+</details>
+
+<hr />
+<h2 id="loop-3-the-archaeological-dig-pattern">Loop 3: The Archaeological Dig Pattern<a class="headerlink" href="#loop-3-the-archaeological-dig-pattern" title="Permanent link">&para;</a></h2>
+<h3 id="concept_2">Concept<a class="headerlink" href="#concept_2" title="Permanent link">&para;</a></h3>
+<p>The lesson from Loops 1 and 2: agents must <strong>map before they modify</strong>. But "read the code first" is a platitude, not a pattern. The Archaeological Dig is a <em>structured, multi-phase, multi-agent</em> approach to building context before touching legacy code.</p>
+<p>The metaphor is deliberate. Real archaeologists don't start with a backhoe. They survey, grid the site, identify soil layers, and extract artifacts with brushes. Skipping a phase destroys information. The dig has four phases:</p>
+<p><strong>Phase 1 — Survey.</strong> Build the <em>real</em> dependency graph. Trace <code>#include</code> chains, symbol usage, macros that rewrite interfaces, and build flags that change compiled output.</p>
+<p><strong>Phase 2 — Stratigraphy.</strong> Identify temporal layers. Code from 1995 follows different conventions than patches from 2020. Use <code>git log</code>, timestamps, and coding style shifts.</p>
+<p><strong>Phase 3 — Contract Extraction.</strong> Infer implicit contracts from <em>usage patterns</em>, not signatures. Ownership contracts, synchronization protocols, call-ordering constraints.</p>
+<p><strong>Phase 4 — Safe Perimeter.</strong> Define the blast radius. Which files must change together? The safe perimeter is the <em>boundary of confidence</em>.</p>
+<p>This connects to Section 3.2: survey and stratigraphy are <em>context investment</em>, contract extraction builds <em>hyper-context</em>, and the perimeter is <em>context economics</em>. It maps to Section 4.2's pipeline pattern — each phase parallelizable, wirable as a Loom weave with abort-on-failure checkpoints.</p>
+<h3 id="worked-example_2">Worked Example<a class="headerlink" href="#worked-example_2" title="Permanent link">&para;</a></h3>
+<p><strong>Example 4-17. The Archaeological Dig applied to the telecom signal buffer.</strong></p>
+<p>Let's revisit <code>sigbuf.c</code> from Example 4-15 with the Archaeological Dig running before any modification.</p>
+<p><strong>Phase 1 — Survey results:</strong> A survey agent discovers:</p>
+<ul>
+<li><code>g_signal_buf</code> referenced in <strong>4 files</strong> (including <code>platform/timer.c</code> and <code>diag/memcheck.c</code>)</li>
+<li><code>sig_alloc_raw</code> called from <strong>47 translation units</strong> across three subsystems</li>
+<li><code>sig_process</code> has two signatures depending on <code>ENABLE_MULTICAST</code> (set in <code>Makefile.solaris</code> and <code>Makefile.embedded</code> only)</li>
+<li><code>hw_defs.h</code> redefines <code>memcpy</code> to a DMA-aware variant on embedded</li>
+</ul>
+<p><strong>Phase 2 — Stratigraphy results:</strong> Via <code>git log</code> and style analysis:</p>
+<ul>
+<li><strong>Layer 1 (1995):</strong> Core <code>sigbuf.c</code>/<code>.h</code>. C89 style. German comments. Author: K.M.</li>
+<li><strong>Layer 2 (2001):</strong> <code>ENABLE_MULTICAST</code> added via macro. Author: J.T.</li>
+<li><strong>Layer 3 (2008):</strong> <code>sig_alloc_raw</code>/<code>sig_free_raw</code> — "temporary" tracking for a memory leak investigation. Author: R.S.</li>
+<li><strong>Layer 4 (2019):</strong> <code>diag/memcheck.c</code> — reads <code>s_alloc_table</code> via extern backdoor. Author: intern (gone).</li>
+</ul>
+<p><strong>Phase 3 — Contract extraction results:</strong></p>
+<ul>
+<li><strong>Contract C1:</strong> <code>g_signal_buf</code> is accessed from ISR context (<code>timer.c</code>) without <code>g_buf_lock</code>. The ISR only <em>reads</em>; the main loop <em>writes</em>. Implicit lock-free protocol. <em>Cannot change buffer to dynamic allocation.</em></li>
+<li><strong>Contract C2:</strong> <code>sig_alloc_raw</code> callers split into two groups: 31 use <code>sig_free_raw</code> individually, 16 rely on <code>sig_cleanup</code> at shutdown. <em>Must preserve both patterns.</em></li>
+<li><strong>Contract C3:</strong> <code>sig_cleanup</code> must run after subsystem shutdown but before platform HAL teardown — enforced only by call order in <code>main.c:shutdown_system()</code>.</li>
+<li><strong>Contract C4:</strong> <code>diag/memcheck.c</code> reads <code>s_alloc_table</code> via <code>extern</code>. <em>Changing the data structure silently breaks diagnostics.</em></li>
+</ul>
+<p><strong>Phase 4 — Safe perimeter results:</strong></p>
+<ul>
+<li><strong>Safe to change:</strong> Internal implementation of alloc/free tracking, <em>if</em> the data structure stays C-compatible (for <code>diag/memcheck.c</code>) and both cleanup patterns are preserved.</li>
+<li><strong>Unsafe to change:</strong> <code>g_signal_buf</code> location (ISR), <code>extern "C"</code> signatures (linkage), <code>sig_cleanup</code> ordering (implicit sequencing).</li>
+<li><strong>Blast radius:</strong> <strong>52 files</strong> (47 callers + 4 buffer accessors + 1 diagnostic backdoor).</li>
+</ul>
+<p>The orchestration code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Example 4-17: Archaeological Dig pipeline orchestration</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Uses the Loom conceptual framework from Section 4.2</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span> <span class="nn">loom</span> <span class="kn">import</span> <span class="n">Weave</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Agent</span><span class="p">,</span> <span class="n">CheckpointPolicy</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">def</span> <span class="nf">archaeological_dig</span><span class="p">(</span><span class="n">target_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">refactor_goal</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DigReport</span><span class="p">:</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Four-phase archaeological dig before any code modification.&quot;&quot;&quot;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">weave</span> <span class="o">=</span> <span class="n">Weave</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;arch-dig-</span><span class="si">{</span><span class="n">target_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>                  <span class="n">checkpoint</span><span class="o">=</span><span class="n">CheckpointPolicy</span><span class="o">.</span><span class="n">BETWEEN_PHASES</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="c1"># Phase 1: Survey — build the real dependency graph</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="n">survey</span> <span class="o">=</span> <span class="n">weave</span><span class="o">.</span><span class="n">add_phase</span><span class="p">(</span><span class="n">Phase</span><span class="p">(</span><span class="s2">&quot;survey&quot;</span><span class="p">,</span> <span class="n">agents</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;include-tracer&quot;</span><span class="p">,</span>     <span class="n">task</span><span class="o">=</span><span class="s2">&quot;trace all #include chains from </span><span class="si">{target}</span><span class="s2">&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;symbol-xref&quot;</span><span class="p">,</span>        <span class="n">task</span><span class="o">=</span><span class="s2">&quot;find all references to symbols in </span><span class="si">{target}</span><span class="s2">&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;macro-expander&quot;</span><span class="p">,</span>     <span class="n">task</span><span class="o">=</span><span class="s2">&quot;identify macros affecting </span><span class="si">{target}</span><span class="s2"> signatures&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;build-flag-scanner&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">&quot;find build configs that change </span><span class="si">{target}</span><span class="s2">&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="p">],</span> <span class="n">fan_out</span><span class="o">=</span><span class="s2">&quot;parallel&quot;</span><span class="p">,</span> <span class="n">merge_strategy</span><span class="o">=</span><span class="s2">&quot;union_dependency_graph&quot;</span><span class="p">))</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    <span class="c1"># Phase 2: Stratigraphy — identify temporal layers</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="n">strat</span> <span class="o">=</span> <span class="n">weave</span><span class="o">.</span><span class="n">add_phase</span><span class="p">(</span><span class="n">Phase</span><span class="p">(</span><span class="s2">&quot;stratigraphy&quot;</span><span class="p">,</span> <span class="n">agents</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;git-archaeologist&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">&quot;analyze git log for </span><span class="si">{target}</span><span class="s2"> and deps&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;style-dater&quot;</span><span class="p">,</span>       <span class="n">task</span><span class="o">=</span><span class="s2">&quot;identify coding style eras in </span><span class="si">{target}</span><span class="s2">&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;comment-analyzer&quot;</span><span class="p">,</span>  <span class="n">task</span><span class="o">=</span><span class="s2">&quot;extract date/author info from comments&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>    <span class="p">],</span> <span class="n">fan_out</span><span class="o">=</span><span class="s2">&quot;parallel&quot;</span><span class="p">,</span> <span class="n">depends_on</span><span class="o">=</span><span class="p">[</span><span class="n">survey</span><span class="p">],</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>       <span class="n">merge_strategy</span><span class="o">=</span><span class="s2">&quot;temporal_layer_map&quot;</span><span class="p">))</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>    <span class="c1"># Phase 3: Contract extraction — infer implicit contracts</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>    <span class="n">contracts</span> <span class="o">=</span> <span class="n">weave</span><span class="o">.</span><span class="n">add_phase</span><span class="p">(</span><span class="n">Phase</span><span class="p">(</span><span class="s2">&quot;contracts&quot;</span><span class="p">,</span> <span class="n">agents</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;ownership-tracer&quot;</span><span class="p">,</span>   <span class="n">task</span><span class="o">=</span><span class="s2">&quot;determine alloc/free patterns&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;concurrency-mapper&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">&quot;identify ISR and thread access to shared state&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;ordering-analyzer&quot;</span><span class="p">,</span>  <span class="n">task</span><span class="o">=</span><span class="s2">&quot;extract implicit call-ordering constraints&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;backdoor-finder&quot;</span><span class="p">,</span>    <span class="n">task</span><span class="o">=</span><span class="s2">&quot;find extern access to file-static data&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>    <span class="p">],</span> <span class="n">fan_out</span><span class="o">=</span><span class="s2">&quot;parallel&quot;</span><span class="p">,</span> <span class="n">depends_on</span><span class="o">=</span><span class="p">[</span><span class="n">survey</span><span class="p">,</span> <span class="n">strat</span><span class="p">],</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>       <span class="n">merge_strategy</span><span class="o">=</span><span class="s2">&quot;contract_set&quot;</span><span class="p">))</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>    <span class="c1"># Phase 4: Safe perimeter — define blast radius</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>    <span class="n">weave</span><span class="o">.</span><span class="n">add_phase</span><span class="p">(</span><span class="n">Phase</span><span class="p">(</span><span class="s2">&quot;perimeter&quot;</span><span class="p">,</span> <span class="n">agents</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;perimeter-analyst&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="p">(</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>            <span class="sa">f</span><span class="s2">&quot;Given survey, stratigraphy, contracts, and goal=&#39;</span><span class="si">{</span><span class="n">refactor_goal</span><span class="si">}</span><span class="s2">&#39;: &quot;</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>            <span class="s2">&quot;define safe/unsafe modification boundaries and blast radius&quot;</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>        <span class="p">)),</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>    <span class="p">],</span> <span class="n">depends_on</span><span class="o">=</span><span class="p">[</span><span class="n">survey</span><span class="p">,</span> <span class="n">strat</span><span class="p">,</span> <span class="n">contracts</span><span class="p">]))</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>    <span class="k">return</span> <span class="n">weave</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span><span class="o">.</span><span class="n">as_dig_report</span><span class="p">()</span>
+</code></pre></div>
+<pre class="mermaid"><code>graph LR
+    subgraph "Phase 1: Survey"
+        S1[Include Tracer] &amp; S2[Symbol Xref] &amp; S3[Macro Expander] &amp; S4[Build Flags]
+    end
+    subgraph "Phase 2: Stratigraphy"
+        T1[Git Archaeologist] &amp; T2[Style Dater] &amp; T3[Comment Analyzer]
+    end
+    subgraph "Phase 3: Contracts"
+        C1[Ownership] &amp; C2[Concurrency] &amp; C3[Ordering] &amp; C4[Backdoors]
+    end
+    subgraph "Phase 4: Perimeter"
+        P1[Perimeter Analyst]
+    end
+    S1 &amp; S2 &amp; S3 &amp; S4 --&gt; T1 &amp; T2 &amp; T3
+    S1 &amp; S2 &amp; S3 &amp; S4 --&gt; C1 &amp; C2 &amp; C3 &amp; C4
+    T1 &amp; T2 &amp; T3 --&gt; C1 &amp; C2 &amp; C3 &amp; C4
+    C1 &amp; C2 &amp; C3 &amp; C4 --&gt; P1
+    P1 --&gt; R[Refactoring may proceed]
+    style R fill:#51cf66,stroke:#2b8a3e</code></pre>
+<blockquote>
+<p><strong>Key idea:</strong> The dig invested all its tokens in safe reconnaissance — zero spent on code modifications, all spent on building the map. The agent from Example 4-16 would have been stopped at Phase 3, when Contract C4 revealed the diagnostic backdoor.</p>
+<p><strong>Check-yourself:</strong> In the pipeline above, Phase 3 (Contract Extraction) depends on <em>both</em> Phase 1 (Survey) and Phase 2 (Stratigraphy). Why does it need stratigraphy results, not just the dependency graph? Think of a specific contract that can only be identified by knowing <em>when</em> code was written.</p>
+</blockquote>
+<details>
+<summary>Possible answer</summary>
+
+Contract C2 (the dual cleanup pattern) is only understandable with stratigraphy. The survey tells you 47 callers use `sig_alloc_raw`. Stratigraphy reveals the 16 relying on bulk `sig_cleanup` are from Layer 1 (1995), while the 31 using `sig_free_raw` are from Layer 3 (2008+). Without stratigraphy, a contract-extraction agent sees one inconsistent pattern. With it, the agent correctly identifies two *intentional* patterns from different eras — both must be preserved.
+</details>
+<h2 id="loop-4-incremental-modernization-the-strangler-fig-agent">Loop 4: Incremental Modernization — The Strangler Fig Agent<a class="headerlink" href="#loop-4-incremental-modernization-the-strangler-fig-agent" title="Permanent link">&para;</a></h2>
+<h3 id="concept_3">Concept<a class="headerlink" href="#concept_3" title="Permanent link">&para;</a></h3>
+<p>The archaeological dig from Loop 3 gave us a map. Now we need a strategy for <em>using</em> it — and the strategy is not "rewrite everything." It never is.</p>
+<p>The <strong>Strangler Fig pattern</strong> comes from Martin Fowler's observation of tropical trees that grow around their host, gradually replacing it while the original structure continues to bear weight. Applied to agentic refactoring:</p>
+<ol>
+<li><strong>Wrap</strong> — Create a modern C++ interface around the legacy module. New callers use the wrapper. Old callers keep using the C API.</li>
+<li><strong>Route</strong> — Gradually migrate callers from the legacy API to the wrapper. Each migration is one small PR, one build verification.</li>
+<li><strong>Retire</strong> — When zero callers remain on the legacy API, remove it.</li>
+</ol>
+<blockquote>
+<p><strong>Key idea:</strong> The strangler fig never breaks production because, at every step, <em>both</em> the old and new paths are live. If the wrapper introduces a bug, traffic routes back to the legacy API. If the legacy API has a latent defect, the wrapper can add the guardrail that was always missing.</p>
+</blockquote>
+<p>This connects directly to Section 4.2's orchestration model. Each wrap-route-retire cycle is a <strong>Loom weave</strong> — a DAG of agents that survey the caller, generate the wrapper delta, run the build gate, and request review. The dig report from Loop 3 feeds every weave as immutable context, ensuring no agent touches a contract it doesn't understand.</p>
+<blockquote>
+<p><strong>Warning:</strong> A strangler fig that wraps <em>too much</em> at once is just a rewrite in disguise. Keep each wrap to a single function or a tightly coupled function group. If the dig identified four contracts (C1–C4), each wrap should violate zero of them and <em>test</em> at least one.</p>
+</blockquote>
+<h3 id="worked-example_3">Worked Example<a class="headerlink" href="#worked-example_3" title="Permanent link">&para;</a></h3>
+<p><strong>Example 4-18. Strangler Fig wrapper for <code>sigbuf.c</code> — routing new callers through <code>SafeSignalBuffer</code>.</strong></p>
+<p>Recall from Example 4-15 that <code>sigbuf.c</code> exposes a C API with <code>sig_alloc_raw</code>, <code>sig_free_raw</code>, and <code>sig_cleanup</code>. The dig revealed four contracts (C1–C4). We cannot change the C API — the ISR in <code>platform/timer.c</code> calls it under spinlock, and 47 callers depend on it. But we <em>can</em> wrap it for new callers.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// safe_signal_buffer.h — Strangler Fig wrapper (Layer 4, 2024)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">// Wraps legacy sigbuf.c without modifying it.</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">// Contracts preserved: C1 (ISR lock-free), C2 (dual cleanup),</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">//                      C3 (shutdown ordering), C4 (diag backdoor)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="cp">#pragma once</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;sigbuf.h&quot;</span><span class="c1">  // Legacy C API — untouched</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">}</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstddef&gt;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;span&gt;</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="k">class</span><span class="w"> </span><span class="nc">SafeSignalBuffer</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="c1">// RAII wrapper — calls sig_alloc_raw on construction,</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="c1">// sig_free_raw on destruction (preserving C2 individual-free path)</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Handle</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="n">sig_buf_t</span><span class="o">*</span><span class="w"> </span><span class="n">raw</span><span class="p">;</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">        </span><span class="n">Handle</span><span class="p">(</span><span class="n">sig_buf_t</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">raw</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">        </span><span class="o">~</span><span class="n">Handle</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">raw</span><span class="p">)</span><span class="w"> </span><span class="n">sig_free_raw</span><span class="p">(</span><span class="n">raw</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">        </span><span class="n">Handle</span><span class="p">(</span><span class="n">Handle</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">raw</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">raw</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">raw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">        </span><span class="n">Handle</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Handle</span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="n">Handle</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Handle</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">        </span><span class="n">Handle</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Handle</span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">    </span><span class="c1">// Allocate a buffer through the legacy path.</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">    </span><span class="c1">// Returns nullopt if the legacy allocator is exhausted.</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">Handle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">allocate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">        </span><span class="n">sig_buf_t</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sig_alloc_raw</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Handle</span><span class="p">{</span><span class="n">p</span><span class="p">};</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">    </span><span class="c1">// Read-only view into a buffer — no ownership transfer.</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">    </span><span class="c1">// Safe for new callers that only inspect signal data.</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">span</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">view</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Handle</span><span class="o">&amp;</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">h</span><span class="p">.</span><span class="n">raw</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">raw</span><span class="o">-&gt;</span><span class="n">len</span><span class="p">};</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="w">    </span><span class="c1">// Legacy bulk cleanup — delegates to sig_cleanup().</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="w">    </span><span class="c1">// Only call from shutdown path (preserves C3 ordering).</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">shutdown_cleanup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="w">        </span><span class="n">sig_cleanup</span><span class="p">();</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a>
+<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="w">    </span><span class="n">SafeSignalBuffer</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span><span class="w">  </span><span class="c1">// No instances — static interface only</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="p">};</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Tip:</strong> Notice what the wrapper does <em>not</em> do: it does not replace <code>s_alloc_table</code>, it does not introduce <code>std::unordered_set</code>, and it does not touch the spinlock. Every allocation still flows through <code>sig_alloc_raw</code>. The wrapper adds safety (RAII, move semantics, <code>std::optional</code>) <em>on top of</em> the legacy layer.</p>
+</blockquote>
+<p>The orchestration pipeline for this wrap cycle uses a Loom weave:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># strangler_fig_weave.py — one wrap-route-retire cycle</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span> <span class="nn">loom</span> <span class="kn">import</span> <span class="n">Weave</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Agent</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">def</span> <span class="nf">strangler_fig_cycle</span><span class="p">(</span><span class="n">target_func</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dig_report</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Weave</span><span class="p">:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Run one Strangler Fig cycle for a single legacy function.&quot;&quot;&quot;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">weave</span> <span class="o">=</span> <span class="n">Weave</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;strangler-fig-</span><span class="si">{</span><span class="n">target_func</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="c1"># Step 1: Caller census — who calls the legacy function today?</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">census</span> <span class="o">=</span> <span class="n">weave</span><span class="o">.</span><span class="n">add_phase</span><span class="p">(</span><span class="n">Phase</span><span class="p">(</span><span class="s2">&quot;caller-census&quot;</span><span class="p">,</span> <span class="n">agents</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;caller-scanner&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>              <span class="n">task</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;List all call sites of </span><span class="si">{</span><span class="n">target_func</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>              <span class="n">context</span><span class="o">=</span><span class="n">dig_report</span><span class="p">),</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="p">]))</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="c1"># Step 2: Generate wrapper delta</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="n">wrapper</span> <span class="o">=</span> <span class="n">weave</span><span class="o">.</span><span class="n">add_phase</span><span class="p">(</span><span class="n">Phase</span><span class="p">(</span><span class="s2">&quot;wrapper-gen&quot;</span><span class="p">,</span> <span class="n">agents</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;wrapper-writer&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>              <span class="n">task</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Write RAII wrapper for </span><span class="si">{</span><span class="n">target_func</span><span class="si">}</span><span class="s2">, &quot;</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>                   <span class="sa">f</span><span class="s2">&quot;preserving contracts: </span><span class="si">{</span><span class="n">dig_report</span><span class="p">[</span><span class="s1">&#39;contracts&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="p">],</span> <span class="n">depends_on</span><span class="o">=</span><span class="p">[</span><span class="n">census</span><span class="p">]))</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>    <span class="c1"># Step 3: Build gate — compile the project with the wrapper added</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    <span class="n">build</span> <span class="o">=</span> <span class="n">weave</span><span class="o">.</span><span class="n">add_phase</span><span class="p">(</span><span class="n">Phase</span><span class="p">(</span><span class="s2">&quot;build-gate&quot;</span><span class="p">,</span> <span class="n">agents</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;builder&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">&quot;cmake --build . &amp;&amp; ctest --output-on-failure&quot;</span><span class="p">),</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>    <span class="p">],</span> <span class="n">depends_on</span><span class="o">=</span><span class="p">[</span><span class="n">wrapper</span><span class="p">],</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>       <span class="n">circuit_breaker</span><span class="o">=</span><span class="s2">&quot;fail_fast&quot;</span><span class="p">))</span>  <span class="c1"># Section 2.3 circuit breaker</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>    <span class="c1"># Step 4: Route one caller — migrate the newest caller first</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>    <span class="n">weave</span><span class="o">.</span><span class="n">add_phase</span><span class="p">(</span><span class="n">Phase</span><span class="p">(</span><span class="s2">&quot;route-one&quot;</span><span class="p">,</span> <span class="n">agents</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;migrator&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>              <span class="n">task</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Migrate newest caller of </span><span class="si">{</span><span class="n">target_func</span><span class="si">}</span><span class="s2"> to wrapper&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>              <span class="n">context</span><span class="o">=</span><span class="n">dig_report</span><span class="p">),</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>        <span class="n">Agent</span><span class="p">(</span><span class="s2">&quot;builder&quot;</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">&quot;cmake --build . &amp;&amp; ctest --output-on-failure&quot;</span><span class="p">),</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>    <span class="p">],</span> <span class="n">depends_on</span><span class="o">=</span><span class="p">[</span><span class="n">build</span><span class="p">],</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>       <span class="n">circuit_breaker</span><span class="o">=</span><span class="s2">&quot;fail_fast&quot;</span><span class="p">))</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>    <span class="k">return</span> <span class="n">weave</span>
+</code></pre></div>
+<pre class="mermaid"><code>graph TD
+    subgraph "Legacy Path (preserved)"
+        OC1[Old Caller 1&lt;br/&gt;platform/timer.c ISR] --&gt;|sig_alloc_raw| LIB[sigbuf.c&lt;br/&gt;Legacy C API]
+        OC2[Old Caller 2&lt;br/&gt;Layer 1 bulk cleanup] --&gt;|sig_cleanup| LIB
+        OC3[Old Caller 3...N&lt;br/&gt;31 individual-free callers] --&gt;|sig_free_raw| LIB
+    end
+
+    subgraph "Strangler Fig (new path)"
+        NC1[New Caller A] --&gt;|SafeSignalBuffer::allocate| W[SafeSignalBuffer&lt;br/&gt;C++ Wrapper]
+        NC2[New Caller B] --&gt;|SafeSignalBuffer::view| W
+        W --&gt;|sig_alloc_raw / sig_free_raw| LIB
+    end
+
+    subgraph "Migration Direction"
+        OC3 -.-&gt;|"migrate one at a time"| NC1
+    end
+
+    style W fill:#51cf66,stroke:#2b8a3e
+    style LIB fill:#ffd43b,stroke:#e67700</code></pre>
+<p>At every step, the legacy API is fully functional. Old callers are never forced to change. New callers get RAII, <code>std::optional</code>, and <code>std::span</code> — modern safety without modern risk.</p>
+<blockquote>
+<p><strong>Check-yourself:</strong> The <code>SafeSignalBuffer</code> wrapper preserves contract C1 (ISR lock-free access) by <em>not</em> introducing any C++ containers in the allocation path. But what about contract C4 — the diagnostic backdoor where <code>diag/memcheck.c</code> reads <code>s_alloc_table</code> via <code>extern</code>? Does the wrapper break it, and if not, why not?</p>
+</blockquote>
+<details>
+<summary>Possible answer</summary>
+
+The wrapper does not break C4 because it does not modify `sigbuf.c` at all. The static array `s_alloc_table[256]` remains in the legacy translation unit, still externally visible to `diag/memcheck.c`. The wrapper is a *pure addition* — a new header and new callers — with zero changes to the legacy source. This is the core strength of the strangler fig: it preserves every contract by construction, because it never touches the code those contracts depend on.
+</details>
+
+<hr />
+<h2 id="loop-5-guardrails-for-legacy-refactoring">Loop 5: Guardrails for Legacy Refactoring<a class="headerlink" href="#loop-5-guardrails-for-legacy-refactoring" title="Permanent link">&para;</a></h2>
+<h3 id="concept_4">Concept<a class="headerlink" href="#concept_4" title="Permanent link">&para;</a></h3>
+<p>The strangler fig gives us a <em>strategy</em>. Guardrails give us <em>confidence</em>. Even a well-structured migration can fail if the agent:</p>
+<ul>
+<li>Edits a macro-expanded signature without understanding the macro (Section 2.2: Context Poisoning)</li>
+<li>Generates code that compiles but silently changes semantics (Section 2.2: False-Positive Completion)</li>
+<li>Routes a caller through the wrapper when that caller was part of a shutdown-ordering contract (Section 2.2: Stale Context)</li>
+</ul>
+<p>Three guardrail categories prevent these failures:</p>
+<p><strong>1. AST-aware transforms.</strong> Don't let agents edit C++ as text. Use tree-sitter or clang's AST to parse the code, validate that a proposed change is structurally sound, and reject changes that alter nodes the agent wasn't asked to modify. This catches macro-soup errors — the agent sees the expanded code, but the guardrail checks the <em>unexpanded</em> AST.</p>
+<p><strong>2. Build-gate checkpoints.</strong> Compile after every atomic change. Not after a batch — after <em>every</em> change. If the build fails, the circuit breaker (Section 2.3) halts the pipeline and reverts. This catches false-positive completion: code that "looks right" but doesn't compile against the legacy headers.</p>
+<p><strong>3. Human review gates.</strong> Some changes cannot be validated mechanically. If a proposed diff touches any symbol listed in the dig report's contracts (C1–C4), the pipeline pauses and flags the change for human review. This is not a failure — it is the system working correctly.</p>
+<blockquote>
+<p><strong>Key idea:</strong> Guardrails are not optional bolt-ons. They are the difference between an agent that <em>might</em> produce correct code and a pipeline that <em>provably</em> preserves contracts. Map them to Section 2.2's failure taxonomy: AST transforms prevent Context Poisoning, build gates prevent False-Positive Completion, human gates prevent Stale Context escalation.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Guardrail</th>
+<th>Catches (Section 2.2)</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AST-aware transform</td>
+<td>Context Poisoning</td>
+<td>Parse before/after AST, diff only sanctioned nodes</td>
+</tr>
+<tr>
+<td>Build-gate checkpoint</td>
+<td>False-Positive Completion</td>
+<td><code>cmake --build</code> after every atomic change</td>
+</tr>
+<tr>
+<td>Human review gate</td>
+<td>Stale Context</td>
+<td>Flag diffs touching contract symbols</td>
+</tr>
+</tbody>
+</table>
+<h3 id="worked-example_4">Worked Example<a class="headerlink" href="#worked-example_4" title="Permanent link">&para;</a></h3>
+<p><strong>Example 4-19. Guardrail pipeline wrapping the Strangler Fig migration.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># guardrail_pipeline.yaml</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># Wraps each strangler fig cycle with three guardrail layers.</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># Integrates with Loom weaves from Section 4.2.</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nt">pipeline</span><span class="p">:</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigbuf-strangler-fig-guarded</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="nt">dig_report</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./reports/sigbuf_dig.json</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="nt">stages</span><span class="p">:</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ast-validate-proposal</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guardrail</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">      </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tree-sitter-cpp</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">      </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">        </span><span class="no">Parse the proposed diff into AST.</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">        </span><span class="no">Compare pre/post AST node sets.</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="no">REJECT if any node outside the sanctioned function is modified.</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">        </span><span class="no">REJECT if any #define macro is altered without explicit approval.</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">      </span><span class="nt">on_reject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abort_with_report</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">generate-wrapper</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">      </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sonnet</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">      </span><span class="nt">prompt</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">        </span><span class="no">Using the dig report at {dig_report}, generate a SafeSignalBuffer</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">        </span><span class="no">wrapper for the target function. Preserve all contracts.</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ast-validate-proposal</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build-gate</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkpoint</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cmake --build build/ &amp;&amp; ctest --test-dir build/ --output-on-failure</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">      </span><span class="nt">on_failure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">revert_and_halt</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="w">      </span><span class="nt">retry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">  </span><span class="c1"># No retries — if it doesn&#39;t compile, the change is wrong</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">contract-check</span>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guardrail</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="w">      </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="w">        </span><span class="no">Diff the proposed change against contract symbols from dig report.</span>
+<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="w">        </span><span class="no">Flag if ANY of the following are touched:</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a><span class="w">          </span><span class="no">- s_alloc_table (C4: diag backdoor)</span>
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a><span class="w">          </span><span class="no">- g_buf_lock (C1: ISR protocol)</span>
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a><span class="w">          </span><span class="no">- sig_cleanup call ordering (C3: shutdown sequence)</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a><span class="w">      </span><span class="nt">on_flag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pause_for_human_review</span>
+<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a>
+<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">route-caller</span>
+<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent</span>
+<a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="w">      </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sonnet</span>
+<a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a><span class="w">      </span><span class="nt">prompt</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a><span class="w">        </span><span class="no">Migrate the next caller from legacy API to SafeSignalBuffer.</span>
+<a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a><span class="w">        </span><span class="no">Do NOT migrate callers listed in contracts C1 or C3.</span>
+<a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a><span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">build-gate</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">contract-check</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a>
+<a id="__codelineno-6-52" name="__codelineno-6-52" href="#__codelineno-6-52"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">final-build-gate</span>
+<a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkpoint</span>
+<a id="__codelineno-6-54" name="__codelineno-6-54" href="#__codelineno-6-54"></a><span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cmake --build build/ &amp;&amp; ctest --test-dir build/ --output-on-failure</span>
+<a id="__codelineno-6-55" name="__codelineno-6-55" href="#__codelineno-6-55"></a><span class="w">      </span><span class="nt">on_failure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">revert_and_halt</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># guardrail_runner.py — Python implementation of the guardrail checks</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span> <span class="nn">subprocess</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span> <span class="nn">json</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">from</span> <span class="nn">tree_sitter</span> <span class="kn">import</span> <span class="n">Language</span><span class="p">,</span> <span class="n">Parser</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">def</span> <span class="nf">ast_guardrail</span><span class="p">(</span><span class="n">diff_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sanctioned_funcs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Reject diffs that modify AST nodes outside sanctioned functions.&quot;&quot;&quot;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="n">parser</span> <span class="o">=</span> <span class="n">Parser</span><span class="p">()</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="n">parser</span><span class="o">.</span><span class="n">set_language</span><span class="p">(</span><span class="n">Language</span><span class="p">(</span><span class="s2">&quot;build/languages.so&quot;</span><span class="p">,</span> <span class="s2">&quot;cpp&quot;</span><span class="p">))</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">diff_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>        <span class="n">new_code</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="n">tree</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">new_code</span><span class="p">,</span> <span class="s2">&quot;utf8&quot;</span><span class="p">))</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="n">modified_funcs</span> <span class="o">=</span> <span class="n">extract_modified_functions</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>    <span class="n">unsanctioned</span> <span class="o">=</span> <span class="n">modified_funcs</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">sanctioned_funcs</span><span class="p">)</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>    <span class="k">if</span> <span class="n">unsanctioned</span><span class="p">:</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;REJECTED: Unsanctioned modifications to: </span><span class="si">{</span><span class="n">unsanctioned</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>        <span class="k">return</span> <span class="kc">False</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>    <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="k">def</span> <span class="nf">build_gate</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Compile and test. No retries.&quot;&quot;&quot;</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>        <span class="p">[</span><span class="s2">&quot;cmake&quot;</span><span class="p">,</span> <span class="s2">&quot;--build&quot;</span><span class="p">,</span> <span class="s2">&quot;build/&quot;</span><span class="p">],</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>        <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>    <span class="p">)</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BUILD FAILED:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">[:</span><span class="mi">500</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>        <span class="k">return</span> <span class="kc">False</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>        <span class="p">[</span><span class="s2">&quot;ctest&quot;</span><span class="p">,</span> <span class="s2">&quot;--test-dir&quot;</span><span class="p">,</span> <span class="s2">&quot;build/&quot;</span><span class="p">,</span> <span class="s2">&quot;--output-on-failure&quot;</span><span class="p">],</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>        <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>    <span class="p">)</span>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TESTS FAILED:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">[:</span><span class="mi">500</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a>        <span class="k">return</span> <span class="kc">False</span>
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a>    <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a>
+<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="k">def</span> <span class="nf">contract_review_gate</span><span class="p">(</span><span class="n">diff_symbols</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">dig_report</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Flag changes touching contract symbols for human review.&quot;&quot;&quot;</span>
+<a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a>    <span class="n">contract_symbols</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a>    <span class="k">for</span> <span class="n">contract</span> <span class="ow">in</span> <span class="n">dig_report</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;contracts&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+<a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a>        <span class="n">contract_symbols</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">contract</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;symbols&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+<a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a>
+<a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a>    <span class="n">flagged</span> <span class="o">=</span> <span class="n">diff_symbols</span> <span class="o">&amp;</span> <span class="n">contract_symbols</span>
+<a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a>    <span class="k">if</span> <span class="n">flagged</span><span class="p">:</span>
+<a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;HUMAN_REVIEW: Diff touches contract symbols: </span><span class="si">{</span><span class="n">flagged</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a>    <span class="k">return</span> <span class="s2">&quot;AUTO_APPROVED&quot;</span>
+</code></pre></div>
+<pre class="mermaid"><code>flowchart TD
+    START([Agent proposes diff]) --&gt; AST{AST Guardrail&lt;br/&gt;tree-sitter parse}
+    AST --&gt;|"Unsanctioned nodes&lt;br/&gt;modified"| REJECT[Abort with report]
+    AST --&gt;|Pass| BUILD{Build Gate&lt;br/&gt;cmake + ctest}
+    BUILD --&gt;|Fail| REVERT[Revert and halt]
+    BUILD --&gt;|Pass| CONTRACT{Contract Check&lt;br/&gt;symbol diff vs dig report}
+    CONTRACT --&gt;|"Touches C1–C4&lt;br/&gt;symbols"| HUMAN[Pause for&lt;br/&gt;human review]
+    CONTRACT --&gt;|Clean| MERGE([Merge to main])
+    HUMAN --&gt;|Approved| MERGE
+    HUMAN --&gt;|Rejected| REVERT
+
+    style REJECT fill:#ff6b6b,stroke:#c92a2a
+    style REVERT fill:#ff6b6b,stroke:#c92a2a
+    style MERGE fill:#51cf66,stroke:#2b8a3e
+    style HUMAN fill:#ffd43b,stroke:#e67700</code></pre>
+<blockquote>
+<p><strong>Pitfall:</strong> It is tempting to add a retry loop after a build-gate failure ("just let the agent try again"). Don't. In legacy refactoring, a build failure means the agent's <em>model</em> of the code is wrong — retrying with the same context produces the same error or a worse one. This is Section 2.2's Retry Storm failure mode. Instead, abort, enrich the context with the build error, and restart the dig for that specific function.</p>
+<p><strong>Check-yourself:</strong> The guardrail pipeline has <em>two</em> build gates — one after generating the wrapper and one after routing a caller. Why not consolidate into a single build gate at the end?</p>
+</blockquote>
+<details>
+<summary>Possible answer</summary>
+
+Two build gates enforce the principle of *atomic verification*. If you only build at the end, a failure could be caused by either the wrapper generation or the caller migration — and you can't tell which. With two gates, the first confirms the wrapper compiles in isolation (no caller depends on it yet), and the second confirms the caller migration is correct. This also limits the blast radius: if the caller migration fails, you keep the wrapper and only revert the migration step, rather than losing all work.
+</details>
+
+<hr />
+<h2 id="what-we-built">What We Built<a class="headerlink" href="#what-we-built" title="Permanent link">&para;</a></h2>
+<p>By the end of Section 4.3, you have:</p>
+<ul>
+<li>
+<p><strong>The Archaeological Dig pattern</strong> (Loop 3) — A four-phase reconnaissance pipeline that maps include chains, temporal layers, implicit contracts, and blast radius <em>before</em> any agent modifies a line of code. Wired into Loom (Section 4.2) as a multi-agent DAG.</p>
+</li>
+<li>
+<p><strong>The Strangler Fig migration strategy</strong> (Loop 4) — An incremental wrap-route-retire approach that modernizes legacy C by adding safe C++ wrappers. Each cycle is a small, reviewable PR. Both old and new paths remain live at every step.</p>
+</li>
+<li>
+<p><strong>The Guardrail pipeline</strong> (Loop 5) — Three categories of automated safety checks (AST-aware transforms, build-gate checkpoints, human review gates) mapped to Section 2.2's failure taxonomy. Integrated into every strangler fig cycle.</p>
+</li>
+<li>
+<p><strong>A complete agentic refactoring system</strong> — The dig feeds the strangler fig, the strangler fig is wrapped by guardrails, and the whole pipeline runs on Section 4.1's threading model with Section 4.2's Loom orchestration. No agent acts alone; every agent is supervised.</p>
+</li>
+</ul>
+<hr />
+<h2 id="verification-checklist">Verification Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">&para;</a></h2>
+<p>Use this checklist to confirm you've internalized the key concepts:</p>
+<ul>
+<li>[ ] I can explain why an agent should never modify legacy code before completing the Archaeological Dig (Loop 3).</li>
+<li>[ ] I can list the four phases of the dig and explain what each produces (survey → stratigraphy → contracts → perimeter).</li>
+<li>[ ] I can describe the Strangler Fig pattern's three steps (wrap, route, retire) and explain why each step must pass a build gate.</li>
+<li>[ ] I can map each guardrail category to its corresponding Section 2.2 failure mode (AST → Context Poisoning, build gate → False-Positive Completion, human gate → Stale Context).</li>
+<li>[ ] I can explain why the wrapper in Example 4-18 preserves all four contracts (C1–C4) without modifying <code>sigbuf.c</code>.</li>
+<li>[ ] I can design a Loom weave (Section 4.2) that chains dig → strangler fig → guardrails into a single orchestrated pipeline.</li>
+</ul>
+<hr />
+<h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
+<p>Legacy refactoring is where agentic ambition meets engineering humility. The agent that rewrites <code>sigbuf.c</code> in a single pass is not being productive — it is being reckless. The agent that spends its first thousand tokens mapping contracts, its second thousand generating a thin wrapper, and its third thousand verifying the build is doing what senior engineers do: earning trust incrementally.</p>
+<p>The patterns in this section — dig, wrap, guard — are not specific to C++. They apply to any codebase where implicit contracts outnumber explicit tests. COBOL payroll systems, Fortran simulation codes, Perl CGI scripts — the language changes, the archaeology doesn't.</p>
+<h3 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h3>
+<p><strong>Exercise 4-19.</strong> Take the <code>SafeSignalBuffer</code> wrapper from Example 4-18 and extend it to handle the bulk-cleanup path (contract C2). Add a <code>shutdown_guard</code> mechanism that ensures <code>shutdown_cleanup()</code> can only be called once and only after all <code>Handle</code> instances have been destroyed. <em>(Hint: use <code>std::atomic&lt;int&gt;</code> to track live handles.)</em></p>
+<p><strong>Exercise 4-20.</strong> Write a tree-sitter query (or pseudo-query) that detects when an agent's proposed diff modifies a function whose body contains inline assembly (<code>asm</code> or <code>__asm__</code>). This is a common guardrail for embedded systems where agents should never touch hand-tuned assembly blocks.</p>
+<p><strong>Exercise 4-21.</strong> Design a guardrail pipeline (YAML or Python) for a legacy Java codebase that uses reflection heavily. Identify which guardrail category (AST, build-gate, or human review) handles each of these risks: (a) changing a method name that is invoked via <code>Method.invoke()</code>, (b) removing a class that is loaded via <code>Class.forName()</code>, (c) modifying a <code>synchronized</code> block's lock object.</p>
+<p><strong>Exercise 4-22. (Mini-project.)</strong> Choose a small open-source C or C++ library with no tests (many exist on GitHub with &lt;100 stars). Run the full Archaeological Dig pipeline manually: (1) map the include graph, (2) run <code>git log --follow</code> on the core files to identify style eras, (3) extract at least three implicit contracts, (4) define the safe perimeter. Then design (on paper or in code) a Strangler Fig migration plan that wraps one function with a safe C++ interface. Document the contracts your wrapper preserves and explain which guardrails you would deploy. Share your dig report and wrapper as a GitHub Gist.</p>
+<hr />
+<h2 id="wrapping-up-part-ii">Wrapping Up Part II<a class="headerlink" href="#wrapping-up-part-ii" title="Permanent link">&para;</a></h2>
+<p>Part II — <em>The Architectural Sovereigns</em> — opened with Steve Yegge's insight that context is the single most important resource in agentic systems (Chapter 3). We explored how infinite context windows, RAG pipelines, and Cody's context power plant give agents the raw material they need to reason about code. Then Jordan Hubbard's OS metaphor (Section 4.1) showed us that agents are threads competing for finite resources — tokens, model capacity, tool access — and that the same scheduling and isolation principles that make operating systems reliable make agentic systems reliable.</p>
+<p>Section 4.2's Loom framework gave those threads a coordination model: weaves, phases, fan-out strategies, and circuit breakers that turn individual agents into orchestrated pipelines. And this section — 4.3 — stress-tested the entire stack against legacy C++, the hardest refactoring problem in production software. The Archaeological Dig, Strangler Fig, and guardrail pipeline are not just patterns for old code — they are existence proofs that agentic systems can handle ambiguity, implicit contracts, and missing tests without producing false confidence.</p>
+<p>Part III — <em>The Harnesses and the Hyperscalers</em> — shifts from architecture to execution at scale. How do you test agentic pipelines that produce non-deterministic output? How do you deploy them across thousands of repositories? How do the hyperscalers — Google, Microsoft, Amazon — run agentic systems in production? The sovereigns gave us the blueprints. The harnesses will give us the assembly line.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../4.2%20Orchestration%20vs%20Execution%20The%20Loom%20Framework/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4.2 Orchestration vs. Execution: The Loom Framework">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                4.2 Orchestration vs. Execution: The Loom Framework
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../part3/5.1%20Leashing%20the%20Beast%20Tool-Calling%20and%20Sandboxed%20Execution/" class="md-footer__link md-footer__link--next" aria-label="Next: 5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

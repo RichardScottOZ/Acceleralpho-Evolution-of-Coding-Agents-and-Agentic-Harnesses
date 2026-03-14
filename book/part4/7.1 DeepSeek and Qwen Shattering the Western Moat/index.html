@@ -1,0 +1,3363 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A Strossian future history of the Boris era — the definitive guide to coding agents and agentic harnesses.">
+      
+      
+        <meta name="author" content="Acceleralpho">
+      
+      
+      
+        <link rel="prev" href="../../part3/6.3%20Security%20and%20Governance%20in%20the%20Age%20of%20Shadow%20Agents/">
+      
+      
+        <link rel="next" href="../7.2%20The%20Efficiency%20Gap%20High-Performance%20Coding%20on%20a%20Budget/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>7.1 DeepSeek and Qwen: Shattering the Western Moat - Acceleralpho: Evolution of Coding Agents and Agentic Harnesses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#71-deepseek-and-qwen-shattering-the-western-moat" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" class="md-header__button md-logo" aria-label="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Acceleralpho: Evolution of Coding Agents and Agentic Harnesses
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7.1 DeepSeek and Qwen: Shattering the Western Moat
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../table-of-contents/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Table of Contents
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part1/1.1%20The%20Great%20IDE%20Exodus/" class="md-tabs__link">
+          
+  
+  
+  Part I: The Pre-Cambrian Explosion
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part2/3.1%20Steve%20Yegge%20High-Throughput%20Agentic%20Environments/" class="md-tabs__link">
+          
+  
+  
+  Part II: The Architectural Sovereigns
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part3/5.1%20Leashing%20the%20Beast%20Tool-Calling%20and%20Sandboxed%20Execution/" class="md-tabs__link">
+          
+  
+  
+  Part III: The Harnesses and the Hyperscalers
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Part IV: Global Shifting and Open Frontiers
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part5/9.1%20Self-Healing%20Codebases%20and%20Autonomous%20Bug-Hunting/" class="md-tabs__link">
+          
+  
+  
+  Part V: The Acceleralpho Horizon
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../references/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  References
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" class="md-nav__button md-logo" aria-label="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Acceleralpho: Evolution of Coding Agents and Agentic Harnesses
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../table-of-contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Table of Contents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I: The Pre-Cambrian Explosion
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I: The Pre-Cambrian Explosion
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1: The Terminal is the Universe
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 1: The Terminal is the Universe
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.1%20The%20Great%20IDE%20Exodus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 The Great IDE Exodus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.2%20Claude%20Code%20The%20Boris%20Persona/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Claude Code — The Boris Persona
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.3%20The%20UX%20of%20Autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 The UX of Autonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2: The Ralph Wiggum Loop
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 2: The Ralph Wiggum Loop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.1%20I%27m%20in%20Danger%20Feedback%20Loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 I'm in Danger Feedback Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.2%20Recursive%20Failure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Recursive Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.3%20The%20Proverbial%20Glue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 The Proverbial Glue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II: The Architectural Sovereigns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II: The Architectural Sovereigns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3: Gas Town and the Context Engines
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 3: Gas Town and the Context Engines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/3.1%20Steve%20Yegge%20High-Throughput%20Agentic%20Environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Steve Yegge's Vision: High-Throughput Agentic Environments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/3.2%20Beyond%20RAG%20The%20Infinite%20Window/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Beyond RAG: The Infinite Window
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/3.3%20Cody%20and%20the%20Context%20Power%20Plant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Cody and the Context Power Plant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4: Loom — The Agentic Operating System
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 4: Loom — The Agentic Operating System
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/4.1%20LLMs%20as%20First-Class%20OS%20Citizens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 LLMs as First-Class OS Citizens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/4.2%20Orchestration%20vs%20Execution%20The%20Loom%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Orchestration vs. Execution: The Loom Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/4.3%20Refactoring%20the%20Past%20Legacy%20C%2B%2B%20via%20Agentic%20Threads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Refactoring the Past: Legacy C++ via Agentic Threads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III: The Harnesses and the Hyperscalers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III: The Harnesses and the Hyperscalers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5: The Harness Wars
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 5: The Harness Wars
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/5.1%20Leashing%20the%20Beast%20Tool-Calling%20and%20Sandboxed%20Execution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/5.2%20OpenRouter%20The%20Switzerland%20of%20the%20Model%20Wars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 OpenRouter: The Switzerland of the Model Wars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/5.3%20OpenCode%20and%20the%20Democratization%20of%20Agentic%20Access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 OpenCode and the Democratization of Agentic Access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6: The Containment Fields
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 6: The Containment Fields
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/6.1%20AWS%20Bedrock%20and%20Azure%20AI%20Foundry%20The%20Enterprise%20Response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 AWS Bedrock and Azure AI Foundry: The Enterprise Response
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/6.2%20The%20Copilot%20Workspace%20Agentifying%20the%20Pull%20Request/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 The Copilot Workspace: Agentifying the Pull Request
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/6.3%20Security%20and%20Governance%20in%20the%20Age%20of%20Shadow%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Security and Governance in the Age of Shadow Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV: Global Shifting and Open Frontiers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV: Global Shifting and Open Frontiers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7: The Dragon in the Machine
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 7: The Dragon in the Machine
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 DeepSeek and Qwen: Shattering the Western Moat
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 DeepSeek and Qwen: Shattering the Western Moat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-iv-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part IV Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-section-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this section matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deliverable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deliverable
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-loop-1-the-western-moat-assumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Loop 1 — The Western Moat Assumption
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Loop 1 — The Western Moat Assumption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-7-1-moat-component-simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 7-1. Moat Component Simulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-loop-2-deepseeks-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Loop 2 — DeepSeek's Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Loop 2 — DeepSeek&#39;s Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-7-2-moe-routing-simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 7-2. MoE Routing Simulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-loop-3-qwens-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Loop 3 — Qwen's Approach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Loop 3 — Qwen&#39;s Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-7-3-multilingual-code-completion-scorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 7-3. Multilingual Code Completion Scorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-loop-4-benchmark-reality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Loop 4 — Benchmark Reality
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Loop 4 — Benchmark Reality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-7-4-cost-efficiency-benchmark-ranker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 7-4. Cost-Efficiency Benchmark Ranker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-loop-5-what-the-moat-breaking-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Loop 5 — What the Moat Breaking Means
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Loop 5 — What the Moat Breaking Means">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-7-5-agent-fleet-cost-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 7-5. Agent Fleet Cost Calculator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What we built
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wrapping up — exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.2%20The%20Efficiency%20Gap%20High-Performance%20Coding%20on%20a%20Budget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 The Efficiency Gap: High-Performance Coding on a Budget
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.3%20The%20Geopolitics%20of%20Code%20Generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 The Geopolitics of Code Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8: The Open Source Insurgency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 8: The Open Source Insurgency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.1%20Aider%20OpenDevin%20and%20the%20Bazaar%20of%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Aider, OpenDevin, and the Bazaar of Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.2%20Local-First%20Running%20Boris%20on%20a%20Mac%20Studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 Local-First: Running Boris on a Mac Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.3%20The%20Rise%20of%20the%20Personal%20Agent%20Stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 The Rise of the Personal Agent Stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V: The Acceleralpho Horizon
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V: The Acceleralpho Horizon
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9: The End of the Human in the Loop
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 9: The End of the Human in the Loop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.1%20Self-Healing%20Codebases%20and%20Autonomous%20Bug-Hunting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1 Self-Healing Codebases and Autonomous Bug-Hunting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.2%20The%20Synthetic%20Senior%20Managing%20Intent%20vs%20Managing%20Code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2 The Synthetic Senior: Managing Intent vs. Managing Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.3%20The%20Psychopathology%20of%20AI-Driven%20Technical%20Debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3 The Psychopathology of AI-Driven Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10: The Strossian Singularity
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 10: The Strossian Singularity
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.1%20Vile%20Offspring%20Agents%20Writing%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.1 Vile Offspring: Agents Writing Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.2%20From%20Programmer%20to%20Agent%20Wrangler%20The%20New%20Career%20Path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.2 From Programmer to Agent Wrangler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.3%20Post-Code%20When%20Software%20is%20Grown%20Not%20Written/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.3 Post-Code: When Software is Grown, Not Written
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="71-deepseek-and-qwen-shattering-the-western-moat">7.1 DeepSeek and Qwen: Shattering the Western Moat<a class="headerlink" href="#71-deepseek-and-qwen-shattering-the-western-moat" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>How to read this section</strong></p>
+<p><em>Understand now:</em> Why the assumption that only US labs could build frontier coding models collapsed in late 2024 — and what that means for every architecture decision in this book so far. Internalize the idea that <strong>cost-per-token is now a design variable, not a constraint</strong>.</p>
+<p><em>Memorize:</em> Mixture-of-Experts (MoE) as the architectural trick that makes 671B parameters affordable. The 18× pricing gap between DeepSeek and GPT-4o. The shift from "one expensive generalist" to "many cheap specialists."</p>
+<p><em>Reference later:</em> The code examples (7-1 through 7-5) form a comparative analysis toolkit: moat modeling, MoE routing simulation, multilingual scoring, benchmark normalization, and fleet cost optimization. Return to the mermaid diagrams when designing multi-model agent architectures (Section 7.2).</p>
+</blockquote>
+<hr />
+<h2 id="part-iv-introduction">Part IV Introduction<a class="headerlink" href="#part-iv-introduction" title="Permanent link">&para;</a></h2>
+<p>Welcome to <strong>Part IV: Global Shifting and Open Frontiers</strong>. Parts I–III assumed a world where frontier models came from a handful of US labs — OpenAI, Anthropic, Google — and the architectural conversation revolved around how to <em>harness</em> those models. That world ended. In Part IV we map the new landscape: Chinese labs matching Western benchmarks at a fraction of the cost (this section), the efficiency revolution reshaping agent design (Section 7.2), and the open-weight ecosystem enabling entirely new deployment patterns (Section 7.3). The harness patterns from Section 2.3 and the orchestration frameworks from Section 4.2 remain valid — but the <em>economics</em> underneath them have changed fundamentally.</p>
+<hr />
+<h2 id="why-this-section-matters">Why this section matters<a class="headerlink" href="#why-this-section-matters" title="Permanent link">&para;</a></h2>
+<p>Every architecture in this book carried an implicit cost assumption. The agentic loops in Section 2.1 minimized wasted inference because tokens were expensive. The OpenRouter routing layer in Section 5.2 existed because model choice mattered economically. Those decisions were correct — but they assumed frontier inference cost $2.50–$3.00 per million input tokens.</p>
+<p>In late 2024, DeepSeek released V3 — a 671-billion-parameter model that matched GPT-4o on major coding benchmarks — priced at $0.14 per million input tokens. Eighteen times cheaper. Alibaba's Qwen2.5-Coder series open-sourced models from 0.5B to 32B parameters with 128K context windows and competitive scores. The "moat" that supposedly protected Western AI dominance turned out to be far more permeable than expected.</p>
+<p>When inference is nearly free, the optimal agent architecture changes: you can afford exploratory branches, redundant verification passes, and specialized expert models. The single-model assumption dies; the multi-model fleet is born.</p>
+<h2 id="deliverable">Deliverable<a class="headerlink" href="#deliverable" title="Permanent link">&para;</a></h2>
+<p>After completing this section, you will be able to: <strong>(1)</strong> explain why the Western AI moat proved weaker than assumed, <strong>(2)</strong> describe DeepSeek's MoE architecture and why it enables cheap frontier inference, <strong>(3)</strong> evaluate Qwen's multilingual advantages for global codebases, <strong>(4)</strong> compare models on cost-normalized benchmarks, and <strong>(5)</strong> design agent architectures that exploit the new pricing reality.</p>
+<hr />
+<h2 id="concept-loop-1-the-western-moat-assumption">Concept Loop 1 — The Western Moat Assumption<a class="headerlink" href="#concept-loop-1-the-western-moat-assumption" title="Permanent link">&para;</a></h2>
+<h3 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">&para;</a></h3>
+<p>Through most of 2023–2024, a consensus hardened in Silicon Valley: building frontier LLMs required <em>all four</em> of these components simultaneously — massive GPU clusters (tens of thousands of H100s), proprietary RLHF pipelines, top-tier ML talent concentrated in San Francisco and Seattle, and billions in venture capital. This was "the moat." If you lacked any single component, the argument went, you couldn't compete.</p>
+<p>The moat thesis felt bulletproof. OpenAI had reportedly spent over $100M training GPT-4. Anthropic raised $7.3B. Google had TPU farms the size of warehouses. How could anyone outside this ecosystem compete?</p>
+<blockquote>
+<p><strong>Key idea:</strong> The moat was real in <em>absolute terms</em> — those resources existed and mattered. It was wrong in <em>relative terms</em> — it assumed those were the <em>only</em> paths to frontier performance. DeepSeek and Qwen found cheaper paths through architectural innovation, open data, and algorithmic efficiency.</p>
+</blockquote>
+<h3 id="worked-example">Worked example<a class="headerlink" href="#worked-example" title="Permanent link">&para;</a></h3>
+<p>Model each moat component as a scored barrier. The Western labs maximized every dimension. The Chinese labs found ways to <em>route around</em> each barrier — not by matching the investment, but by substituting cleverness for capital.</p>
+<h3 id="example-7-1-moat-component-simulator">Example 7-1. Moat Component Simulator<a class="headerlink" href="#example-7-1-moat-component-simulator" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="sd">&quot;&quot;&quot;Example 7-1. Moat Component Simulator — modeling barrier strength vs counters.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">class</span> <span class="nc">MoatComponent</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">barrier</span><span class="p">:</span> <span class="nb">int</span>            <span class="c1"># 1-10: Western barrier strength</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">counter</span><span class="p">:</span> <span class="nb">str</span>            <span class="c1"># How Chinese labs overcame it</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">counter_eff</span><span class="p">:</span> <span class="nb">int</span>        <span class="c1"># 1-10: counter effectiveness</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">components</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">MoatComponent</span><span class="p">(</span><span class="s2">&quot;GPU Clusters&quot;</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;MoE: 37B of 671B active per token&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">MoatComponent</span><span class="p">(</span><span class="s2">&quot;Data Pipelines&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;Open web + synthetic data&quot;</span><span class="p">,</span>         <span class="mi">6</span><span class="p">),</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">MoatComponent</span><span class="p">(</span><span class="s2">&quot;ML Talent&quot;</span><span class="p">,</span>      <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;Top Chinese unis + diaspora&quot;</span><span class="p">,</span>       <span class="mi">7</span><span class="p">),</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">MoatComponent</span><span class="p">(</span><span class="s2">&quot;Capital&quot;</span><span class="p">,</span>        <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;$5.5M training via efficiency&quot;</span><span class="p">,</span>      <span class="mi">9</span><span class="p">),</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">]</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WESTERN AI MOAT ANALYSIS&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">:</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="n">residual</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">barrier</span> <span class="o">-</span> <span class="n">c</span><span class="o">.</span><span class="n">counter_eff</span><span class="p">)</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">barrier</span><span class="si">}</span><span class="s2">/10 → </span><span class="si">{</span><span class="n">residual</span><span class="si">}</span><span class="s2">/10  [</span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">counter</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="n">before</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">barrier</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">components</span><span class="p">)</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="n">after</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">barrier</span> <span class="o">-</span> <span class="n">c</span><span class="o">.</span><span class="n">counter_eff</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">components</span><span class="p">)</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  Before: </span><span class="si">{</span><span class="n">before</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">  After: </span><span class="si">{</span><span class="n">after</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">  Erosion: </span><span class="si">{</span><span class="n">before</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">after</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="c1"># Key output: Before: 8.0  After: 0.8  Erosion: 7.2</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Pitfall:</strong> Don't confuse "the moat eroded" with "the moat never existed." The Western labs' investment was real and created genuine advantages. The lesson is that <em>architectural innovation can substitute for brute-force scaling</em> — a theme we'll revisit throughout Part IV.</p>
+</blockquote>
+<h3 id="check-yourself">✅ Check yourself<a class="headerlink" href="#check-yourself" title="Permanent link">&para;</a></h3>
+<details><summary>Which moat component was <em>most</em> effectively countered, and how?</summary>
+
+**Capital.** DeepSeek trained V3 for ~$5.5M — roughly 1/20th of comparable Western models. MoE architecture neutralized the capital barrier almost entirely.
+
+</details>
+
+<hr />
+<h2 id="concept-loop-2-deepseeks-architecture">Concept Loop 2 — DeepSeek's Architecture<a class="headerlink" href="#concept-loop-2-deepseeks-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="concept_1">Concept<a class="headerlink" href="#concept_1" title="Permanent link">&para;</a></h3>
+<p>DeepSeek-V3 is a <strong>671-billion-parameter Mixture-of-Experts (MoE)</strong> model with 256 expert sub-networks. For each input token, a learned router selects the top 8 experts — meaning only ~37B parameters are active per forward pass. This is the core trick: you get the <em>knowledge capacity</em> of 671B parameters with the <em>compute cost</em> of 37B.</p>
+<p>Two architectural innovations stand out:</p>
+<ol>
+<li>
+<p><strong>Multi-head Latent Attention (MLA).</strong> Standard transformers store full key-value pairs for every attention head, which balloons memory usage at long context lengths (cross-ref Section 3.2). MLA compresses key-value pairs into a low-rank latent space, dramatically reducing KV-cache size without sacrificing attention quality.</p>
+</li>
+<li>
+<p><strong>DeepSeek-R1 (reasoning).</strong> A separate reasoning model that uses chain-of-thought distillation from a larger teacher model. Rather than training reasoning from scratch, R1 <em>distills</em> structured thinking patterns — making it cheaper to produce while retaining strong performance on multi-step coding tasks.</p>
+</li>
+</ol>
+<p>The training cost for V3: approximately <strong>$5.5 million</strong>. For context, GPT-4 reportedly cost over $100M, and Claude 3's training budget was in a similar range.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["Input Token"] --&gt; B["Learned Router"]
+    B --&gt; C{"Select Top 8\nof 256 Experts"}
+    C --&gt; E1["Expert 14\n(active)"]
+    C --&gt; E2["Expert 87\n(active)"]
+    C --&gt; E3["Expert 203\n(active)"]
+    C --&gt; E4["... 5 more\n(active)"]
+    C -.-&gt; EX["248 Experts\n(dormant)"]
+    E1 --&gt; F["Weighted Sum"]
+    E2 --&gt; F
+    E3 --&gt; F
+    E4 --&gt; F
+    F --&gt; G["Output Token"]
+
+    style EX fill:#555,stroke:#888,color:#aaa
+    style E1 fill:#2d6,stroke:#191,color:#fff
+    style E2 fill:#2d6,stroke:#191,color:#fff
+    style E3 fill:#2d6,stroke:#191,color:#fff
+    style E4 fill:#2d6,stroke:#191,color:#fff</code></pre>
+<blockquote>
+<p><strong>Key idea:</strong> MoE is not new — Google's Switch Transformer explored it in 2021. DeepSeek's contribution was scaling it to 671B parameters with stable training and effective routing, proving that MoE could compete at the frontier without frontier-scale compute budgets.</p>
+</blockquote>
+<h3 id="worked-example_1">Worked example<a class="headerlink" href="#worked-example_1" title="Permanent link">&para;</a></h3>
+<p>Simulate the MoE routing process. Given an input token embedding, the router produces a score for each expert; only the top-k are activated. This demonstrates why 671B parameters doesn't mean 671B parameters of compute cost.</p>
+<h3 id="example-7-2-moe-routing-simulator">Example 7-2. MoE Routing Simulator<a class="headerlink" href="#example-7-2-moe-routing-simulator" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="sd">&quot;&quot;&quot;Example 7-2. MoE Routing Simulator — demonstrating how Mixture-of-Experts</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="sd">activates only a fraction of total parameters per token.&quot;&quot;&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kn">import</span> <span class="nn">random</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">class</span> <span class="nc">Expert</span><span class="p">:</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="n">expert_id</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="n">specialization</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="n">params_billions</span><span class="p">:</span> <span class="nb">float</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="k">class</span> <span class="nc">MoERouter</span><span class="p">:</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="n">experts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Expert</span><span class="p">]</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    <span class="nd">@property</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>    <span class="k">def</span> <span class="nf">total_params_b</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">params_billions</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experts</span><span class="p">)</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>    <span class="nd">@property</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    <span class="k">def</span> <span class="nf">active_params_b</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>            <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">experts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">params_billions</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="bp">self</span><span class="o">.</span><span class="n">top_k</span><span class="p">]</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>        <span class="p">)</span> <span class="k">if</span> <span class="kc">False</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">top_k</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total_params_b</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">experts</span><span class="p">))</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>    <span class="k">def</span> <span class="nf">route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Expert</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Simulate routing: generate scores, pick top-k experts.&quot;&quot;&quot;</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>        <span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experts</span><span class="p">]</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>        <span class="n">indexed</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>        <span class="n">top_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">indexed</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">top_k</span><span class="p">]]</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>        <span class="n">top_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">score</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">indexed</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">top_k</span><span class="p">]]</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>        <span class="c1"># Normalize scores to sum to 1</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>        <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">top_scores</span><span class="p">)</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>        <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="o">/</span> <span class="n">total</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">top_scores</span><span class="p">]</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>        <span class="n">selected</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">experts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">top_indices</span><span class="p">]</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>        <span class="k">return</span> <span class="n">selected</span><span class="p">,</span> <span class="n">weights</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="c1"># Build a simplified DeepSeek-V3-like router (256 experts, top-8)</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="n">specializations</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;JavaScript&quot;</span><span class="p">,</span> <span class="s2">&quot;SQL&quot;</span><span class="p">,</span> <span class="s2">&quot;Rust&quot;</span><span class="p">,</span> <span class="s2">&quot;Go&quot;</span><span class="p">,</span> <span class="s2">&quot;Java&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>                   <span class="s2">&quot;C++&quot;</span><span class="p">,</span> <span class="s2">&quot;TypeScript&quot;</span><span class="p">,</span> <span class="s2">&quot;API design&quot;</span><span class="p">,</span> <span class="s2">&quot;Testing&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>                   <span class="s2">&quot;Algorithms&quot;</span><span class="p">,</span> <span class="s2">&quot;Data structures&quot;</span><span class="p">,</span> <span class="s2">&quot;System design&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>                   <span class="s2">&quot;Security&quot;</span><span class="p">,</span> <span class="s2">&quot;Error handling&quot;</span><span class="p">,</span> <span class="s2">&quot;Documentation&quot;</span><span class="p">]</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="n">experts</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>    <span class="n">Expert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">specializations</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">specializations</span><span class="p">)],</span> <span class="mf">671.0</span> <span class="o">/</span> <span class="mi">256</span><span class="p">)</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="p">]</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="n">router</span> <span class="o">=</span> <span class="n">MoERouter</span><span class="p">(</span><span class="n">experts</span><span class="o">=</span><span class="n">experts</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a>
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="c1"># Route a sample token</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="n">selected</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">router</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;def fibonacci(n):&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">experts</span><span class="p">)</span><span class="si">}</span><span class="s2"> experts | Active: </span><span class="si">{</span><span class="n">router</span><span class="o">.</span><span class="n">top_k</span><span class="si">}</span><span class="s2"> per token&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Params: </span><span class="si">{</span><span class="n">router</span><span class="o">.</span><span class="n">total_params_b</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">B total, </span><span class="si">{</span><span class="n">router</span><span class="o">.</span><span class="n">top_k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">experts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">params_billions</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">B active&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Compute savings: </span><span class="si">{</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">router</span><span class="o">.</span><span class="n">top_k</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">experts</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Top experts for &#39;def fibonacci(n):&#39;: &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">expert_id</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">specialization</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">selected</span><span class="p">[:</span><span class="mi">4</span><span class="p">]))</span>
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="c1"># Key output: 256 experts, 8 active, 96.9% compute savings</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Tip:</strong> The real DeepSeek router uses learned embeddings and a load-balancing auxiliary loss to prevent "expert collapse" (where a few popular experts handle everything). Our simulation uses random scores, but the <em>structural insight</em> — 96.9% of parameters are dormant per token — matches the production system.</p>
+</blockquote>
+<h3 id="check-yourself_1">✅ Check yourself<a class="headerlink" href="#check-yourself_1" title="Permanent link">&para;</a></h3>
+<details><summary>If DeepSeek-V3 has 256 experts and activates 8 per token, what percentage of total parameters are used per forward pass?</summary>
+
+**3.125%** (8 ÷ 256 = 0.03125). This means the model gets the knowledge capacity of 671B parameters while only paying the compute cost of roughly 37B active parameters — about 5.5% when including shared layers like embeddings and the router itself.
+
+</details>
+
+<hr />
+<h2 id="concept-loop-3-qwens-approach">Concept Loop 3 — Qwen's Approach<a class="headerlink" href="#concept-loop-3-qwens-approach" title="Permanent link">&para;</a></h2>
+<h3 id="concept_2">Concept<a class="headerlink" href="#concept_2" title="Permanent link">&para;</a></h3>
+<p>Alibaba's <strong>Qwen2.5-Coder</strong> series took a different path. Where DeepSeek bet on architectural novelty (MoE at extreme scale), Qwen bet on three strategic advantages:</p>
+<ol>
+<li>
+<p><strong>Multilingual training data.</strong> Most Western models trained predominantly on English code. Qwen's corpus included substantial CJK (Chinese, Japanese, Korean) content — code comments, documentation, and developer forums. For 1.5+ billion developers working primarily in non-English languages, this matters enormously.</p>
+</li>
+<li>
+<p><strong>Open-weights strategy.</strong> The Qwen2.5-Coder series spans 0.5B to 32B parameters, all open-weight — enabling community fine-tuning, on-premises deployment, and domain adaptation (the same pattern from Section 5.3).</p>
+</li>
+<li>
+<p><strong>128K context windows.</strong> Matching the longest windows available (cross-ref Section 3.2), enabling entire module hierarchies in a single prompt.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Key idea:</strong> Qwen's moat-breaking strategy wasn't just "build a good model" — it was <em>serve an underserved market</em>. Western models optimized for English-speaking developers writing Python and JavaScript. Qwen optimized for the global developer population, including those writing code with CJK comments, documentation, and variable names.</p>
+</blockquote>
+<h3 id="worked-example_2">Worked example<a class="headerlink" href="#worked-example_2" title="Permanent link">&para;</a></h3>
+<p>Compare model performance across language families. A codebase with Chinese comments and mixed CJK identifiers will score differently on a Western-trained model vs. Qwen. This simulation models that gap.</p>
+<h3 id="example-7-3-multilingual-code-completion-scorer">Example 7-3. Multilingual Code Completion Scorer<a class="headerlink" href="#example-7-3-multilingual-code-completion-scorer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="sd">&quot;&quot;&quot;Example 7-3. Multilingual Code Completion Scorer — comparing model</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="sd">performance across language families in code contexts.&quot;&quot;&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">class</span> <span class="nc">Model</span><span class="p">:</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">latin</span><span class="p">:</span> <span class="nb">float</span><span class="p">;</span> <span class="n">cjk</span><span class="p">:</span> <span class="nb">float</span><span class="p">;</span> <span class="n">mixed</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># quality scores 0-100</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">class</span> <span class="nc">Codebase</span><span class="p">:</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="n">latin_r</span><span class="p">:</span> <span class="nb">float</span><span class="p">;</span> <span class="n">cjk_r</span><span class="p">:</span> <span class="nb">float</span><span class="p">;</span> <span class="n">mixed_r</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># content ratios</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">cb</span><span class="p">:</span> <span class="n">Codebase</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">latin</span> <span class="o">*</span> <span class="n">cb</span><span class="o">.</span><span class="n">latin_r</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">cjk</span> <span class="o">*</span> <span class="n">cb</span><span class="o">.</span><span class="n">cjk_r</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">mixed</span> <span class="o">*</span> <span class="n">cb</span><span class="o">.</span><span class="n">mixed_r</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;GPT-4o&quot;</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Claude 3.5 Sonnet&quot;</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">67</span><span class="p">),</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>          <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Qwen2.5-Coder-32B&quot;</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">89</span><span class="p">),</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;DeepSeek-V3&quot;</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">83</span><span class="p">)]</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="n">codebases</span> <span class="o">=</span> <span class="p">[</span><span class="n">Codebase</span><span class="p">(</span><span class="s2">&quot;US SaaS&quot;</span><span class="p">,</span>      <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">),</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>             <span class="n">Codebase</span><span class="p">(</span><span class="s2">&quot;JP fintech&quot;</span><span class="p">,</span>    <span class="mf">0.40</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">),</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>             <span class="n">Codebase</span><span class="p">(</span><span class="s2">&quot;CN e-commerce&quot;</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">)]</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Model&#39;</span><span class="si">:</span><span class="s2">&lt;22</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Codebase&#39;</span><span class="si">:</span><span class="s2">&lt;16</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Score&#39;</span><span class="si">:</span><span class="s2">&gt;6</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">46</span><span class="p">)</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="k">for</span> <span class="n">cb</span> <span class="ow">in</span> <span class="n">codebases</span><span class="p">:</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;22</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">cb</span><span class="o">.</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;16</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">score</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">cb</span><span class="p">)</span><span class="si">:</span><span class="s2">&gt;6</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>    <span class="nb">print</span><span class="p">()</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="c1"># Key output: Qwen leads on CJK codebases (89.5–89.8)</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="c1"># Western models lead on Latin codebases (90.7–92.7)</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Warning:</strong> The scores above are <em>illustrative approximations</em>, not benchmarked measurements. Real multilingual code quality is hard to measure because most benchmarks (HumanEval, MBPP) use English-only prompts. The directional insight — that Qwen excels on CJK-heavy codebases — is well-supported by community reports and Alibaba's published evaluations.</p>
+</blockquote>
+<h3 id="check-yourself_2">✅ Check yourself<a class="headerlink" href="#check-yourself_2" title="Permanent link">&para;</a></h3>
+<details><summary>Why does Qwen2.5-Coder score lower on the US SaaS codebase but dominate on CJK-heavy codebases?</summary>
+
+**Training data distribution.** Western models trained predominantly on English code, giving them an edge on Latin-script codebases. Qwen's training included substantially more CJK content, so it handles mixed-script contexts far better.
+
+</details>
+
+<hr />
+<h2 id="concept-loop-4-benchmark-reality">Concept Loop 4 — Benchmark Reality<a class="headerlink" href="#concept-loop-4-benchmark-reality" title="Permanent link">&para;</a></h2>
+<h3 id="concept_3">Concept<a class="headerlink" href="#concept_3" title="Permanent link">&para;</a></h3>
+<p>Claims are cheap; benchmarks are how we keep score. Here's where the major models stand on coding-specific evaluations:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Params</th>
+<th>HumanEval</th>
+<th>MBPP</th>
+<th>SWE-bench (lite)</th>
+<th>Cost/1M input tokens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-4o</td>
+<td>~1.8T (est.)</td>
+<td>~90%</td>
+<td>~88%</td>
+<td>~33%</td>
+<td>$2.50</td>
+</tr>
+<tr>
+<td>Claude 3.5 Sonnet</td>
+<td>undisclosed</td>
+<td>~92%</td>
+<td>~87%</td>
+<td>~49%</td>
+<td>$3.00</td>
+</tr>
+<tr>
+<td>DeepSeek-V3</td>
+<td>671B (37B active)</td>
+<td>~82%</td>
+<td>~82%</td>
+<td>~42%</td>
+<td>$0.14</td>
+</tr>
+<tr>
+<td>Qwen2.5-Coder-32B</td>
+<td>32B</td>
+<td>~92%</td>
+<td>~80%</td>
+<td>~28%</td>
+<td>~$0.20 (self-hosted)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Key idea:</strong> Look at the cost column. DeepSeek-V3 is 18× cheaper than GPT-4o and 21× cheaper than Claude 3.5 Sonnet — while scoring within 10 percentage points on HumanEval and MBPP. For many agent workloads, that tradeoff is overwhelmingly worth it.</p>
+</blockquote>
+<p>The benchmark story gets more nuanced on SWE-bench, which tests real-world bug fixing on actual GitHub repos. Claude 3.5 Sonnet leads there — suggesting raw coding ability (HumanEval) and real-world debugging require different capabilities. This is why multi-model architectures matter (Section 7.2).</p>
+<pre class="mermaid"><code>quadrantChart
+    title Benchmark Score vs Cost per 1M Tokens
+    x-axis Low Cost --&gt; High Cost
+    y-axis Low Score --&gt; High Score
+    quadrant-1 Premium performers
+    quadrant-2 Best value
+    quadrant-3 Budget tier
+    quadrant-4 Overpriced
+    Claude 3.5 Sonnet: [0.85, 0.92]
+    GPT-4o: [0.75, 0.90]
+    DeepSeek-V3: [0.10, 0.82]
+    Qwen2.5-Coder-32B: [0.12, 0.85]</code></pre>
+<h3 id="worked-example_3">Worked example<a class="headerlink" href="#worked-example_3" title="Permanent link">&para;</a></h3>
+<p>Build a benchmark comparison engine that normalizes scores across different benchmarks and ranks models by cost-efficiency — score per dollar.</p>
+<h3 id="example-7-4-cost-efficiency-benchmark-ranker">Example 7-4. Cost-Efficiency Benchmark Ranker<a class="headerlink" href="#example-7-4-cost-efficiency-benchmark-ranker" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="sd">&quot;&quot;&quot;Example 7-4. Cost-Efficiency Benchmark Ranker — normalizing benchmark</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="sd">scores and ranking models by score-per-dollar.&quot;&quot;&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">class</span> <span class="nc">ModelBenchmark</span><span class="p">:</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">params_desc</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">scores</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>       <span class="c1"># benchmark_name -&gt; score (0-100)</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="n">cost_per_m_input</span><span class="p">:</span> <span class="nb">float</span>        <span class="c1"># USD per 1M input tokens</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="k">class</span> <span class="nc">RankedModel</span><span class="p">:</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    <span class="n">avg_score</span><span class="p">:</span> <span class="nb">float</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    <span class="n">cost_per_m</span><span class="p">:</span> <span class="nb">float</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    <span class="n">efficiency</span><span class="p">:</span> <span class="nb">float</span>              <span class="c1"># avg_score / cost_per_m</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="k">def</span> <span class="nf">rank_by_efficiency</span><span class="p">(</span><span class="n">models</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ModelBenchmark</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">RankedModel</span><span class="p">]:</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Rank models by cost-efficiency: average benchmark score per dollar.&quot;&quot;&quot;</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>    <span class="n">ranked</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RankedModel</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>        <span class="n">avg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">scores</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">scores</span><span class="p">)</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">scores</span> <span class="k">else</span> <span class="mi">0</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>        <span class="n">eff</span> <span class="o">=</span> <span class="n">avg</span> <span class="o">/</span> <span class="n">m</span><span class="o">.</span><span class="n">cost_per_m_input</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">cost_per_m_input</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>        <span class="n">ranked</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RankedModel</span><span class="p">(</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>            <span class="n">name</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">avg_score</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">avg</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>            <span class="n">cost_per_m</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">cost_per_m_input</span><span class="p">,</span> <span class="n">efficiency</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">eff</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>        <span class="p">))</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>    <span class="n">ranked</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">efficiency</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>    <span class="k">return</span> <span class="n">ranked</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="n">models</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>    <span class="n">ModelBenchmark</span><span class="p">(</span><span class="s2">&quot;GPT-4o&quot;</span><span class="p">,</span> <span class="s2">&quot;~1.8T (est.)&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>                   <span class="p">{</span><span class="s2">&quot;HumanEval&quot;</span><span class="p">:</span> <span class="mf">90.0</span><span class="p">,</span> <span class="s2">&quot;MBPP&quot;</span><span class="p">:</span> <span class="mf">88.0</span><span class="p">,</span> <span class="s2">&quot;SWE-bench&quot;</span><span class="p">:</span> <span class="mf">33.0</span><span class="p">},</span> <span class="mf">2.50</span><span class="p">),</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>    <span class="n">ModelBenchmark</span><span class="p">(</span><span class="s2">&quot;Claude 3.5 Sonnet&quot;</span><span class="p">,</span> <span class="s2">&quot;undisclosed&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>                   <span class="p">{</span><span class="s2">&quot;HumanEval&quot;</span><span class="p">:</span> <span class="mf">92.0</span><span class="p">,</span> <span class="s2">&quot;MBPP&quot;</span><span class="p">:</span> <span class="mf">87.0</span><span class="p">,</span> <span class="s2">&quot;SWE-bench&quot;</span><span class="p">:</span> <span class="mf">49.0</span><span class="p">},</span> <span class="mf">3.00</span><span class="p">),</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>    <span class="n">ModelBenchmark</span><span class="p">(</span><span class="s2">&quot;DeepSeek-V3&quot;</span><span class="p">,</span> <span class="s2">&quot;671B (37B active)&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>                   <span class="p">{</span><span class="s2">&quot;HumanEval&quot;</span><span class="p">:</span> <span class="mf">82.0</span><span class="p">,</span> <span class="s2">&quot;MBPP&quot;</span><span class="p">:</span> <span class="mf">82.0</span><span class="p">,</span> <span class="s2">&quot;SWE-bench&quot;</span><span class="p">:</span> <span class="mf">42.0</span><span class="p">},</span> <span class="mf">0.14</span><span class="p">),</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a>    <span class="n">ModelBenchmark</span><span class="p">(</span><span class="s2">&quot;Qwen2.5-Coder-32B&quot;</span><span class="p">,</span> <span class="s2">&quot;32B&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a>                   <span class="p">{</span><span class="s2">&quot;HumanEval&quot;</span><span class="p">:</span> <span class="mf">92.0</span><span class="p">,</span> <span class="s2">&quot;MBPP&quot;</span><span class="p">:</span> <span class="mf">80.0</span><span class="p">,</span> <span class="s2">&quot;SWE-bench&quot;</span><span class="p">:</span> <span class="mf">28.0</span><span class="p">},</span> <span class="mf">0.20</span><span class="p">),</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="p">]</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a>
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="n">leaderboard</span> <span class="o">=</span> <span class="n">rank_by_efficiency</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;COST-EFFICIENCY LEADERBOARD&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">65</span><span class="p">)</span>
+<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Rank&#39;</span><span class="si">:</span><span class="s2">&lt;5</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Model&#39;</span><span class="si">:</span><span class="s2">&lt;22</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Avg&#39;</span><span class="si">:</span><span class="s2">&gt;5</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;$/1M&#39;</span><span class="si">:</span><span class="s2">&gt;7</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Score/$&#39;</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">65</span><span class="p">)</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">leaderboard</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">&lt;3</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;22</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">avg_score</span><span class="si">:</span><span class="s2">&gt;5</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">cost_per_m</span><span class="si">:</span><span class="s2">&gt;7.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">efficiency</span><span class="si">:</span><span class="s2">&gt;10.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">65</span><span class="p">)</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Score/$ = average benchmark score ÷ cost per 1M input tokens&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Higher is better. DeepSeek-V3 delivers ~17x the value of GPT-4o.&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a>
+<a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a><span class="c1"># Key output:</span>
+<a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a><span class="c1">#   #1 DeepSeek-V3         avg 68.7  $0.14  score/$ 490.5</span>
+<a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a><span class="c1">#   #2 Qwen2.5-Coder-32B   avg 66.7  $0.20  score/$ 333.3</span>
+<a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a><span class="c1">#   #3 GPT-4o              avg 70.3  $2.50  score/$  28.1</span>
+<a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a><span class="c1">#   #4 Claude 3.5 Sonnet    avg 76.0  $3.00  score/$  25.3</span>
+<a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a><span class="c1"># DeepSeek delivers ~17x the value of GPT-4o per dollar.</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Tip:</strong> Cost-efficiency isn't the <em>only</em> metric. If your agent needs SWE-bench-level real-world debugging, Claude 3.5 Sonnet's premium is justified. The insight is that <em>most</em> agent tasks don't require the absolute best model — they need "good enough" inference at massive scale. This is where cheap models dominate.</p>
+</blockquote>
+<h3 id="check-yourself_3">✅ Check yourself<a class="headerlink" href="#check-yourself_3" title="Permanent link">&para;</a></h3>
+<details><summary>DeepSeek-V3 ranks #1 in cost-efficiency but #4 in raw average score. When would you choose GPT-4o or Claude?</summary>
+
+Choose premium models when the task requires complex multi-file debugging (SWE-bench-style), when first-pass accuracy matters more than cost (Section 2.1), or when the cost of a wrong answer exceeds the token cost — e.g., production database migrations. For exploratory tasks and verification passes, DeepSeek's 18× cost advantage makes it the default.
+
+</details>
+
+<hr />
+<h2 id="concept-loop-5-what-the-moat-breaking-means">Concept Loop 5 — What the Moat Breaking Means<a class="headerlink" href="#concept-loop-5-what-the-moat-breaking-means" title="Permanent link">&para;</a></h2>
+<h3 id="concept_4">Concept<a class="headerlink" href="#concept_4" title="Permanent link">&para;</a></h3>
+<p>The price collapse isn't just a nice discount — it fundamentally changes how agents should be architected. Consider the old and new paradigms:</p>
+<p><strong>Old architecture (2023):</strong> One expensive model does everything. Every token is precious. Minimize inference calls. The harness exists to <em>reduce</em> model usage.</p>
+<p><strong>New architecture (2025):</strong> A fleet of cheap specialized models handles different tasks. Tokens are nearly free. Maximize exploratory branches. The harness exists to <em>route</em> between models.</p>
+<p>This is the shift from <strong>cost-constrained agents</strong> to <strong>cost-optimized fleets</strong>. Section 5.2 on OpenRouter becomes even more important in this world — it's the routing layer that makes model-switching transparent.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph OLD["Old: Single Expensive Model (2023)"]
+        U1["User Task"] --&gt; M1["GPT-4 @ $30/1M tokens"]
+        M1 --&gt; O1["Output"]
+    end
+    subgraph NEW["New: Multi-Model Fleet (2025)"]
+        U2["User Task"] --&gt; R["Router\n(Section 5.2)"]
+        R --&gt;|"Code gen"| C1["DeepSeek-V3\n$0.14/1M"]
+        R --&gt;|"Debugging"| C2["Claude 3.5\n$3.00/1M"]
+        R --&gt;|"CJK docs"| C3["Qwen2.5\n$0.20/1M"]
+        C1 --&gt; O2["Verified\nOutput"]
+        C2 --&gt; O2
+        C3 --&gt; O2
+    end
+
+    style OLD fill:#422,stroke:#a44
+    style NEW fill:#242,stroke:#4a4</code></pre>
+<blockquote>
+<p><strong>Key idea:</strong> When inference is cheap, the optimal strategy is to <em>spend more tokens, not fewer</em>. Run the code-generation model three times and pick the best output. Run a separate verification model. Use a specialized model for each language. The moat breaking didn't just lower costs — it changed the <em>shape</em> of optimal agent design.</p>
+</blockquote>
+<h3 id="worked-example_4">Worked example<a class="headerlink" href="#worked-example_4" title="Permanent link">&para;</a></h3>
+<p>Compare the total cost of running a single expensive model vs. a fleet of cheap models for a realistic agent workload — say, 100 coding tasks of varying types.</p>
+<h3 id="example-7-5-agent-fleet-cost-calculator">Example 7-5. Agent Fleet Cost Calculator<a class="headerlink" href="#example-7-5-agent-fleet-cost-calculator" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="sd">&quot;&quot;&quot;Example 7-5. Agent Fleet Cost Calculator — single-model vs multi-model fleet.&quot;&quot;&quot;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">class</span> <span class="nc">Task</span><span class="p">:</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">category</span><span class="p">:</span> <span class="nb">str</span><span class="p">;</span> <span class="n">count</span><span class="p">:</span> <span class="nb">int</span><span class="p">;</span> <span class="n">avg_tokens_k</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="k">class</span> <span class="nc">Model</span><span class="p">:</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">;</span> <span class="n">cost_per_m</span><span class="p">:</span> <span class="nb">float</span><span class="p">;</span> <span class="n">quality</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="k">def</span> <span class="nf">calc_cost</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">tasks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Task</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="n">cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">count</span> <span class="o">*</span> <span class="n">t</span><span class="o">.</span><span class="n">avg_tokens_k</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">cost_per_m</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">)</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    <span class="n">n</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">count</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">)</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="n">qual</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">quality</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">category</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span><span class="o">.</span><span class="n">count</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">qual</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">Task</span><span class="p">(</span><span class="s2">&quot;codegen&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">Task</span><span class="p">(</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>         <span class="n">Task</span><span class="p">(</span><span class="s2">&quot;cjk_docs&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">Task</span><span class="p">(</span><span class="s2">&quot;review&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="n">gpt</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;GPT-4o&quot;</span><span class="p">,</span> <span class="mf">2.50</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;codegen&quot;</span><span class="p">:</span> <span class="mi">88</span><span class="p">,</span> <span class="s2">&quot;debug&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s2">&quot;cjk_docs&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s2">&quot;review&quot;</span><span class="p">:</span> <span class="mi">89</span><span class="p">})</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="n">ds</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;DeepSeek-V3&quot;</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;codegen&quot;</span><span class="p">:</span> <span class="mi">82</span><span class="p">,</span> <span class="s2">&quot;debug&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span> <span class="s2">&quot;cjk_docs&quot;</span><span class="p">:</span> <span class="mi">83</span><span class="p">,</span> <span class="s2">&quot;review&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">})</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="n">cl</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Claude 3.5&quot;</span><span class="p">,</span> <span class="mf">3.00</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;codegen&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s2">&quot;debug&quot;</span><span class="p">:</span> <span class="mi">94</span><span class="p">,</span> <span class="s2">&quot;cjk_docs&quot;</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="s2">&quot;review&quot;</span><span class="p">:</span> <span class="mi">91</span><span class="p">})</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="n">qw</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Qwen2.5&quot;</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;codegen&quot;</span><span class="p">:</span> <span class="mi">86</span><span class="p">,</span> <span class="s2">&quot;debug&quot;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="s2">&quot;cjk_docs&quot;</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span> <span class="s2">&quot;review&quot;</span><span class="p">:</span> <span class="mi">82</span><span class="p">})</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="c1"># Fleet routes each category to best-fit model</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="n">fleet_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;codegen&quot;</span><span class="p">:</span> <span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;debug&quot;</span><span class="p">:</span> <span class="n">cl</span><span class="p">,</span> <span class="s2">&quot;cjk_docs&quot;</span><span class="p">:</span> <span class="n">qw</span><span class="p">,</span> <span class="s2">&quot;review&quot;</span><span class="p">:</span> <span class="n">ds</span><span class="p">}</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="n">fleet_cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">count</span> <span class="o">*</span> <span class="n">t</span><span class="o">.</span><span class="n">avg_tokens_k</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">fleet_map</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">cost_per_m</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">)</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="n">fleet_qual</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">fleet_map</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">quality</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">category</span><span class="p">]</span> <span class="o">*</span> <span class="n">t</span><span class="o">.</span><span class="n">count</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">)</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">count</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">)</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="n">gpt</span><span class="p">,</span> <span class="n">cl</span><span class="p">,</span> <span class="n">ds</span><span class="p">]:</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>    <span class="n">c</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">calc_cost</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Single </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;12</span><span class="si">}</span><span class="s2"> $</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">&gt;5.2f</span><span class="si">}</span><span class="s2">  quality </span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Fleet (routed)    $</span><span class="si">{</span><span class="n">fleet_cost</span><span class="si">:</span><span class="s2">&gt;5.2f</span><span class="si">}</span><span class="s2">  quality </span><span class="si">{</span><span class="n">fleet_qual</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">  ← best value&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="c1"># Key output: Fleet $0.99 quality 85.5 vs Single GPT-4o $2.31 quality 85.1</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Pitfall:</strong> Fleet architectures add routing complexity. You need the infrastructure from Section 5.2 (OpenRouter) to switch models transparently, and the monitoring from Section 6.3 to track which model handled which task. The cost savings are real, but don't underestimate the operational overhead of managing multiple model providers.</p>
+</blockquote>
+<h3 id="check-yourself_4">✅ Check yourself<a class="headerlink" href="#check-yourself_4" title="Permanent link">&para;</a></h3>
+<details><summary>Why does the fleet architecture achieve near-premium quality at a fraction of the cost?</summary>
+
+**Selective spending.** The fleet routes Claude ($3.00/M) only to debugging — where it's clearly superior — and uses DeepSeek ($0.14/M) or Qwen ($0.20/M) for everything else. Since debugging is only 20% of the workload, the premium cost is contained. Total fleet spend ($0.99) is less than half of single-model GPT-4o ($2.31) while matching quality (85.5 vs 85.1).
+
+</details>
+
+<hr />
+<h2 id="what-we-built">What we built<a class="headerlink" href="#what-we-built" title="Permanent link">&para;</a></h2>
+<p>This section traced the collapse of the Western AI moat through five lenses:</p>
+<ol>
+<li><strong>Moat analysis</strong> — the four barriers (compute, data, talent, capital) and how each was circumvented through architectural innovation and efficiency.</li>
+<li><strong>MoE architecture</strong> — DeepSeek-V3's 671B-parameter model that activates only 37B per token, cutting compute cost by 97%.</li>
+<li><strong>Multilingual advantage</strong> — Qwen2.5-Coder's dominance on CJK-heavy codebases, serving the underserved global developer population.</li>
+<li><strong>Benchmark normalization</strong> — a cost-efficiency framework showing DeepSeek delivers ~17× the value of Western models per dollar.</li>
+<li><strong>Fleet architecture</strong> — the shift from single expensive models to routed specialist fleets, enabled by the pricing collapse.</li>
+</ol>
+<h2 id="verification-checklist">Verification checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Example 7-1 runs and shows moat erosion from 8.0 to 0.8</li>
+<li>[ ] Example 7-2 demonstrates 96.9% compute savings from MoE routing</li>
+<li>[ ] Example 7-3 shows Qwen outscoring Western models on CJK codebases</li>
+<li>[ ] Example 7-4 ranks DeepSeek #1 in cost-efficiency with ~490 score/$</li>
+<li>[ ] Example 7-5 shows fleet architecture at $0.99 vs $2.31 for single GPT-4o</li>
+<li>[ ] All Mermaid diagrams render (MoE routing, quadrant chart, fleet comparison)</li>
+<li>[ ] Cross-references to Sections 2.1, 3.2, 5.2, 5.3, 6.1, 6.3, and 7.2 are present</li>
+</ul>
+<h2 id="wrapping-up-exercises">Wrapping up — exercises<a class="headerlink" href="#wrapping-up-exercises" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Extend the moat model.</strong> Add a fifth component — <em>regulatory environment</em> (export controls on H100s to China). How does this change the residual moat score? Does it strengthen or weaken the moat thesis?</p>
+</li>
+<li>
+<p><strong>Build a dynamic router.</strong> Modify Example 7-5 to route based on <em>estimated task difficulty</em> rather than fixed categories. If a code-generation task looks complex (e.g., multi-file refactoring), route it to Claude; if it's simple (single-function generation), route to DeepSeek.</p>
+</li>
+<li>
+<p><strong>Benchmark your own workload.</strong> Take a week of your actual coding tasks and categorize them. Using the cost numbers from the benchmark table, calculate how much you'd save switching from a single premium model to a fleet architecture. What percentage of your tasks truly need the most expensive model?</p>
+</li>
+</ol>
+<hr />
+<p><em>Next: Section 7.2 explores the </em><em>efficiency gap</em><em> — how algorithmic improvements are compounding faster than hardware improvements, and what this means for the agent architectures we build.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../part3/6.3%20Security%20and%20Governance%20in%20the%20Age%20of%20Shadow%20Agents/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 6.3 Security and Governance in the Age of Shadow Agents">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                6.3 Security and Governance in the Age of Shadow Agents
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../7.2%20The%20Efficiency%20Gap%20High-Performance%20Coding%20on%20a%20Budget/" class="md-footer__link md-footer__link--next" aria-label="Next: 7.2 The Efficiency Gap: High-Performance Coding on a Budget">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                7.2 The Efficiency Gap: High-Performance Coding on a Budget
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
