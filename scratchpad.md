@@ -21,7 +21,10 @@
 - [x] Callouts: 3 Key ideas, 2 Tips, 1 Warning, 1 Pitfall, 5 Check yourself prompts.
 
 ### 1.3 The UX of Autonomy: Streaming, State, and CLI Sovereignty
-- [ ] Draft via sub-agent; pair with screenshots or CLI transcripts.
+- [x] Drafted and verified. Five concept loops: streaming trust, layered progress, state management, CLI sovereignty, UX anti-patterns.
+- [x] Examples 1-11 through 1-17 with CLI transcripts and code examples.
+- [x] Mermaid diagram showing three-layer progress model (token stream → status lines → milestone summaries).
+- [x] Callouts: 2 Key ideas, 2 Tips, 2 Warnings, 2 Pitfalls, 5 Check yourself prompts.
 
 ### 2.1 Geoffrey Huntley's "I'm in Danger" Feedback Loops
 - [x] Created and verified — use as the template for all future chapter sub-agent prompts.
