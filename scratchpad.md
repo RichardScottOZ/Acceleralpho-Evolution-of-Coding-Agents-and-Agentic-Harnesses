@@ -15,7 +15,10 @@
 - [x] Code examples verified (Example 1-1, 1-5).
 
 ### 1.2 Claude Code: The "Boris" Persona and Systems Inhabitation
-- [ ] Draft via sub-agent with terminal-first workflow examples.
+- [x] Drafted and verified. Five concept loops: systems inhabitation, Boris persona, git-awareness, psychological shift, permission model.
+- [x] Examples 1-6 through 1-10 with realistic terminal transcripts.
+- [x] Mermaid diagram showing full interaction loop (inner autonomous + outer human-in-the-loop).
+- [x] Callouts: 3 Key ideas, 2 Tips, 1 Warning, 1 Pitfall, 5 Check yourself prompts.
 
 ### 1.3 The UX of Autonomy: Streaming, State, and CLI Sovereignty
 - [ ] Draft via sub-agent; pair with screenshots or CLI transcripts.
@@ -32,7 +35,7 @@
 
 ## Next orchestrator actions
 
-1. Select the next chapter to write (recommendation: 1.2 to complete Part I before moving to Part II).
+1. Select the next chapter to write (recommendation: 1.3 to complete Part I before moving to Part II).
 2. Launch a sub-agent with the chapter-writer prompt template from `RESEARCH_LOOP_PROMPT.md`.
 3. After the sub-agent finishes, update this file and `docs/chapter_tracker.md`.
 4. Commit with `report_progress`.
