@@ -63,9 +63,13 @@
 - [x] Drafted. Six concept loops: LLMs as external services, threading metaphor, scheduling/resource management, inter-agent IPC, security/isolation, Loom architecture.
 - [x] Examples 4-1 through 4-7. Six mermaid diagrams.
 
+### 4.2 Orchestration vs. Execution: The Loom Framework
+- [x] Drafted. Five concept loops: orchestration problem, orchestration vs execution, multi-agent patterns, Loom weave model, failure handling.
+- [x] Examples 4-8 through 4-14. Seven mermaid diagrams. 16 callouts. 4 exercises.
+
 ## Next orchestrator actions
 
-1. Part I is complete (1.1–2.3). Part II has 3.1–3.3 and 4.1 complete.
-2. Delegate remaining Part II chapters (4.2–4.3) to sub-agents.
+1. Part I is complete (1.1–2.3). Part II has 3.1–3.3, 4.1, and 4.2 complete.
+2. Delegate remaining Part II chapter (4.3) to sub-agents.
 3. Continue through Parts III–V (5.1–6.3, 7.1–8.3, 9.1–10.3).
 4. After all chapters drafted, run a verification pass on code examples.
