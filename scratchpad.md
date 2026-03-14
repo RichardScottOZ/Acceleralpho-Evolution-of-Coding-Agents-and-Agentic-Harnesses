@@ -48,9 +48,16 @@
 - [x] 15 callouts (5 Key idea, 4 Tip, 2 Warning, 4 Pitfall). 6 retrieval-practice exercises.
 - [x] Connects back to Section 1.1 (IDE exodus), Section 2.2 (stale context failure mode), and Section 2.3 (harness layer).
 
+### 3.2 Beyond RAG: The Infinite Window and Hyper-Context
+- [x] Drafted and verified. Five concept loops: naive RAG failure modes, context economics, Infinite Window architecture, hyper-context strategies, practical context pipeline.
+- [x] Examples 3-5 through 3-9. Three mermaid diagrams: RAG pipeline, RAG vs Infinite Window, hyper-context pipeline layers.
+- [x] All five Python code examples verified from ./src.
+- [x] 12+ callouts (4 Key idea, 3 Tip, 2 Warning, 3 Pitfall). 6 exercises (3-7 through 3-12).
+- [x] Connects to Section 2.2 (stale context), Section 2.3 (harness layer), Section 3.1 (Gas Town).
+
 ## Next orchestrator actions
 
-1. Part I is complete (1.1–2.3). Section 3.1 of Part II is complete.
-2. Delegate remaining Part II chapters (3.2, 3.3, 4.1–4.3) to sub-agents.
+1. Part I is complete (1.1–2.3). Sections 3.1–3.2 of Part II are complete.
+2. Delegate remaining Part II chapters (3.3, 4.1–4.3) to sub-agents.
 3. Continue through Parts III–V.
 4. After all chapters drafted, run a verification pass on code examples.
