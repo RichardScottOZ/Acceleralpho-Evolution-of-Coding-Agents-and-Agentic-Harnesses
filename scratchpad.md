@@ -96,9 +96,15 @@
 - [x] Drafted via split sub-agent approach. Five concept loops: legacy code problem, why agents fail, archaeological dig, strangler fig, guardrails.
 - [x] Examples 4-15 through 4-19. Closes Part II with retrospective.
 
+### 6.3 Security and Governance in the Age of Shadow Agents
+- [x] Drafted and verified. Five concept loops: shadow agent problem, prompt injection/tool abuse, supply chain risks, governance framework, security-first culture.
+- [x] Examples 6-11 through 6-15. Three mermaid diagrams. All five Python examples verified from ./src.
+- [x] Cross-references Sections 2.2, 2.3, 5.1, 6.1, 6.2.
+- [x] Closes Part III with "Wrapping Up Part III" retrospective bridging to Part IV.
+
 ## Next orchestrator actions
 
-1. Parts I and II are complete (1.1–4.3). Part III has 5.1–5.3, 6.1, and 6.2 complete.
-2. Delegate remaining Part III chapter (6.3) to sub-agents.
-3. Continue through Parts IV–V (7.1–8.3, 9.1–10.3).
+1. Parts I, II, and III are complete (1.1–6.3).
+2. Delegate Part IV chapters (7.1–8.3) to sub-agents.
+3. Continue through Part V (9.1–10.3).
 4. After all chapters drafted, run a verification pass on code examples.
