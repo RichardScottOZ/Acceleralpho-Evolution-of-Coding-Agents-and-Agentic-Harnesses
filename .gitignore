@@ -154,9 +154,9 @@ venv.bak/
 # mkdocs documentation
 /site
 
-# Generated book output (built by build_book.sh / mkdocs build)
-/book/
-/book.pdf
+# Generated book output is intentionally committed to the repository
+# /book/
+# /book.pdf
 
 # mypy
 .mypy_cache/

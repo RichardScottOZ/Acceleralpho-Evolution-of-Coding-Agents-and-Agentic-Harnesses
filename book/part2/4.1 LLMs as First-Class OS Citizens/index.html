@@ -1,0 +1,3774 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A Strossian future history of the Boris era — the definitive guide to coding agents and agentic harnesses.">
+      
+      
+        <meta name="author" content="Acceleralpho">
+      
+      
+      
+        <link rel="prev" href="../3.3%20Cody%20and%20the%20Context%20Power%20Plant/">
+      
+      
+        <link rel="next" href="../4.2%20Orchestration%20vs%20Execution%20The%20Loom%20Framework/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>4.1 LLMs as First-Class OS Citizens - Acceleralpho: Evolution of Coding Agents and Agentic Harnesses</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#41-jordan-hubbards-threading-llms-as-first-class-os-citizens" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" class="md-header__button md-logo" aria-label="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Acceleralpho: Evolution of Coding Agents and Agentic Harnesses
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.1 LLMs as First-Class OS Citizens
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../table-of-contents/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Table of Contents
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part1/1.1%20The%20Great%20IDE%20Exodus/" class="md-tabs__link">
+          
+  
+  
+  Part I: The Pre-Cambrian Explosion
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../3.1%20Steve%20Yegge%20High-Throughput%20Agentic%20Environments/" class="md-tabs__link">
+          
+  
+  
+  Part II: The Architectural Sovereigns
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part3/5.1%20Leashing%20the%20Beast%20Tool-Calling%20and%20Sandboxed%20Execution/" class="md-tabs__link">
+          
+  
+  
+  Part III: The Harnesses and the Hyperscalers
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part4/7.1%20DeepSeek%20and%20Qwen%20Shattering%20the%20Western%20Moat/" class="md-tabs__link">
+          
+  
+  
+  Part IV: Global Shifting and Open Frontiers
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part5/9.1%20Self-Healing%20Codebases%20and%20Autonomous%20Bug-Hunting/" class="md-tabs__link">
+          
+  
+  
+  Part V: The Acceleralpho Horizon
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../references/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  References
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" class="md-nav__button md-logo" aria-label="Acceleralpho: Evolution of Coding Agents and Agentic Harnesses" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Acceleralpho: Evolution of Coding Agents and Agentic Harnesses
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../table-of-contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Table of Contents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I: The Pre-Cambrian Explosion
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I: The Pre-Cambrian Explosion
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1: The Terminal is the Universe
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 1: The Terminal is the Universe
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.1%20The%20Great%20IDE%20Exodus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 The Great IDE Exodus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.2%20Claude%20Code%20The%20Boris%20Persona/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Claude Code — The Boris Persona
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/1.3%20The%20UX%20of%20Autonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 The UX of Autonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2: The Ralph Wiggum Loop
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 2: The Ralph Wiggum Loop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.1%20I%27m%20in%20Danger%20Feedback%20Loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 I'm in Danger Feedback Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.2%20Recursive%20Failure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Recursive Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/2.3%20The%20Proverbial%20Glue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 The Proverbial Glue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II: The Architectural Sovereigns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II: The Architectural Sovereigns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3: Gas Town and the Context Engines
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 3: Gas Town and the Context Engines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1%20Steve%20Yegge%20High-Throughput%20Agentic%20Environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Steve Yegge's Vision: High-Throughput Agentic Environments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.2%20Beyond%20RAG%20The%20Infinite%20Window/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Beyond RAG: The Infinite Window
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.3%20Cody%20and%20the%20Context%20Power%20Plant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Cody and the Context Power Plant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4: Loom — The Agentic Operating System
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 4: Loom — The Agentic Operating System
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 LLMs as First-Class OS Citizens
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 LLMs as First-Class OS Citizens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#orientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orientation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Orientation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-read-this-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Read This Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-1-the-status-quo-llms-as-external-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop 1: The Status Quo — LLMs as External Services
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loop 1: The Status Quo — LLMs as External Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-sketch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Sketch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check Yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-2-the-threading-metaphor-agents-as-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop 2: The Threading Metaphor — Agents as Threads
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loop 2: The Threading Metaphor — Agents as Threads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-sketch_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Sketch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check Yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-3-scheduling-and-resource-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop 3: Scheduling and Resource Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loop 3: Scheduling and Resource Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-sketch_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Sketch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check Yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-4-inter-agent-communication-from-http-to-ipc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop 4: Inter-Agent Communication — From HTTP to IPC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loop 4: Inter-Agent Communication — From HTTP to IPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-sketch_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Sketch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check Yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-5-security-and-isolation-sandboxing-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop 5: Security and Isolation — Sandboxing Intelligence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loop 5: Security and Isolation — Sandboxing Intelligence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check Yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loop-6-loom-in-practice-architecture-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop 6: Loom in Practice — Architecture Walkthrough
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loop 6: Loom in Practice — Architecture Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concept_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-end-to-end-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example: End-to-End Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-sketch_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Sketch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-yourself_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check Yourself
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-matters-the-hubbard-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why This Matters: The Hubbard Thesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deliverable-and-verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deliverable and Verification Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieval-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retrieval Practice
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieval Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-411-concept-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4.1.1: Concept Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-412-design-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4.1.2: Design Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-413-critical-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4.1.3: Critical Thinking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-414-hands-on-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4.1.4: Hands-On Calculation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.2%20Orchestration%20vs%20Execution%20The%20Loom%20Framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Orchestration vs. Execution: The Loom Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.3%20Refactoring%20the%20Past%20Legacy%20C%2B%2B%20via%20Agentic%20Threads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Refactoring the Past: Legacy C++ via Agentic Threads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III: The Harnesses and the Hyperscalers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III: The Harnesses and the Hyperscalers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5: The Harness Wars
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 5: The Harness Wars
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/5.1%20Leashing%20the%20Beast%20Tool-Calling%20and%20Sandboxed%20Execution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/5.2%20OpenRouter%20The%20Switzerland%20of%20the%20Model%20Wars/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 OpenRouter: The Switzerland of the Model Wars
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/5.3%20OpenCode%20and%20the%20Democratization%20of%20Agentic%20Access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 OpenCode and the Democratization of Agentic Access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6: The Containment Fields
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 6: The Containment Fields
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/6.1%20AWS%20Bedrock%20and%20Azure%20AI%20Foundry%20The%20Enterprise%20Response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 AWS Bedrock and Azure AI Foundry: The Enterprise Response
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/6.2%20The%20Copilot%20Workspace%20Agentifying%20the%20Pull%20Request/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 The Copilot Workspace: Agentifying the Pull Request
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/6.3%20Security%20and%20Governance%20in%20the%20Age%20of%20Shadow%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Security and Governance in the Age of Shadow Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV: Global Shifting and Open Frontiers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV: Global Shifting and Open Frontiers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7: The Dragon in the Machine
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 7: The Dragon in the Machine
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/7.1%20DeepSeek%20and%20Qwen%20Shattering%20the%20Western%20Moat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 DeepSeek and Qwen: Shattering the Western Moat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/7.2%20The%20Efficiency%20Gap%20High-Performance%20Coding%20on%20a%20Budget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 The Efficiency Gap: High-Performance Coding on a Budget
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/7.3%20The%20Geopolitics%20of%20Code%20Generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 The Geopolitics of Code Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8: The Open Source Insurgency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 8: The Open Source Insurgency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/8.1%20Aider%20OpenDevin%20and%20the%20Bazaar%20of%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Aider, OpenDevin, and the Bazaar of Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/8.2%20Local-First%20Running%20Boris%20on%20a%20Mac%20Studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 Local-First: Running Boris on a Mac Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part4/8.3%20The%20Rise%20of%20the%20Personal%20Agent%20Stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 The Rise of the Personal Agent Stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V: The Acceleralpho Horizon
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V: The Acceleralpho Horizon
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9: The End of the Human in the Loop
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 9: The End of the Human in the Loop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.1%20Self-Healing%20Codebases%20and%20Autonomous%20Bug-Hunting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1 Self-Healing Codebases and Autonomous Bug-Hunting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.2%20The%20Synthetic%20Senior%20Managing%20Intent%20vs%20Managing%20Code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2 The Synthetic Senior: Managing Intent vs. Managing Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/9.3%20The%20Psychopathology%20of%20AI-Driven%20Technical%20Debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3 The Psychopathology of AI-Driven Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10: The Strossian Singularity
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapter 10: The Strossian Singularity
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.1%20Vile%20Offspring%20Agents%20Writing%20Agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.1 Vile Offspring: Agents Writing Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.2%20From%20Programmer%20to%20Agent%20Wrangler%20The%20New%20Career%20Path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.2 From Programmer to Agent Wrangler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part5/10.3%20Post-Code%20When%20Software%20is%20Grown%20Not%20Written/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.3 Post-Code: When Software is Grown, Not Written
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="41-jordan-hubbards-threading-llms-as-first-class-os-citizens">4.1 Jordan Hubbard's Threading: LLMs as First-Class OS Citizens<a class="headerlink" href="#41-jordan-hubbards-threading-llms-as-first-class-os-citizens" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Key idea:</strong> What if LLMs weren't external APIs you call over HTTP, but native resources managed by your operating system — scheduled, isolated, and composed just like processes and threads?</p>
+</blockquote>
+<h2 id="orientation">Orientation<a class="headerlink" href="#orientation" title="Permanent link">&para;</a></h2>
+<p>Every modern operating system manages three core abstractions: <strong>processes</strong>, <strong>threads</strong>, and <strong>filesystems</strong>. When you launch a program, the OS allocates memory, schedules CPU time, and handles inter-process communication. You never think about the plumbing — it just works.</p>
+<p>Now consider how we use LLMs today. An agent framework spins up, opens an HTTPS connection to a remote API, marshals JSON back and forth, and bolts on its own retry logic, rate limiting, and state management. The LLM lives <em>outside</em> the system. It's a guest, not a citizen.</p>
+<p><strong>Jordan Hubbard</strong> — co-founder of the FreeBSD project and former director of engineering at Apple — looked at this gap and asked a deceptively simple question: <em>What if the operating system treated LLMs the way it treats threads?</em></p>
+<p>His answer is <strong>Loom</strong>: a conceptual framework (and emerging implementation) that promotes LLMs from external services to <strong>first-class OS primitives</strong>. This chapter section explores what that means, why it matters, and what changes when intelligence lives inside the kernel.</p>
+<hr />
+<blockquote>
+<h3 id="how-to-read-this-section">How to Read This Section<a class="headerlink" href="#how-to-read-this-section" title="Permanent link">&para;</a></h3>
+<p>We move through six concept loops:
+1. <strong>The Status Quo</strong> — how agent frameworks treat LLMs today
+2. <strong>The Threading Metaphor</strong> — agents as threads in shared memory
+3. <strong>Scheduling and Resource Management</strong> — what the OS gains
+4. <strong>Inter-Agent Communication</strong> — from HTTP to IPC
+5. <strong>Security and Isolation</strong> — sandboxing intelligence
+6. <strong>Loom in Practice</strong> — a worked architecture walkthrough</p>
+<p>Each loop follows the pattern: <em>concept → worked example → code sketch → check-yourself question</em>. You don't need OS internals experience, but familiarity with processes and threads (even conceptual) will help.</p>
+</blockquote>
+<hr />
+<h2 id="loop-1-the-status-quo-llms-as-external-services">Loop 1: The Status Quo — LLMs as External Services<a class="headerlink" href="#loop-1-the-status-quo-llms-as-external-services" title="Permanent link">&para;</a></h2>
+<h3 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">&para;</a></h3>
+<p>Today's dominant pattern looks like this:</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Your Agent Code] --&gt;|HTTPS POST| B[LLM API Server]
+    B --&gt;|JSON Response| A
+    A --&gt;|HTTPS POST| B
+    style B fill:#f96,stroke:#333</code></pre>
+<p><em>Figure 4-1: The current agent-LLM relationship. The LLM is an external service reached over the network.</em></p>
+<p>Your agent framework handles:
+- <strong>Connection management</strong> — retries, timeouts, backoff
+- <strong>State serialization</strong> — converting conversation history to JSON
+- <strong>Rate limiting</strong> — tracking tokens per minute
+- <strong>Scheduling</strong> — deciding which agent gets to call the API next
+- <strong>Error recovery</strong> — handling 429s, 500s, and network failures</p>
+<p>Every framework reinvents this wheel. Claude Code has its own retry logic. Cursor has its own. Windsurf has its own. They all solve the same problem differently because the operating system offers them <em>no help</em>.</p>
+<blockquote>
+<p><strong>Pitfall:</strong> When every framework builds its own LLM management layer, bugs multiply. A retry storm in one agent can starve others of API quota — and the OS has no visibility into why.</p>
+</blockquote>
+<h3 id="worked-example">Worked Example<a class="headerlink" href="#worked-example" title="Permanent link">&para;</a></h3>
+<p>Consider running three coding agents simultaneously on your laptop:</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Task</th>
+<th>Token Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent A</td>
+<td>Refactoring auth module</td>
+<td>50k tokens/min</td>
+</tr>
+<tr>
+<td>Agent B</td>
+<td>Writing tests</td>
+<td>30k tokens/min</td>
+</tr>
+<tr>
+<td>Agent C</td>
+<td>Reviewing PR</td>
+<td>20k tokens/min</td>
+</tr>
+</tbody>
+</table>
+<p>With the current model, each agent independently hammers the same API endpoint. If you hit a rate limit, <em>all three</em> fail — but none of them knows about the others. There's no shared scheduler, no priority system, no resource accounting.</p>
+<h3 id="code-sketch">Code Sketch<a class="headerlink" href="#code-sketch" title="Permanent link">&para;</a></h3>
+<p>Here's a simplified view of what every agent framework does today:</p>
+<blockquote>
+<p><strong>Example 4-1: Typical Agent-to-LLM Call Pattern (Python pseudocode)</strong></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">httpx</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">time</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">class</span> <span class="nc">LLMClient</span><span class="p">:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Every agent framework builds something like this.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">httpx</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">api_key</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">retry_count</span> <span class="o">=</span> <span class="mi">3</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backoff_base</span> <span class="o">=</span> <span class="mf">2.0</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="k">def</span> <span class="nf">complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">retry_count</span><span class="p">):</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>                    <span class="s2">&quot;/v1/chat/completions&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>                    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span> <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="n">messages</span><span class="p">},</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>                    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>                    <span class="n">timeout</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>                <span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>                <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>                <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;choices&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;message&quot;</span><span class="p">][</span><span class="s2">&quot;content&quot;</span><span class="p">]</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>            <span class="k">except</span> <span class="n">httpx</span><span class="o">.</span><span class="n">HTTPStatusError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>                <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>                    <span class="n">wait</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backoff_base</span> <span class="o">**</span> <span class="n">attempt</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>                    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">wait</span><span class="p">)</span>  <span class="c1"># Blind retry — no OS coordination</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>                <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>                    <span class="k">raise</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;LLM call failed after retries&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Notice what's missing: there's no coordination with other processes, no system-level resource tracking, and no way for the OS to help.</p>
+<h3 id="check-yourself">✅ Check Yourself<a class="headerlink" href="#check-yourself" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Q:</strong> Name two resources that the OS manages for regular processes but <em>not</em> for LLM calls in the current model.</p>
+<p><strong>A:</strong> CPU time scheduling and memory allocation. The OS has no concept of "token budget" or "inference priority" for LLM workloads — each agent manages these independently.</p>
+</blockquote>
+<hr />
+<h2 id="loop-2-the-threading-metaphor-agents-as-threads">Loop 2: The Threading Metaphor — Agents as Threads<a class="headerlink" href="#loop-2-the-threading-metaphor-agents-as-threads" title="Permanent link">&para;</a></h2>
+<h3 id="concept_1">Concept<a class="headerlink" href="#concept_1" title="Permanent link">&para;</a></h3>
+<p>Hubbard's central insight draws from his decades of OS work: <strong>the relationship between an agent and an LLM should mirror the relationship between a thread and the CPU.</strong></p>
+<table>
+<thead>
+<tr>
+<th>OS Concept</th>
+<th>Traditional</th>
+<th>Loom Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Process</td>
+<td>Running program</td>
+<td>Agent session</td>
+</tr>
+<tr>
+<td>Thread</td>
+<td>Unit of execution</td>
+<td>Single LLM interaction chain</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Compute resource</td>
+<td>LLM inference engine</td>
+</tr>
+<tr>
+<td>Scheduler</td>
+<td>Allocates CPU time</td>
+<td>Allocates inference slots</td>
+</tr>
+<tr>
+<td>Shared memory</td>
+<td>Inter-thread data</td>
+<td>Shared context window</td>
+</tr>
+<tr>
+<td>Mutex</td>
+<td>Prevents data races</td>
+<td>Prevents context corruption</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart TD
+    subgraph OS["Operating System (Loom-Enhanced)"]
+        S[LLM Scheduler]
+        M[Context Memory Manager]
+        IPC[Agent IPC Bus]
+    end
+
+    subgraph Agents["Agent Processes"]
+        A1[Agent A - thread 1]
+        A2[Agent A - thread 2]
+        B1[Agent B - thread 1]
+    end
+
+    A1 --&gt;|inference request| S
+    A2 --&gt;|inference request| S
+    B1 --&gt;|inference request| S
+    S --&gt;|scheduled| LLM[LLM Engine]
+    A1 &lt;--&gt;|shared context| M
+    A2 &lt;--&gt;|shared context| M
+    A1 &lt;--&gt;|message passing| IPC
+    B1 &lt;--&gt;|message passing| IPC
+
+    style OS fill:#e8f4f8,stroke:#333
+    style Agents fill:#f0f0f0,stroke:#333</code></pre>
+<p><em>Figure 4-2: The Loom model. The OS manages LLM access the way it manages CPU access — through scheduling, memory management, and IPC.</em></p>
+<p>When you write a multi-threaded program today, you don't manually negotiate CPU time between threads. The OS scheduler handles it. Hubbard argues the same should be true for LLM inference: agents shouldn't negotiate API access — the OS should schedule it.</p>
+<blockquote>
+<p><strong>Key idea:</strong> In Loom's model, "calling an LLM" becomes as natural as "spawning a thread." The OS handles scheduling, resource limits, and inter-agent coordination.</p>
+</blockquote>
+<h3 id="worked-example_1">Worked Example<a class="headerlink" href="#worked-example_1" title="Permanent link">&para;</a></h3>
+<p>Imagine you're running a complex coding task that spawns three agent threads:</p>
+<ol>
+<li><strong>Planner thread</strong> — reads the codebase, creates a plan</li>
+<li><strong>Coder thread</strong> — implements changes based on the plan</li>
+<li><strong>Reviewer thread</strong> — checks each change for correctness</li>
+</ol>
+<p>In today's model, each thread independently calls the API, potentially duplicating context and competing for rate limits. In Loom's model:</p>
+<ul>
+<li>The <strong>OS scheduler</strong> ensures the planner runs first (it has a dependency edge)</li>
+<li>The <strong>shared context</strong> lets the coder read the planner's output without re-sending it to the LLM</li>
+<li>The <strong>IPC bus</strong> lets the reviewer send feedback directly to the coder thread</li>
+</ul>
+<h3 id="code-sketch_1">Code Sketch<a class="headerlink" href="#code-sketch_1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Example 4-2: Loom-Style Agent Threading (Conceptual Python)</strong></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Conceptual API — what Loom-style OS integration could look like</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">loom</span>  <span class="c1"># Hypothetical OS-level LLM interface</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">def</span> <span class="nf">coding_task</span><span class="p">(</span><span class="n">repo_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="c1"># Create an agent process with shared context</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="k">with</span> <span class="n">loom</span><span class="o">.</span><span class="n">AgentProcess</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;refactor-auth&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">proc</span><span class="p">:</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="c1"># Spawn threads — OS schedules LLM access</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="n">planner</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">spawn_thread</span><span class="p">(</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>            <span class="n">role</span><span class="o">=</span><span class="s2">&quot;planner&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>            <span class="n">priority</span><span class="o">=</span><span class="n">loom</span><span class="o">.</span><span class="n">HIGH</span><span class="p">,</span>       <span class="c1"># OS respects priority</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>            <span class="n">context_share</span><span class="o">=</span><span class="s2">&quot;read&quot;</span><span class="p">,</span>     <span class="c1"># Can read shared memory</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        <span class="p">)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        <span class="n">coder</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">spawn_thread</span><span class="p">(</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>            <span class="n">role</span><span class="o">=</span><span class="s2">&quot;coder&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>            <span class="n">priority</span><span class="o">=</span><span class="n">loom</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">,</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>            <span class="n">context_share</span><span class="o">=</span><span class="s2">&quot;read_write&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>            <span class="n">depends_on</span><span class="o">=</span><span class="p">[</span><span class="n">planner</span><span class="p">],</span>     <span class="c1"># OS enforces ordering</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>        <span class="p">)</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        <span class="n">reviewer</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">spawn_thread</span><span class="p">(</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>            <span class="n">role</span><span class="o">=</span><span class="s2">&quot;reviewer&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>            <span class="n">priority</span><span class="o">=</span><span class="n">loom</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">,</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>            <span class="n">context_share</span><span class="o">=</span><span class="s2">&quot;read&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>            <span class="n">depends_on</span><span class="o">=</span><span class="p">[</span><span class="n">coder</span><span class="p">],</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>        <span class="p">)</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>        <span class="c1"># The OS handles:</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>        <span class="c1"># - Scheduling inference calls across threads</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>        <span class="c1"># - Sharing context without re-serializing</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>        <span class="c1"># - Enforcing dependency ordering</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>        <span class="c1"># - Resource accounting (tokens used per thread)</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>        <span class="n">results</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">join_all</span><span class="p">()</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>        <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+<p>The key shift: the programmer declares <em>intent</em> (priorities, dependencies, sharing modes) and the OS handles <em>execution</em>. This is exactly how thread programming works — and exactly how LLM interaction doesn't work today.</p>
+<h3 id="check-yourself_1">✅ Check Yourself<a class="headerlink" href="#check-yourself_1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Q:</strong> In the threading metaphor, what OS concept corresponds to a shared context window between agents?</p>
+<p><strong>A:</strong> Shared memory. Just as threads in the same process can access shared memory regions, Loom agents can access a shared context space managed by the OS.</p>
+</blockquote>
+<hr />
+<h2 id="loop-3-scheduling-and-resource-management">Loop 3: Scheduling and Resource Management<a class="headerlink" href="#loop-3-scheduling-and-resource-management" title="Permanent link">&para;</a></h2>
+<h3 id="concept_2">Concept<a class="headerlink" href="#concept_2" title="Permanent link">&para;</a></h3>
+<p>Operating systems solve a hard problem: many programs want the CPU, but there's only so much compute available. The scheduler decides who runs, for how long, and in what order. It balances fairness, priority, and deadlines.</p>
+<p>LLM inference has the exact same problem:
+- Multiple agents want inference time
+- Token budgets are finite
+- Some requests are urgent (interactive coding) while others can wait (background analysis)
+- Without coordination, agents starve each other</p>
+<p>Hubbard argues that <strong>LLM scheduling belongs in the OS</strong>, not in each agent framework.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Scheduler["LLM Scheduler (OS-Level)"]
+        Q1[Priority Queue - Interactive]
+        Q2[Priority Queue - Background]
+        Q3[Priority Queue - Batch]
+    end
+
+    Q1 --&gt; D{Token Budget Check}
+    Q2 --&gt; D
+    Q3 --&gt; D
+    D --&gt;|approved| E[LLM Inference Engine]
+    D --&gt;|over budget| F[Queue / Throttle]
+
+    U1[User typing in editor] --&gt; Q1
+    U2[Background linter agent] --&gt; Q2
+    U3[Nightly test generator] --&gt; Q3
+
+    style Scheduler fill:#e8f4e8,stroke:#333</code></pre>
+<p><em>Figure 4-3: OS-level LLM scheduling with priority queues and token budgets.</em></p>
+<h3 id="worked-example_2">Worked Example<a class="headerlink" href="#worked-example_2" title="Permanent link">&para;</a></h3>
+<p>Consider an OS-level resource table for LLM inference:</p>
+<blockquote>
+<p><strong>Example 4-3: LLM Resource Table (analogous to /proc on Linux)</strong></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ loom-top
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>PID   AGENT NAME         PRIORITY  TOKENS/MIN  CTX SIZE  STATE
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>1201  cursor-autocomplete HIGH      12,400      32k       RUNNING
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>1202  test-writer         NORMAL     3,200      64k       WAITING
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>1203  pr-reviewer         LOW        1,800     128k       QUEUED
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>1204  doc-generator       BATCH        400      16k       SLEEPING
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>TOTAL TOKEN USAGE: 17,800 / 60,000 tokens/min (29.7%)
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>CONTEXT MEMORY:    240k / 1,024k allocated (23.4%)
+</code></pre></div>
+<p>This is <code>top</code> for LLMs. The OS knows exactly which agent is consuming what, can enforce limits, and can preempt low-priority agents when a high-priority request arrives — just like CPU scheduling.</p>
+<h3 id="code-sketch_2">Code Sketch<a class="headerlink" href="#code-sketch_2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Example 4-4: Resource Limits via OS-Level Configuration</strong></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># /etc/loom/agents.conf — OS-level agent resource configuration</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">agent_limits</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="s2">&quot;interactive&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="s2">&quot;max_tokens_per_minute&quot;</span><span class="p">:</span> <span class="mi">30_000</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="s2">&quot;max_context_size&quot;</span><span class="p">:</span> <span class="s2">&quot;128k&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="s2">&quot;realtime&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="s2">&quot;preemptible&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="p">},</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="s2">&quot;background&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>        <span class="s2">&quot;max_tokens_per_minute&quot;</span><span class="p">:</span> <span class="mi">10_000</span><span class="p">,</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        <span class="s2">&quot;max_context_size&quot;</span><span class="p">:</span> <span class="s2">&quot;64k&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="s2">&quot;preemptible&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="p">},</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="s2">&quot;batch&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>        <span class="s2">&quot;max_tokens_per_minute&quot;</span><span class="p">:</span> <span class="mi">5_000</span><span class="p">,</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>        <span class="s2">&quot;max_context_size&quot;</span><span class="p">:</span> <span class="s2">&quot;32k&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>        <span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="s2">&quot;idle&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>        <span class="s2">&quot;preemptible&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>        <span class="s2">&quot;schedule&quot;</span><span class="p">:</span> <span class="s2">&quot;off-peak&quot;</span><span class="p">,</span>  <span class="c1"># Run when interactive load is low</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    <span class="p">},</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Tip:</strong> This mirrors how Linux uses <code>cgroups</code> to limit CPU and memory per process group. Loom applies the same principle to token budgets and context windows.</p>
+</blockquote>
+<h3 id="check-yourself_2">✅ Check Yourself<a class="headerlink" href="#check-yourself_2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Q:</strong> Why is preemption important for LLM scheduling? Give a concrete scenario.</p>
+<p><strong>A:</strong> If you're typing in your editor and need instant autocomplete, the OS should be able to pause a background test-generation agent's inference request to serve the interactive one first — just like how the OS preempts a background compile to keep your UI responsive.</p>
+</blockquote>
+<hr />
+<h2 id="loop-4-inter-agent-communication-from-http-to-ipc">Loop 4: Inter-Agent Communication — From HTTP to IPC<a class="headerlink" href="#loop-4-inter-agent-communication-from-http-to-ipc" title="Permanent link">&para;</a></h2>
+<h3 id="concept_3">Concept<a class="headerlink" href="#concept_3" title="Permanent link">&para;</a></h3>
+<p>Today, if two agents need to share information, they typically:
+1. Write to a file and have the other agent read it
+2. Pass messages through an external service (Redis, a queue, etc.)
+3. Include the other agent's output in their own API call (duplicating tokens)</p>
+<p>None of these are efficient. The OS already solves this problem for regular processes through <strong>Inter-Process Communication (IPC)</strong>: pipes, shared memory, message queues, and signals.</p>
+<p>Loom extends IPC to agents:</p>
+<table>
+<thead>
+<tr>
+<th>Traditional IPC</th>
+<th>Loom Agent IPC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pipe()</code></td>
+<td>Context stream between agents</td>
+</tr>
+<tr>
+<td><code>mmap()</code> shared memory</td>
+<td>Shared context window</td>
+</tr>
+<tr>
+<td><code>signal()</code></td>
+<td>Agent interrupts (e.g., "stop, plan changed")</td>
+</tr>
+<tr>
+<td><code>msgget()</code> message queue</td>
+<td>Structured message passing between agents</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+    subgraph SharedCtx["Shared Context (OS-Managed)"]
+        CTX[("Codebase understanding\nPlan state\nChange history")]
+    end
+
+    A[Planner Agent] --&gt;|writes plan| CTX
+    B[Coder Agent] --&gt;|reads plan, writes code| CTX
+    C[Reviewer Agent] --&gt;|reads code, writes feedback| CTX
+    C --&gt;|signal: revision needed| B
+
+    style SharedCtx fill:#fff3cd,stroke:#333</code></pre>
+<p><em>Figure 4-4: OS-managed shared context replaces redundant API calls. Agents read and write to a shared space instead of re-sending everything.</em></p>
+<h3 id="worked-example_3">Worked Example<a class="headerlink" href="#worked-example_3" title="Permanent link">&para;</a></h3>
+<p>Without Loom, a three-agent pipeline wastes tokens:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Agent</th>
+<th>Tokens Sent</th>
+<th>Tokens Received</th>
+<th>Duplication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Planner</td>
+<td>10k (codebase)</td>
+<td>2k (plan)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Coder</td>
+<td>10k (codebase) + 2k (plan)</td>
+<td>5k (code)</td>
+<td>10k duplicated</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Reviewer</td>
+<td>10k (codebase) + 2k (plan) + 5k (code)</td>
+<td>1k (review)</td>
+<td>17k duplicated</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>44k sent</strong></td>
+<td><strong>8k received</strong></td>
+<td><strong>27k wasted</strong></td>
+</tr>
+</tbody>
+</table>
+<p>With Loom's shared context:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Agent</th>
+<th>New Tokens Sent</th>
+<th>Shared Context Read</th>
+<th>Duplication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Planner</td>
+<td>10k (codebase)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Coder</td>
+<td>0 (reads shared)</td>
+<td>12k</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Reviewer</td>
+<td>0 (reads shared)</td>
+<td>17k</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>10k sent</strong></td>
+<td><strong>29k read (free)</strong></td>
+<td><strong>0 wasted</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Key idea:</strong> When context is OS-managed shared memory, agents don't re-send information — they read it in place. This can reduce token usage by 60% or more in multi-agent pipelines.</p>
+</blockquote>
+<h3 id="code-sketch_3">Code Sketch<a class="headerlink" href="#code-sketch_3" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Example 4-5: Agent IPC via Shared Context</strong></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">loom</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Planner writes to shared context</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">with</span> <span class="n">loom</span><span class="o">.</span><span class="n">AgentProcess</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;planner&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">planner</span><span class="p">:</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">ctx</span> <span class="o">=</span> <span class="n">planner</span><span class="o">.</span><span class="n">shared_context</span><span class="p">(</span><span class="s2">&quot;refactor-project&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="c1"># Analyze codebase — result stored in shared context</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">ctx</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;codebase_analysis&quot;</span><span class="p">,</span> <span class="n">planner</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="n">repo_path</span><span class="o">=</span><span class="s2">&quot;/src&quot;</span><span class="p">))</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">ctx</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;plan&quot;</span><span class="p">,</span> <span class="n">planner</span><span class="o">.</span><span class="n">generate_plan</span><span class="p">())</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="c1"># Signal coder that plan is ready</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">loom</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="s2">&quot;coder&quot;</span><span class="p">,</span> <span class="n">loom</span><span class="o">.</span><span class="n">PLAN_READY</span><span class="p">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c1"># Coder reads from shared context — no re-serialization</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="k">with</span> <span class="n">loom</span><span class="o">.</span><span class="n">AgentProcess</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;coder&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">coder</span><span class="p">:</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    <span class="n">ctx</span> <span class="o">=</span> <span class="n">coder</span><span class="o">.</span><span class="n">shared_context</span><span class="p">(</span><span class="s2">&quot;refactor-project&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    <span class="n">analysis</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;codebase_analysis&quot;</span><span class="p">)</span>  <span class="c1"># Zero-copy read</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="n">plan</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;plan&quot;</span><span class="p">)</span>                    <span class="c1"># Already in memory</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">plan</span><span class="o">.</span><span class="n">steps</span><span class="p">:</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>        <span class="n">code</span> <span class="o">=</span> <span class="n">coder</span><span class="o">.</span><span class="n">implement</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">analysis</span><span class="p">)</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>        <span class="n">ctx</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;code/</span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>    <span class="n">loom</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="s2">&quot;reviewer&quot;</span><span class="p">,</span> <span class="n">loom</span><span class="o">.</span><span class="n">CODE_READY</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="check-yourself_3">✅ Check Yourself<a class="headerlink" href="#check-yourself_3" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Q:</strong> What is the primary efficiency gain of OS-managed shared context over the current approach?</p>
+<p><strong>A:</strong> Elimination of redundant token transmission. Instead of each agent re-sending the full conversation history via HTTP, agents read from a shared memory space — the context is written once and read many times.</p>
+</blockquote>
+<hr />
+<h2 id="loop-5-security-and-isolation-sandboxing-intelligence">Loop 5: Security and Isolation — Sandboxing Intelligence<a class="headerlink" href="#loop-5-security-and-isolation-sandboxing-intelligence" title="Permanent link">&para;</a></h2>
+<h3 id="concept_4">Concept<a class="headerlink" href="#concept_4" title="Permanent link">&para;</a></h3>
+<p>Operating systems don't just schedule and share — they <strong>isolate</strong>. Process A can't read process B's memory unless explicitly allowed. Users can't access each other's files without permissions. This isolation is fundamental to security.</p>
+<p>When LLMs become OS citizens, isolation becomes critical:</p>
+<ul>
+<li><strong>Agent A</strong> (working on auth code) shouldn't leak secrets to <strong>Agent B</strong> (generating docs)</li>
+<li>A compromised agent shouldn't be able to hijack another agent's context</li>
+<li>Token budgets should be enforced — one runaway agent shouldn't drain the whole system</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Sandbox1["Sandbox: Auth Agent (High Security)"]
+        A1[Auth Agent]
+        S1[("Secrets, keys,\ncredentials")]
+    end
+
+    subgraph Sandbox2["Sandbox: Docs Agent (Low Security)"]
+        A2[Docs Agent]
+        S2[("Public API docs,\nREADME content")]
+    end
+
+    A1 -.-&gt;|BLOCKED by OS| S2
+    A2 -.-&gt;|BLOCKED by OS| S1
+    A1 --&gt;|filtered export| GATE[Security Gate]
+    GATE --&gt;|sanitized context| A2
+
+    style Sandbox1 fill:#ffcccc,stroke:#cc0000
+    style Sandbox2 fill:#ccffcc,stroke:#00cc00
+    style GATE fill:#ffffcc,stroke:#cccc00</code></pre>
+<p><em>Figure 4-5: OS-level sandboxing prevents context leakage between agents with different security levels.</em></p>
+<blockquote>
+<p><strong>Warning:</strong> Without OS-level isolation, a prompt injection in one agent could propagate to every agent sharing the same context. Loom's sandboxing model treats this as a first-class security concern.</p>
+</blockquote>
+<h3 id="worked-example_4">Worked Example<a class="headerlink" href="#worked-example_4" title="Permanent link">&para;</a></h3>
+<p>Consider a <strong>capability-based security model</strong> for agents:</p>
+<blockquote>
+<p><strong>Example 4-6: Agent Capability Manifest</strong></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># /etc/loom/agents/auth-refactor.capabilities</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">agent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auth-refactor</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">security_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nt">allowed_context</span><span class="p">:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/auth/**</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/middleware/auth.py</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tests/test_auth.py</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nt">denied_context</span><span class="p">:</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.env</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secrets/**</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/billing/**</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="nt">allowed_tools</span><span class="p">:</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file_read</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file_write</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run_tests</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="nt">denied_tools</span><span class="p">:</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">network_access</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shell_exec</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">package_install</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="nt">export_policy</span><span class="p">:</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">strip_secrets</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redact_credentials</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">docs-agent</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">review-agent</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>This is directly analogous to how mobile operating systems use capability manifests for apps (Android permissions, iOS entitlements). The OS enforces what each agent can see, do, and share.</p>
+<h3 id="check-yourself_4">✅ Check Yourself<a class="headerlink" href="#check-yourself_4" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Q:</strong> Why is capability-based security especially important when LLMs are OS primitives, compared to when they're external services?</p>
+<p><strong>A:</strong> When LLMs are external services, the blast radius of a compromise is limited to one API call. When they're OS primitives with access to shared context, a compromised agent could read other agents' memory, access filesystem resources, or escalate privileges — just like a compromised process in a traditional OS.</p>
+</blockquote>
+<hr />
+<h2 id="loop-6-loom-in-practice-architecture-walkthrough">Loop 6: Loom in Practice — Architecture Walkthrough<a class="headerlink" href="#loop-6-loom-in-practice-architecture-walkthrough" title="Permanent link">&para;</a></h2>
+<h3 id="concept_5">Concept<a class="headerlink" href="#concept_5" title="Permanent link">&para;</a></h3>
+<p>Let's bring all the pieces together. Loom's architecture has four layers:</p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph L4["Layer 4: Agent Applications"]
+        AA[Coding Agent]
+        AB[Review Agent]
+        AC[Test Agent]
+    end
+
+    subgraph L3["Layer 3: Agent Runtime"]
+        RT[Thread Manager]
+        IPC2[IPC Bus]
+        CTX[Context Manager]
+    end
+
+    subgraph L2["Layer 2: LLM Subsystem (Kernel)"]
+        SCHED[Inference Scheduler]
+        MEM[Context Memory Allocator]
+        SEC[Security / Capability Enforcer]
+    end
+
+    subgraph L1["Layer 1: Hardware / Inference Engines"]
+        GPU[Local GPU]
+        API[Cloud API]
+        EDGE[Edge TPU]
+    end
+
+    AA --&gt; RT
+    AB --&gt; RT
+    AC --&gt; RT
+    RT --&gt; SCHED
+    IPC2 --&gt; MEM
+    CTX --&gt; MEM
+    SCHED --&gt; GPU
+    SCHED --&gt; API
+    SCHED --&gt; EDGE
+    MEM --&gt; SEC
+
+    style L4 fill:#e8e8ff,stroke:#333
+    style L3 fill:#e8ffe8,stroke:#333
+    style L2 fill:#fff3e8,stroke:#333
+    style L1 fill:#ffe8e8,stroke:#333</code></pre>
+<p><em>Figure 4-6: Loom's four-layer architecture. Intelligence is managed at every level, from hardware to application.</em></p>
+<p><strong>Layer 1 — Hardware</strong>: Local GPUs, cloud APIs, and edge devices. The OS abstracts these the way it abstracts disk drives — the agent doesn't need to know <em>where</em> inference happens.</p>
+<p><strong>Layer 2 — LLM Subsystem (Kernel)</strong>: The scheduler, memory allocator, and security enforcer. This is the core of Loom — the "kernel module" that treats LLMs as managed resources.</p>
+<p><strong>Layer 3 — Agent Runtime</strong>: Thread management, IPC, and context management. This is like the C runtime or Python interpreter — it provides the programming model agents use.</p>
+<p><strong>Layer 4 — Agent Applications</strong>: The agents themselves. They use the runtime's API and the OS handles everything below.</p>
+<h3 id="worked-example-end-to-end-flow">Worked Example: End-to-End Flow<a class="headerlink" href="#worked-example-end-to-end-flow" title="Permanent link">&para;</a></h3>
+<p>Let's trace a real interaction through the stack:</p>
+<ol>
+<li><strong>You type</strong> <code>refactor the auth module</code> in your editor</li>
+<li><strong>Layer 4</strong>: The coding agent receives the request and spawns three threads (planner, coder, reviewer)</li>
+<li><strong>Layer 3</strong>: The thread manager registers them with the OS, sets up shared context, configures IPC channels</li>
+<li><strong>Layer 2</strong>: The scheduler queues the planner thread at HIGH priority (it's interactive). It checks the capability manifest — the auth agent can access <code>src/auth/**</code> but not <code>secrets/**</code></li>
+<li><strong>Layer 1</strong>: The scheduler routes the inference request to the local GPU (low latency for interactive work). If the GPU is busy, it falls back to the cloud API</li>
+<li><strong>The planner thread</strong> produces a plan, writes it to shared context</li>
+<li><strong>Layer 2</strong>: The scheduler wakes the coder thread (its dependency is satisfied)</li>
+<li><strong>The coder thread</strong> reads the plan from shared context (zero-copy), generates code changes</li>
+<li><strong>The reviewer thread</strong> reads both plan and code, produces feedback</li>
+<li><strong>Layer 3</strong>: IPC delivers the reviewer's feedback to the coder. If revisions are needed, the cycle repeats</li>
+<li><strong>Layer 4</strong>: The final code changes are presented to you in the editor</li>
+</ol>
+<blockquote>
+<p><strong>Tip:</strong> Notice that the programmer (or the agent application) never thinks about scheduling, token budgets, context sharing, or security. The OS handles it all — just like you don't think about virtual memory when writing a <code>for</code> loop.</p>
+</blockquote>
+<h3 id="code-sketch_4">Code Sketch<a class="headerlink" href="#code-sketch_4" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Example 4-7: Full Loom Pipeline (Conceptual)</strong></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span> <span class="nn">loom</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">def</span> <span class="nf">refactor_module</span><span class="p">(</span><span class="n">module_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">instruction</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="sd">    A complete agent workflow using Loom OS primitives.</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="sd">    The programmer declares WHAT to do; the OS decides HOW.</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="c1"># Create process with security policy</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">proc</span> <span class="o">=</span> <span class="n">loom</span><span class="o">.</span><span class="n">create_process</span><span class="p">(</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;refactor&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>        <span class="n">capabilities</span><span class="o">=</span><span class="s2">&quot;auth-refactor.capabilities&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>        <span class="n">inference_target</span><span class="o">=</span><span class="n">loom</span><span class="o">.</span><span class="n">PREFER_LOCAL</span><span class="p">,</span>  <span class="c1"># Hint to scheduler</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="p">)</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="c1"># Shared context — OS allocates and manages memory</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="n">ctx</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">create_shared_context</span><span class="p">(</span><span class="n">max_size</span><span class="o">=</span><span class="s2">&quot;256k&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>    <span class="n">ctx</span><span class="o">.</span><span class="n">load_codebase</span><span class="p">(</span><span class="n">module_path</span><span class="p">)</span>  <span class="c1"># OS indexes for efficient retrieval</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="c1"># Spawn agent threads with dependency graph</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="n">plan_thread</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>        <span class="s2">&quot;planner&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>        <span class="n">prompt</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Analyze and plan: </span><span class="si">{</span><span class="n">instruction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>        <span class="n">output_to</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>        <span class="n">priority</span><span class="o">=</span><span class="n">loom</span><span class="o">.</span><span class="n">INTERACTIVE</span><span class="p">,</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>    <span class="p">)</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>    <span class="n">code_thread</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>        <span class="s2">&quot;coder&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>        <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Implement the plan step by step.&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>        <span class="n">input_from</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>        <span class="n">output_to</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>        <span class="n">depends_on</span><span class="o">=</span><span class="p">[</span><span class="n">plan_thread</span><span class="p">],</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>        <span class="n">priority</span><span class="o">=</span><span class="n">loom</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">,</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>    <span class="p">)</span>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>    <span class="n">review_thread</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a>        <span class="s2">&quot;reviewer&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>        <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Review changes for correctness and style.&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>        <span class="n">input_from</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span>
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>        <span class="n">output_to</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span>
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>        <span class="n">depends_on</span><span class="o">=</span><span class="p">[</span><span class="n">code_thread</span><span class="p">],</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>        <span class="n">priority</span><span class="o">=</span><span class="n">loom</span><span class="o">.</span><span class="n">NORMAL</span><span class="p">,</span>
+<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a>    <span class="p">)</span>
+<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a>
+<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a>    <span class="c1"># OS handles scheduling, context sharing, and IPC</span>
+<a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">join_all</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a>
+<a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a>    <span class="c1"># Resource accounting — OS tracked everything</span>
+<a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total tokens used: </span><span class="si">{</span><span class="n">proc</span><span class="o">.</span><span class="n">token_usage</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Peak context size: </span><span class="si">{</span><span class="n">proc</span><span class="o">.</span><span class="n">peak_context_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inference time: </span><span class="si">{</span><span class="n">proc</span><span class="o">.</span><span class="n">wall_time</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-52" name="__codelineno-6-52" href="#__codelineno-6-52"></a>
+<a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a>    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">final_output</span>
+</code></pre></div>
+<h3 id="check-yourself_5">✅ Check Yourself<a class="headerlink" href="#check-yourself_5" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Q:</strong> In Loom's architecture, what layer is responsible for deciding whether inference runs on a local GPU or a cloud API?</p>
+<p><strong>A:</strong> Layer 2 — the LLM Subsystem (Kernel). Specifically, the inference scheduler makes this decision based on latency requirements, load, and the agent's hints (like <code>PREFER_LOCAL</code>).</p>
+</blockquote>
+<hr />
+<h2 id="why-this-matters-the-hubbard-thesis">Why This Matters: The Hubbard Thesis<a class="headerlink" href="#why-this-matters-the-hubbard-thesis" title="Permanent link">&para;</a></h2>
+<p>Jordan Hubbard's core argument can be summarized in three claims:</p>
+<ol>
+<li>
+<p><strong>LLMs are compute primitives, not services.</strong> Just as we stopped treating "networking" as an external add-on and brought TCP/IP into the kernel, we should bring LLM inference into the OS.</p>
+</li>
+<li>
+<p><strong>Agent frameworks are reinventing the OS — badly.</strong> Every framework builds its own scheduler, its own state manager, its own IPC, and its own security model. This is the equivalent of every application writing its own filesystem driver in the 1970s.</p>
+</li>
+<li>
+<p><strong>The OS is the right abstraction layer.</strong> Operating systems have 50+ years of solutions for scheduling, isolation, resource management, and communication. We should apply these proven patterns to LLMs rather than reinventing them.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Key idea:</strong> Hubbard isn't proposing that we rewrite Linux. He's proposing that the <em>mental model</em> for agent development should shift from "calling an API" to "spawning a thread." Whether the implementation lives in a kernel module, a hypervisor, or a runtime library is an engineering detail. The paradigm shift is what matters.</p>
+</blockquote>
+<hr />
+<h2 id="deliverable-and-verification-checklist">Deliverable and Verification Checklist<a class="headerlink" href="#deliverable-and-verification-checklist" title="Permanent link">&para;</a></h2>
+<p>After studying this section, you should be able to:</p>
+<ul>
+<li>[ ] <strong>Explain</strong> why treating LLMs as external services creates redundancy and inefficiency</li>
+<li>[ ] <strong>Describe</strong> the threading metaphor: agents as threads, LLMs as CPUs, context as shared memory</li>
+<li>[ ] <strong>Identify</strong> the four layers of Loom's architecture (hardware, kernel, runtime, application)</li>
+<li>[ ] <strong>Compare</strong> OS scheduling of CPU time to OS scheduling of LLM inference</li>
+<li>[ ] <strong>Articulate</strong> why inter-agent IPC is more efficient than serializing context over HTTP</li>
+<li>[ ] <strong>Explain</strong> why security isolation becomes more critical when LLMs are OS primitives</li>
+<li>[ ] <strong>Draw</strong> a Mermaid diagram showing the Loom scheduling flow for a multi-agent task</li>
+</ul>
+<hr />
+<h2 id="retrieval-practice">Retrieval Practice<a class="headerlink" href="#retrieval-practice" title="Permanent link">&para;</a></h2>
+<h3 id="exercise-411-concept-mapping">Exercise 4.1.1: Concept Mapping<a class="headerlink" href="#exercise-411-concept-mapping" title="Permanent link">&para;</a></h3>
+<p>Map each traditional OS concept to its Loom equivalent. Fill in the blanks:</p>
+<table>
+<thead>
+<tr>
+<th>OS Concept</th>
+<th>Loom Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fork()</code></td>
+<td><strong><em>_</em></strong>_</td>
+</tr>
+<tr>
+<td><code>pthread_create()</code></td>
+<td><strong><em>_</em></strong>_</td>
+</tr>
+<tr>
+<td>Virtual memory</td>
+<td><strong><em>_</em></strong>_</td>
+</tr>
+<tr>
+<td><code>cgroups</code></td>
+<td><strong><em>_</em></strong>_</td>
+</tr>
+<tr>
+<td><code>chmod</code> / capabilities</td>
+<td><strong><em>_</em></strong>_</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>Answer</summary>
+
+| OS Concept | Loom Equivalent |
+|------------|-----------------|
+| `fork()` | Spawning a new agent process |
+| `pthread_create()` | Spawning an agent thread (e.g., planner, coder) |
+| Virtual memory | Context window management / context memory allocation |
+| `cgroups` | Token budget limits per agent group |
+| `chmod` / capabilities | Agent capability manifests (what context/tools an agent can access) |
+
+</details>
+
+<h3 id="exercise-412-design-challenge">Exercise 4.1.2: Design Challenge<a class="headerlink" href="#exercise-412-design-challenge" title="Permanent link">&para;</a></h3>
+<p>You're building a system with five agents:
+- <strong>Triage agent</strong>: reads incoming issues, classifies priority (HIGH)
+- <strong>Planner agent</strong>: creates implementation plans (NORMAL)
+- <strong>Coder agent</strong>: writes code (NORMAL)
+- <strong>Test agent</strong>: writes and runs tests (LOW)
+- <strong>Docs agent</strong>: updates documentation (BATCH)</p>
+<p>Draw a dependency graph and assign scheduling priorities. Which agents should share context? Which should be isolated? Write a Loom-style pseudocode pipeline.</p>
+<details>
+<summary>Hint</summary>
+
+Think about the data flow: Triage → Planner → Coder → (Test, Docs in parallel). The Coder and Test agents should share context (they need to see the same code), but the Docs agent should have read-only access to a sanitized export.
+
+</details>
+
+<h3 id="exercise-413-critical-thinking">Exercise 4.1.3: Critical Thinking<a class="headerlink" href="#exercise-413-critical-thinking" title="Permanent link">&para;</a></h3>
+<p>Hubbard argues LLMs should be OS primitives. What are two <strong>counterarguments</strong> to this position? Consider:
+- The pace of LLM API changes vs. OS kernel stability requirements
+- The current split between local and cloud inference
+- The diversity of LLM providers and interfaces</p>
+<details>
+<summary>Sample counterarguments</summary>
+
+1. **API instability**: OS kernel interfaces must remain stable for decades (POSIX). LLM APIs change monthly — new models, new parameters, new capabilities. Baking LLM interfaces into the kernel risks premature ossification of a rapidly evolving technology.
+
+2. **Cloud dependency**: Most LLM inference still happens in the cloud. OS primitives traditionally manage local resources. Adding a kernel-level abstraction over a remote HTTP service inverts the usual hardware → kernel → userspace stack. A runtime library (Layer 3) might be more appropriate than a kernel module (Layer 2) until local inference matures.
+
+</details>
+
+<h3 id="exercise-414-hands-on-calculation">Exercise 4.1.4: Hands-On Calculation<a class="headerlink" href="#exercise-414-hands-on-calculation" title="Permanent link">&para;</a></h3>
+<p>An agent pipeline has three stages. Without shared context, each stage re-sends all previous context:
+- Stage 1 sends 20k tokens, receives 5k
+- Stage 2 sends 25k tokens (20k + 5k), receives 8k
+- Stage 3 sends 33k tokens (20k + 5k + 8k), receives 3k</p>
+<p>Calculate: (a) Total tokens sent without shared context. (b) Total tokens sent with Loom-style shared context (only new data sent). (c) The percentage reduction.</p>
+<details>
+<summary>Answer</summary>
+
+(a) Without shared context: 20k + 25k + 33k = **78k tokens sent**
+
+(b) With shared context: 20k + 0k + 0k = **20k tokens sent** (stages 2 and 3 read from shared memory)
+
+(c) Reduction: (78k - 20k) / 78k = **74.4% reduction**
+
+</details>
+
+<hr />
+<blockquote>
+<p><strong>Key idea (chapter summary):</strong> Jordan Hubbard's Loom vision reframes the entire agent-LLM relationship. Instead of treating LLMs as external services accessed over HTTP, Loom treats them as OS-managed resources — scheduled, isolated, and composed using the same primitives that have powered operating systems for fifty years. The implications ripple through scheduling (priority-based inference allocation), communication (IPC replaces redundant API calls), security (capability-based sandboxing), and efficiency (shared context eliminates token waste). Whether Loom's specific implementation prevails is less important than the paradigm shift it represents: <strong>intelligence as infrastructure, not as a service.</strong></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../3.3%20Cody%20and%20the%20Context%20Power%20Plant/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.3 Cody and the Context Power Plant">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                3.3 Cody and the Context Power Plant
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../4.2%20Orchestration%20vs%20Execution%20The%20Loom%20Framework/" class="md-footer__link md-footer__link--next" aria-label="Next: 4.2 Orchestration vs. Execution: The Loom Framework">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                4.2 Orchestration vs. Execution: The Loom Framework
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
