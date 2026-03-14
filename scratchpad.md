@@ -32,7 +32,7 @@
 
 ## Next orchestrator actions
 
-1. Select the next chapter to write (recommendation: 2.2 since it follows directly from 2.1).
+1. Select the next chapter to write (recommendation: 1.2 to complete Part I before moving to Part II).
 2. Launch a sub-agent with the chapter-writer prompt template from `RESEARCH_LOOP_PROMPT.md`.
 3. After the sub-agent finishes, update this file and `docs/chapter_tracker.md`.
 4. Commit with `report_progress`.
