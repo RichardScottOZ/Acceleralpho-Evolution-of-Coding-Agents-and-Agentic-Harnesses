@@ -20,7 +20,7 @@ This tracker records the next-smallest publishable units for the book. Completed
 | 3.3 Cody and the Evolution of the Context Power Plant | Drafted and verified | [docs/part2/3.3 Cody and the Context Power Plant.md](part2/3.3%20Cody%20and%20the%20Context%20Power%20Plant.md) | Five concept loops: search-to-engine evolution, triple retrieval, power plant metaphor, engine vs RAG, build your own. Examples 3-10 through 3-14. Four mermaid diagrams. Exercises 3-13 through 3-18. |
 | 4.1 Jordan Hubbard's Threading: LLMs as First-Class OS Citizens | Drafted | [docs/part2/4.1 LLMs as First-Class OS Citizens.md](part2/4.1%20LLMs%20as%20First-Class%20OS%20Citizens.md) | Six concept loops: LLMs as external services, threading metaphor, scheduling/resource management, inter-agent IPC, security/isolation, Loom architecture. Examples 4-1 through 4-7. Six mermaid diagrams. |
 | 4.2 Orchestration vs. Execution: The Loom Framework | Drafted | [docs/part2/4.2 Orchestration vs Execution The Loom Framework.md](part2/4.2%20Orchestration%20vs%20Execution%20The%20Loom%20Framework.md) | Five concept loops: orchestration problem, orchestration vs execution, multi-agent patterns, Loom weave model, failure handling. Examples 4-8 through 4-14. Seven mermaid diagrams. |
-| 4.3 Refactoring the Past: Navigating Legacy C++ via Agentic Threads | Planned | — | Legacy systems. |
+| 4.3 Refactoring the Past: Navigating Legacy C++ via Agentic Threads | Drafted | [docs/part2/4.3 Refactoring the Past Legacy C++ via Agentic Threads.md](part2/4.3%20Refactoring%20the%20Past%20Legacy%20C%2B%2B%20via%20Agentic%20Threads.md) | Five concept loops: legacy code problem, why agents fail, archaeological dig, strangler fig, guardrails. Examples 4-15 through 4-19. Closes Part II. |
 
 ## Part III: The Harnesses and the Hyperscalers
 
@@ -28,8 +28,8 @@ This tracker records the next-smallest publishable units for the book. Completed
 | --- | --- | --- | --- |
 | 5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution (E2B) | Drafted | [docs/part3/5.1 Leashing the Beast Tool-Calling and Sandboxed Execution.md](part3/5.1%20Leashing%20the%20Beast%20Tool-Calling%20and%20Sandboxed%20Execution.md) | Five concept loops: raw model gap, tool-calling protocol, sandboxed execution, full harness pattern, production hardening. Examples 5-1 through 5-5. Three mermaid diagrams. |
 | 5.2 OpenRouter: The Switzerland of the Model Wars | Drafted | [docs/part3/5.2 OpenRouter The Switzerland of the Model Wars.md](part3/5.2%20OpenRouter%20The%20Switzerland%20of%20the%20Model%20Wars.md) | Five concept loops: fragmentation problem, universal gateway, routing strategies, model-switching agent, economics. Examples 5-6 through 5-10. Three mermaid diagrams. |
-| 5.3 OpenCode and the Democratization of Agentic Access | Planned | — | Open-source access. |
-| 6.1 AWS Bedrock and Azure AI Foundry: The Enterprise Response | Planned | — | Enterprise containment. |
+| 5.3 OpenCode and the Democratization of Agentic Access | Drafted | [docs/part3/5.3 OpenCode and the Democratization of Agentic Access.md](part3/5.3%20OpenCode%20and%20the%20Democratization%20of%20Agentic%20Access.md) | Five concept loops: access gap, open-source landscape, architecture, community extension, trade-offs. Examples 5-11 through 5-15. |
+| 6.1 AWS Bedrock and Azure AI Foundry: The Enterprise Response | Drafted | [docs/part3/6.1 AWS Bedrock and Azure AI Foundry The Enterprise Response.md](part3/6.1%20AWS%20Bedrock%20and%20Azure%20AI%20Foundry%20The%20Enterprise%20Response.md) | Five concept loops: enterprise containment, AWS Bedrock, Azure AI Foundry, containment field pattern, managed vs self-hosted. Examples 6-1 through 6-5. |
 | 6.2 The Copilot Workspace: Agentifying the Pull Request | Planned | — | GitHub Copilot evolution. |
 | 6.3 Security and Governance in the Age of "Shadow Agents" | Planned | — | Security considerations. |
 

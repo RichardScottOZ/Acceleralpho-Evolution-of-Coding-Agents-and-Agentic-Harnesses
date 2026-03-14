@@ -79,9 +79,21 @@
 - [x] Examples 5-6 through 5-10. Three mermaid diagrams. 4 exercises.
 - [x] Cross-references Sections 2.3 and 5.1.
 
+### 5.3 OpenCode and the Democratization of Agentic Access
+- [x] Drafted. Five concept loops: access gap, open-source landscape, architecture, community extension, trade-offs.
+- [x] Examples 5-11 through 5-15.
+
+### 6.1 AWS Bedrock and Azure AI Foundry: The Enterprise Response
+- [x] Drafted. Five concept loops: enterprise containment, AWS Bedrock, Azure AI Foundry, containment field, managed vs self-hosted.
+- [x] Examples 6-1 through 6-5.
+
+### 4.3 Refactoring the Past: Navigating Legacy C++ via Agentic Threads
+- [x] Drafted via split sub-agent approach. Five concept loops: legacy code problem, why agents fail, archaeological dig, strangler fig, guardrails.
+- [x] Examples 4-15 through 4-19. Closes Part II with retrospective.
+
 ## Next orchestrator actions
 
-1. Part I is complete (1.1–2.3). Part II has 3.1–3.3, 4.1, and 4.2 complete.
-2. Delegate remaining Part II chapter (4.3) to sub-agents.
-3. Continue through Parts III–V (5.2–6.3, 7.1–8.3, 9.1–10.3).
+1. Parts I and II are complete (1.1–4.3). Part III has 5.1–5.3 and 6.1 complete.
+2. Delegate remaining Part III chapters (6.2–6.3) to sub-agents.
+3. Continue through Parts IV–V (7.1–8.3, 9.1–10.3).
 4. After all chapters drafted, run a verification pass on code examples.
