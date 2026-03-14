@@ -39,9 +39,18 @@
 - [x] All four Python code examples verified from ./src.
 - [x] Maps all five failure modes from 2.2 to specific harness controls.
 
+## Part II: The Architectural Sovereigns
+
+### 3.1 Steve Yegge's Vision: High-Throughput Agentic Environments
+- [x] Drafted and verified. Five concept loops: IDE bottleneck, Gas Town metaphor, bimodal split, high-throughput agent environment anatomy, measuring agent-readiness.
+- [x] Examples 3-1 through 3-4. Three mermaid diagrams: IDE event loop bottleneck, Gas Town service architecture, full agent environment anatomy.
+- [x] All four Python code examples verified (asyncio-based service simulation, bimodal router, health checker).
+- [x] 15 callouts (5 Key idea, 4 Tip, 2 Warning, 4 Pitfall). 6 retrieval-practice exercises.
+- [x] Connects back to Section 1.1 (IDE exodus), Section 2.2 (stale context failure mode), and Section 2.3 (harness layer).
+
 ## Next orchestrator actions
 
-1. Part I is now complete (1.1–2.3).
-2. Delegate Part II chapters (3.1–4.3) to sub-agents.
+1. Part I is complete (1.1–2.3). Section 3.1 of Part II is complete.
+2. Delegate remaining Part II chapters (3.2, 3.3, 4.1–4.3) to sub-agents.
 3. Continue through Parts III–V.
 4. After all chapters drafted, run a verification pass on code examples.

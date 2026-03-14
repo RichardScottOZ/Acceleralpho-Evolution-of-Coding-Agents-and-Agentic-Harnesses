@@ -15,7 +15,7 @@ This tracker records the next-smallest publishable units for the book. Completed
 
 | Section | Status | File | Notes |
 | --- | --- | --- | --- |
-| 3.1 Steve Yegge's Vision: High-Throughput Agentic Environments | Planned | — | Gas Town model. |
+| 3.1 Steve Yegge's Vision: High-Throughput Agentic Environments | Drafted and verified | [docs/part2/3.1 Steve Yegge High-Throughput Agentic Environments.md](part2/3.1%20Steve%20Yegge%20High-Throughput%20Agentic%20Environments.md) | Five concept loops: IDE bottleneck, Gas Town metaphor, bimodal split, high-throughput architecture, agent-readiness metrics. Examples 3-1 through 3-4. Three mermaid diagrams. |
 | 3.2 Beyond RAG: The Infinite Window and Hyper-Context | Planned | — | Context as currency. |
 | 3.3 Cody and the Evolution of the Context Power Plant | Planned | — | Sourcegraph's context engine. |
 | 4.1 Jordan Hubbard's Threading: LLMs as First-Class OS Citizens | Planned | — | Loom framework. |
