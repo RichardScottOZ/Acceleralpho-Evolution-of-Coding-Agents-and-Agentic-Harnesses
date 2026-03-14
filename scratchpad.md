@@ -67,9 +67,16 @@
 - [x] Drafted. Five concept loops: orchestration problem, orchestration vs execution, multi-agent patterns, Loom weave model, failure handling.
 - [x] Examples 4-8 through 4-14. Seven mermaid diagrams. 16 callouts. 4 exercises.
 
+## Part III: The Harnesses and the Hyperscalers
+
+### 5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution
+- [x] Drafted. Five concept loops: raw model gap, tool-calling protocol, sandboxed execution, full harness pattern, production hardening.
+- [x] Examples 5-1 through 5-5. Three mermaid diagrams. 4 exercises.
+- [x] Cross-references Sections 2.2, 2.3, and 4.2.
+
 ## Next orchestrator actions
 
 1. Part I is complete (1.1–2.3). Part II has 3.1–3.3, 4.1, and 4.2 complete.
 2. Delegate remaining Part II chapter (4.3) to sub-agents.
-3. Continue through Parts III–V (5.1–6.3, 7.1–8.3, 9.1–10.3).
+3. Continue through Parts III–V (5.2–6.3, 7.1–8.3, 9.1–10.3).
 4. After all chapters drafted, run a verification pass on code examples.

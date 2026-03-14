@@ -26,7 +26,7 @@ This tracker records the next-smallest publishable units for the book. Completed
 
 | Section | Status | File | Notes |
 | --- | --- | --- | --- |
-| 5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution (E2B) | Planned | — | Agentic harnessing. |
+| 5.1 Leashing the Beast: Tool-Calling and Sandboxed Execution (E2B) | Drafted | [docs/part3/5.1 Leashing the Beast Tool-Calling and Sandboxed Execution.md](part3/5.1%20Leashing%20the%20Beast%20Tool-Calling%20and%20Sandboxed%20Execution.md) | Five concept loops: raw model gap, tool-calling protocol, sandboxed execution, full harness pattern, production hardening. Examples 5-1 through 5-5. Three mermaid diagrams. |
 | 5.2 OpenRouter: The Switzerland of the Model Wars | Planned | — | Model hot-swapping. |
 | 5.3 OpenCode and the Democratization of Agentic Access | Planned | — | Open-source access. |
 | 6.1 AWS Bedrock and Azure AI Foundry: The Enterprise Response | Planned | — | Enterprise containment. |
