@@ -37,7 +37,7 @@ This tracker records the next-smallest publishable units for the book. Completed
 
 | Section | Status | File | Notes |
 | --- | --- | --- | --- |
-| 7.1 DeepSeek and Qwen: Shattering the Western Moat | Planned | — | Chinese model breakthrough. |
+| 7.1 DeepSeek and Qwen: Shattering the Western Moat | Drafted and verified | [docs/part4/7.1 DeepSeek and Qwen Shattering the Western Moat.md](part4/7.1%20DeepSeek%20and%20Qwen%20Shattering%20the%20Western%20Moat.md) | Opens Part IV. Five concept loops: moat assumption, DeepSeek MoE, Qwen multilingual, benchmark reality, fleet architecture. Examples 7-1 through 7-5. Three mermaid diagrams. |
 | 7.2 The Efficiency Gap: High-Performance Coding on a Budget | Planned | — | Resource-constrained innovation. |
 | 7.3 The Geopolitics of Code Generation | Planned | — | Geopolitical implications. |
 | 8.1 Aider, OpenDevin, and the Bazaar of Agents | Planned | — | Open-source agents. |

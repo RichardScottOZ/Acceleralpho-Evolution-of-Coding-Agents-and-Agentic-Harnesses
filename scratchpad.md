@@ -102,9 +102,15 @@
 - [x] Cross-references Sections 2.2, 2.3, 5.1, 6.1, 6.2.
 - [x] Closes Part III with "Wrapping Up Part III" retrospective bridging to Part IV.
 
+### 7.1 DeepSeek and Qwen: Shattering the Western Moat
+- [x] Drafted and verified. Opens Part IV. Five concept loops: Western moat assumption, DeepSeek MoE architecture, Qwen multilingual approach, benchmark reality, fleet architecture implications.
+- [x] Examples 7-1 through 7-5. Three mermaid diagrams (MoE routing, quadrant chart, old vs new fleet).
+- [x] All five Python examples verified runnable with correct output.
+- [x] Cross-references Sections 2.1, 3.2, 5.2, 5.3, 6.1, 6.3, 7.2.
+
 ## Next orchestrator actions
 
-1. Parts I, II, and III are complete (1.1–6.3).
-2. Delegate Part IV chapters (7.1–8.3) to sub-agents.
+1. Parts I, II, III are complete (1.1–6.3). Part IV started with 7.1.
+2. Delegate remaining Part IV chapters (7.2–8.3) to sub-agents.
 3. Continue through Part V (9.1–10.3).
 4. After all chapters drafted, run a verification pass on code examples.
