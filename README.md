@@ -1,6 +1,17 @@
 # Acceleralpho: Evolution of Coding Agents and Agentic Harnesses
 
+Acceleralpho: Evolution of Coding Agents and Agentic Harnesses¶
+A Strossian future history of the Boris era
+
+About this book¶
+Sometime around late 2024 and into 2025, the most capable software-writing systems in the world stopped living inside graphical IDEs and moved back to the terminal. This was not retro-chic nostalgia. It was physics. Coding agents operate at machine speed; IDEs were built for human eyes. The terminal — text in, text out, a numeric exit code — turned out to be the perfect substrate for both.
+
+Acceleralpho traces that migration from "AI as a chat box" to "AI as a systems inhabitant." It covers the tools, the architectures, the companies, and the ideas that define the Boris era of software development: the period when autonomous agents became first-class participants in the production of code.
+
+The title nods to Charles Stross's Accelerando — a future history told in relentless forward motion. The subtitle delivers on that promise: this is the definitive guide to coding agents and the agentic harnesses that make them safe, fast, and commercially useful.
+
 A book about the rapid evolution of AI coding agents—from autocomplete to autonomous systems—written entirely by AI agents using a single-request orchestration loop.
+
 
 ## What is this?
 
@@ -105,6 +116,10 @@ mkdocs serve             # live-reload preview at http://127.0.0.1:8000
 
 > The generated `book/` directory and `book.pdf` are excluded from version control via `.gitignore`. Commit the source markdown; build the output locally or in CI.
 
-## Based on
+## Note
+- Copilot web agent times out after an hour
 
-This project is adapted from [Copilot-Single](https://github.com/RichardScottOZ/Copilot-Single), restructured to use sub-agent delegation so the entire process runs within a single premium request.
+# Book
+[pdf](book.pdf)
+
+- or see book folder for hmtl download
