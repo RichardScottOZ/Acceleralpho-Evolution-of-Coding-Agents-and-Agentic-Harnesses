@@ -123,3 +123,9 @@ mkdocs serve             # live-reload preview at http://127.0.0.1:8000
 [pdf](book.pdf)
 
 - or see book folder for hmtl download
+
+# Accelerando
+- https://www.antipope.org/charlie/blog-static/fiction/accelerando/accelerando-intro.html
+    - Lobsters - https://www.antipope.org/charlie/blog-static/fiction/accelerando/accelerando.html#Lobsters
+- https://en.wikipedia.org/wiki/Accelerando
+- https://web.archive.org/web/20031203121129/http://www.scifi.com/sfw/issue343/interview.html
