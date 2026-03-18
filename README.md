@@ -122,7 +122,7 @@ mkdocs serve             # live-reload preview at http://127.0.0.1:8000
 # Book
 [pdf](book.pdf)
 
-- or see book folder for hmtl download
+- or see book folder for html download
 
 [notebook lm audio podcast](Why_AI_coding_agents_abandoned_the_IDE.m4a)
 
